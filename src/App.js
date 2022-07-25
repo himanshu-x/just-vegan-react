@@ -1,19 +1,23 @@
 import { Routes, Route, Link } from "react-router-dom";
 import './App.css';
-import Dish from './pages/dish';
-import NewDish from './pages/new-dish';
-import Offer from './pages/offer';
-import NewOffer from "./pages/new-offer-card"
+import Dishes from './pages/dishes';
+import NewDish from "./pages/new-dish";
+import DishDetails from "./pages/dish-details";
+import Offer from './pages/offers';
+import NewOffer from "./pages/new-offer"
+import OfferDetails from './pages/offer-details'
 
 function App() {
   return (
 
     <Routes>
-      <Route path="dish" element={<Dish />} />
+      <Route path="dishes" element={<Dishes />} ></Route>
+      <Route path="dishes/:dishId" element={<DishDetails />} />
       <Route path="new-dish" element={<NewDish />} />
       <Route path="offers" element={<Offer />} />
+      <Route path="offers/:offerId" element={<OfferDetails />} />
       <Route path="new-offer" element={<NewOffer />} />
-    </Routes>
+    </Routes >
 
   );
 }

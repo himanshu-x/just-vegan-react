@@ -1,5 +1,7 @@
 import React from "react";
-export default class newDish extends React.Component {
+import { Link } from "react-router-dom";
+
+export default class Dishes extends React.Component {
 
     constructor(props) {
         super(props)
@@ -11,8 +13,9 @@ export default class newDish extends React.Component {
     }
 
 
-    getdish() {
-        fetch('https://b59b-2405-201-401a-dd3e-40f0-f1d9-c63e-76c9.ngrok.io/dishes')
+    getDishes() {
+
+        fetch('http://cf8a-2405-201-401a-dd3e-4d2d-28b9-2bc3-722f.ngrok.io/dishes')
             .then(res => res.json())
             .then((response) => {
                 // console.log(response)
@@ -27,7 +30,7 @@ export default class newDish extends React.Component {
     }
 
     componentDidMount() {
-        this.getdish();
+        this.getDishes();
     }
 
 
@@ -55,11 +58,11 @@ export default class newDish extends React.Component {
                             // console.log(dish)
                             return (
 
-                                <div className="flex flex-col gap-3 border rounded p-2 shadow-xl">
-                                    <div>
+                                <div className="flex flex-col gap-3 border rounded p-2 shadow-xl" key={'dish-' + dish._id}>
+                                    <Link to={'/dishes/' + dish._id}>
                                         <img className="w-full h-full object-center object-cover lg:w-full lg:h-full rounded-2xl" src={dish.imgUrl}></img>
+                                    </Link>
 
-                                    </div>
                                     <div className="flex gap-2">
                                         <div>{dish.dishName}</div>
                                         <div>{<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 " fill="#e11d48" viewBox="0 0 24 24"  >
@@ -86,7 +89,6 @@ export default class newDish extends React.Component {
 
                         })
                     }
-
 
                 </div>
             </div>

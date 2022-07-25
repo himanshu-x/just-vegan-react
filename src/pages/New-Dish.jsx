@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-export default class newDish extends React.Component {
+export default class NewDish extends React.Component {
 
     constructor(props) {
         super(props)
@@ -15,7 +15,9 @@ export default class newDish extends React.Component {
                 dishCategory: null,
                 imgUrl: '',
                 description: "",
-                qualityChecks: [],
+                isVaccumSealed: false,
+                isPreservativeFree: false,
+                isQualityChecks: false,
                 energy: null,
                 fat: null,
                 carbs: null,
@@ -27,13 +29,10 @@ export default class newDish extends React.Component {
 
     onInputChange = (event) => {
         const { value: newValue, name: fieldName } = event.target
-
-        // console.log(`value => ${newValue}`)
-        // console.log(`name => ${fieldName}`)
         const { dishModel } = this.state;
         let formatttedValue = '';
 
-        if (fieldName === 'price') {
+        if (fieldName === 'price' || 'energy' || 'fat' || 'protien' || 'fiber' || 'carbs') {
             formatttedValue = parseFloat(newValue)
         }
 
@@ -46,33 +45,33 @@ export default class newDish extends React.Component {
     }
 
     handleChange = (e) => {
-        const fieldName = e.target.name;
+        const { name: fieldName, } = e.target;
         const { value, checked } = e.target;
-        const { dishModel } = this.state
-
+        const { dishModel } = this.state;
         if (checked) {
-            dishModel[fieldName].push(value)
             this.setState({
-                dishModel: dishModel
-            })
-        } else {
+                dishModel: {
+                    ...dishModel,
+                    [fieldName]: value,
+                }
 
-            const remainingQuality = dishModel[fieldName].filter((loc) => {
-                return loc !== value
-            })
-            dishModel[fieldName] = remainingQuality
-            this.setState({
-                dishModel: dishModel
             })
         }
-    };
-
+        else {
+            this.setState({
+                dishModel: {
+                    ...dishModel,
+                    [fieldName]: !value,
+                }
+            })
+        };
+    }
     handleSubmit = (event) => {
         event.preventDefault();
 
         const { dishModel } = this.state;
 
-        fetch('https://b59b-2405-201-401a-dd3e-40f0-f1d9-c63e-76c9.ngrok.io/dishes', {
+        fetch('http://cf8a-2405-201-401a-dd3e-4d2d-28b9-2bc3-722f.ngrok.io/dishes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -81,7 +80,7 @@ export default class newDish extends React.Component {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
+                // console.log(data)
                 console.log('Success:', data);
             })
             .catch((error) => {
@@ -94,7 +93,7 @@ export default class newDish extends React.Component {
         const { headerText } = this.state;
         return (
 
-            <div className="container my-4 p-8 rounded-lg shadow-lg mx-auto w-3/4">
+            <div className="container my-4 p-8 rounded-lg shadow-lg mx-auto w-2/4">
                 <p className="font-medium leading-tight text-4xl mt-0 mb-2 text-slate-600 ">{headerText}</p>
                 <form className="m-4" onSubmit={this.handleSubmit}>
                     <div className="form-group mb-6">
@@ -120,7 +119,8 @@ export default class newDish extends React.Component {
                             htmlFor="dishCategory"
                             className="form-label inline-block mb-2 text-slate-600 text-sm"
                         >Dish Category*</label>
-                        <select id="dishCategory" name="dishCategory" className="form-select form-select-sm appearance-none block w-full px-2 py-1 text-sm font-normal text-gray-700    bg-white bg-clip-padding bg-no-repeat rounded    transition    ease-in-out    m-0
+                        <select id="dishCategory" name="dishCategory" className="form-select form-select-sm appearance-none
+                         block w-full px-2 py-1 text-sm font-normal text-gray-700    bg-white bg-clip-padding bg-no-repeat rounded    transition    ease-in-out    m-0
    border focus:text-gray-700 focus:bg-white focus:outline-none" aria-label=".form-select-sm example"
                             onInput={this.onInputChange} >
                             <option selected>Choose Your Option</option>
@@ -134,24 +134,27 @@ export default class newDish extends React.Component {
                     <div className="mt-6 flex flex-col gap-3">
                         <p className="font-medium leading-tight text-2xl mt-0 mb-2 text-slate-600"> Quality Checks*</p>
                         <div className="form-check">
-                            <input onChange={this.handleChange} name="qualityChecks" value="vaccumSealed"
+                            <input onChange={this.handleChange} name="isVaccumSealed" value="true"
                                 className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600
-                                 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox"
+                                 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                type="checkbox"
                                 id="vaccumSealed" />
                             <label className="form-check-label inline-block text-gray-400" htmlFor="vaccumSealed">
                                 Vaccum Sealed
                             </label>
                         </div>
                         <div className="form-check">
-                            <input onChange={this.handleChange} className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                                type="checkbox" value="preservative" id="preservative" name="qualityChecks" />
+                            <input onChange={this.handleChange} className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 
+                            focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                type="checkbox" value="true" id="preservative" name="isPreservativeFree" />
                             <label className="form-check-label inline-block text-gray-400" htmlFor="preservative">
-                                Preservative
+                                PreservativeFree
                             </label>
                         </div>
                         <div className="form-check">
-                            <input onChange={this.handleChange} className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                                type="checkbox" value="certified" id="certified" name="qualityChecks" />
+                            <input onChange={this.handleChange} className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600
+                             focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                type="checkbox" value='true' id="certified" name="isQualityChecks" />
                             <label className="form-check-label inline-block text-gray-400" htmlFor="certified">
                                 Certified
                             </label>
@@ -183,7 +186,7 @@ export default class newDish extends React.Component {
                     </div>
                     <div className="mt-8 flex flex-col gap-5">
                         <p className="font-medium leading-tight text-2xl mt-0 mb-2 text-slate-600">More info</p>
-                        <div className=" flex  flex-col gap-7">
+                        <div className=" flex  flex-col gap-2">
                             <label
                                 htmlFor="description"
                                 className="form-label inline-block  text-gray-400 text-sm"
@@ -194,7 +197,7 @@ export default class newDish extends React.Component {
                                 placeholder="Description" onInput={this.onInputChange} />
 
                             <div className="flex flex-col gap-2">
-                                <label htmlFor="imgUrl" className="text-sm text-gray-500">Image Url*</label>
+                                <label htmlFor="imgUrl" className="text-sm text-gray-400">Image Url*</label>
                                 <input type="text" id="imgUrl" name="imgUrl" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
           rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"  placeholder="imgUrl" onInput={this.onInputChange} />
                             </div>

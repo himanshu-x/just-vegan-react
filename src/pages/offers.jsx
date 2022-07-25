@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-export default class newOffer extends React.Component {
+export default class Offers extends React.Component {
 
     constructor(props) {
         super(props)
@@ -14,8 +14,8 @@ export default class newOffer extends React.Component {
     }
 
 
-    getoffer() {
-        fetch('https://b59b-2405-201-401a-dd3e-40f0-f1d9-c63e-76c9.ngrok.io/offers')
+    getoffers() {
+        fetch('http://cf8a-2405-201-401a-dd3e-4d2d-28b9-2bc3-722f.ngrok.io/offers')
             .then(res => res.json())
             .then((response) => {
                 console.log(response)
@@ -30,7 +30,7 @@ export default class newOffer extends React.Component {
     }
 
     componentDidMount() {
-        this.getoffer();
+        this.getoffers();
     }
 
 
@@ -58,9 +58,11 @@ export default class newOffer extends React.Component {
 
                             return (
 
-                                <div className="flex flex-col gap-3 border p-2 shadow-xl">
-                                    <div>
-                                        <img className="w-full h-full object-center object-cover  lg:w-full lg:h-full " src={offer.imgUrl}></img>
+                                <div className="flex flex-col gap-3 border p-2 shadow-xl" key={'offer-' + offer._id}>
+                                    <div >
+                                        <Link to={'/offers/' + offer._id}>
+                                            <img className="w-full h-full object-center object-cover  lg:w-full lg:h-full " src={offer.imgUrl}></img>
+                                        </Link>
                                     </div>
                                     <div>
                                         <p className="text-2xl text-blue-400">{offer.offerName}</p>
@@ -77,10 +79,6 @@ export default class newOffer extends React.Component {
                                             THIS IS A LINK
                                         </Link>
                                     </div>
-
-
-
-
                                 </div>
                             )
 
