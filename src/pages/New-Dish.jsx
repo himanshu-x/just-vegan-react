@@ -32,7 +32,7 @@ export default class NewDish extends React.Component {
         const { dishModel } = this.state;
         let formatttedValue = '';
 
-        if (fieldName === 'price' || 'energy' || 'fat' || 'protien' || 'fiber' || 'carbs') {
+        if (fieldName === 'price' || fieldName === 'energy' || fieldName === 'fat' || fieldName === 'protien' || fieldName === 'fiber' || fieldName === 'carbs') {
             formatttedValue = parseFloat(newValue)
         }
 

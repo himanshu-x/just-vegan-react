@@ -17,7 +17,7 @@ export default class newOffer extends React.Component {
                 minPurchase: null,
                 discountAmount: null,
                 discountPercent: null,
-                isActive: '',
+                isActive: false,
             }
 
         }
@@ -52,21 +52,39 @@ export default class newOffer extends React.Component {
 
         const { value: newValue, name: fieldName } = event.target;
         const { offerModel } = this.state;
-        offerModel[fieldName] = newValue;
+        // offerModel[fieldName] = newValue;
 
         let newIntValue = '';
 
         // const numberFields = ['maxDiscount', 'minPurchase', 'discountAmount']
-        // if(numberFields.includes(fieldName)) {
-        // newIntValue = parseFloat(newValue)
+        // if (numberFields.includes(fieldName)) {
+        //     newIntValue = parseFloat(newValue)
         // }
 
-        if (fieldName === 'maxDiscount' || 'minPurchase' || 'discountAmount' || 'discountPercent') {
-            newIntValue = parseFloat(newValue)
+        // if (fieldName === 'maxDiscount' || fieldName === 'minPurchase' || fieldName === 'discountAmount' || fieldName === 'discountPercent') {
+        //     newIntValue = parseFloat(newValue)
+        // }
+
+
+        switch (fieldName) {
+            case 'maxDiscount':
+                newIntValue = parseFloat(newValue);
+                break;
+            case "minPurchase":
+                newIntValue = parseFloat(newValue);
+                break;
+            case "discountAmount":
+                newIntValue = parseFloat(newValue);
+                break;
+            case "discountPercent":
+                newIntValue = parseFloat(newValue);
+                break;
+
+
         }
 
-        console.log(`newValue`)
-        console.log(newValue)
+        // console.log(`newValue`)
+        // console.log(newValue)
         this.setState({
             offerModel: {
                 ...offerModel,
@@ -78,7 +96,7 @@ export default class newOffer extends React.Component {
     handleChange = (e) => {
         const { value: newValue, name: fieldName } = e.target;
         const { offerModel } = this.state;
-        // offerModel[fieldName] = newValue
+        offerModel[fieldName] = newValue
 
         this.setState({
             ...offerModel,
