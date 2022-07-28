@@ -13,7 +13,6 @@ function App() {
     <div>
       <ToDo />
       <Routes>
-
         <Route path="dishes" element={<Dishes />} ></Route>
         <Route path="dishes/:dishId" element={<DishDetails />} />
         <Route path="new-dish" element={<NewDish />} />
