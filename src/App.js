@@ -6,12 +6,12 @@ import DishDetails from "./pages/dish-details";
 import Offer from './pages/offers';
 import NewOffer from "./pages/new-offer"
 import OfferDetails from './pages/offer-details'
-import ToDo from './components/practicePart/ToDoList'
+// import ToDo from './components/practicePart/ToDoList'
 
 function App() {
   return (
     <div>
-      <ToDo />
+
       <Routes>
         <Route path="dishes" element={<Dishes />} ></Route>
         <Route path="dishes/:dishId" element={<DishDetails />} />

@@ -19,7 +19,9 @@ function DishDetails(props) {
     const dishProperties = [
         { valueKey: 'energy', displayKey: 'ENERGY(KCAL)' },
         { valueKey: 'fat', displayKey: 'FAT(g)' },
-        { valueKey: 'energy', displayKey: 'Energy(g)' }
+        { valueKey: 'carbs', displayKey: 'CARBS(g)' },
+        { valueKey: 'fiber', displayKey: 'FIBER(g)' },
+        { valueKey: 'protein', displayKey: 'PROTIEN(g)' },
     ]
 
     useEffect(() => {
@@ -47,23 +49,18 @@ function DishDetails(props) {
                     <img className="w-full p-4 object-center object-cover " src={dishData.imgUrl}></img>
                 </div>
                 <div className="flex p-2 flex-col justify-evenly">
-                    <div className="flex gap-3 mt-4 ml-4">
-                        <div className="font-medium leading-tight text-3xl  mb-2 text-slate-700">{dishData.dishName}</div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                    <div className="flex flex-col  mt-4 ml-4   ">
+                        <div className="flex">
+                            <div className="font-medium leading-tight text-3xl  mb-2 text-slate-700">{dishData.dishName}</div>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
 
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                        </svg>
+                        <div className="text-gray-500 text-xs  mt-3">{dishData.description}</div>
                     </div>
-                    <div>
-                        <button type="submit" className="inline-block px-3 ml-4 py-1 bg-green-700 text-white  text-xs 
-leading-tight  rounded shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg 
-focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out">ADD</button>
 
-                    </div>
-                    <div className="text-gray-500 text-xs ml-4 mt-3">{dishData.description}</div>
+
 
                     <ul>
                         {dishProperties.map((prop, index) => {
@@ -102,12 +99,18 @@ focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition
                         <div>
                             <button type="submit" className="inline-block px-2 py-1.5 bg-green-500 text-white font-medium text-l 
 leading-tight  rounded shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg 
+focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out">ADD</button>
+
+                        </div>
+                        <div>
+                            <button type="submit" className="inline-block px-2 py-1.5 bg-green-500 text-white font-medium text-l 
+leading-tight  rounded shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg 
 focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out">Price: 400</button>
 
                         </div>
                         <div>
-                            <button type="submit" className=" px-1.5 py-1.5 bg-green-700 text-white text-xs 
-leading-tight  rounded-full shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg 
+                            <button type="submit" className="inline-block px-2 py-1.5 bg-green-500 text-white font-medium text-l 
+leading-tight  rounded shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg 
 focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out">Discount Price</button>
 
                         </div>
