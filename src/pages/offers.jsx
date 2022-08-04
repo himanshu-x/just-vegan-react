@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import offerService from "../services/OfferService"
 
 
 export default class Offers extends React.Component {
@@ -15,18 +16,25 @@ export default class Offers extends React.Component {
 
 
     getoffers() {
-        fetch('http://cf8a-2405-201-401a-dd3e-4d2d-28b9-2bc3-722f.ngrok.io/offers')
-            .then(res => res.json())
-            .then((response) => {
-                console.log(response)
-                this.setState({
-                    offerList: response.payload
-
-                })
-            }, (error) => {
-                console.log(error)
-
+        offerService.getOffers().then((offers) => {
+            this.setState({
+                offerList: offers
             })
+        })
+
+
+        // fetch('http://cf8a-2405-201-401a-dd3e-4d2d-28b9-2bc3-722f.ngrok.io/offers')
+        //     .then(res => res.json())
+        //     .then((response) => {
+        //         console.log(response)
+        //         this.setState({
+        //             offerList: response.payload
+
+        //         })
+        //     }, (error) => {
+        //         console.log(error)
+
+        //     })
     }
 
     componentDidMount() {

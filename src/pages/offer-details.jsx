@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import OfferService from "../services/OfferService";
 
 function OfferDetails(props) {
     let [offerData, setOfferData] = useState({})
@@ -11,19 +12,25 @@ function OfferDetails(props) {
     }, [])
 
     function getOffer() {
-        fetch(`http://cf8a-2405-201-401a-dd3e-4d2d-28b9-2bc3-722f.ngrok.io/offers/${params.offerId}`)
-            .then(res => res.json())
-            .then((response) => {
-                if (response && response.payload) {
-                    setOfferData(response.payload)
-                }
-            }, (error) => {
-                console.log(error)
-            })
+
+        OfferService.getOffer(params.offerId).then((offer) => {
+            setOfferData(offer)
+
+        })
+
+        // fetch(`http://cf8a-2405-201-401a-dd3e-4d2d-28b9-2bc3-722f.ngrok.io/offers/${params.offerId}`)
+        //     .then(res => res.json())
+        //     .then((response) => {
+        //         if (response && response.payload) {
+        //             setOfferData(response.payload)
+        //         }
+        //     }, (error) => {
+        //         console.log(error)
+        //     })
     }
 
     return (
-        <div className="flex flex-col gap-3 bg-slate-100 ">
+        <div className="flex flex-col gap-3 bg-slate-100 container">
             <div className="flex gap-3 ">
                 <img className="max-h-2xl max-w-3xl sm:w-full" src={offerData.imgUrl}></img>
                 <div className="flex flex-col justify-center sm:w-full ml-3 gap-3">

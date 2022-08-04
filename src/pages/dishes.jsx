@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import dishService from '../services/dishService'
 
 export default class Dishes extends React.Component {
 
@@ -15,18 +16,23 @@ export default class Dishes extends React.Component {
 
     getDishes() {
 
-        fetch('http://cf8a-2405-201-401a-dd3e-4d2d-28b9-2bc3-722f.ngrok.io/dishes')
-            .then(res => res.json())
-            .then((response) => {
-                // console.log(response)
-                this.setState({
-                    dishList: response.payload
-
-                })
-            }, (error) => {
-                console.log(error)
-
+        dishService.getDishes().then((dishes) => {
+            this.setState({
+                dishList: dishes
             })
+        })
+        // fetch(`${BASE_API_URL}/dishes`)
+        //     .then(res => res.json())
+        //     .then((response) => {
+        //         // console.log(response)
+        //         this.setState({
+        //             dishList: response.payload
+
+        //         })
+        //     }, (error) => {
+        //         console.log(error)
+
+        //     })
     }
 
     componentDidMount() {

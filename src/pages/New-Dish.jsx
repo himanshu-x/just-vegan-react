@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import dishService from '../services/dishService'
 
 
 export default class NewDish extends React.Component {
@@ -71,21 +72,31 @@ export default class NewDish extends React.Component {
 
         const { dishModel } = this.state;
 
-        fetch('http://cf8a-2405-201-401a-dd3e-4d2d-28b9-2bc3-722f.ngrok.io/dishes', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(dishModel),
+        dishService.createNewDish(dishModel).then((createResult) => {
+            console.log(createResult)
+            if (createResult && createResult._id) {
+                // route the user to dish details page.
+
+                alert('New dish with dish id ${createResult._id} has been created.')
+
+            }
+
         })
-            .then((response) => response.json())
-            .then((data) => {
-                // console.log(data)
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+
+        // fetch('http://cf8a-2405-201-401a-dd3e-4d2d-28b9-2bc3-722f.ngrok.io/dishes', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(dishModel),
+        // })
+        //     .then((response) => response.json())
+        //     .then((data) => {
+        //         console.log('Success:', data);
+        //     })
+        //     .catch((error) => {
+        //         console.error('Error:', error);
+        //     });
 
     }
 

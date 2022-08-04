@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-
-
-// function ListDishProperties(props) {
-//     return(
-//         <div className="flex flex-col gap-1">
-//                         <div className="text-3xl">{props.fiber}</div>
-//                         <div className="text-gray-400 text-xs">FIBER(g)</div>
-//                     </div>
-//     )
-// }
+import dishService from '../services/dishService'
 
 function DishDetails(props) {
     let [dishData, setDishData] = useState({})
@@ -29,15 +19,22 @@ function DishDetails(props) {
     }, [])
 
     function getDish() {
-        fetch(`http://cf8a-2405-201-401a-dd3e-4d2d-28b9-2bc3-722f.ngrok.io/dishes/${params.dishId}`)
-            .then(res => res.json())
-            .then((response) => {
-                if (response && response.payload) {
-                    setDishData(response.payload)
-                }
-            }, (error) => {
-                console.log(error)
-            })
+
+
+        dishService.getDish(params.dishId).then((Dish) => {
+            setDishData(Dish)
+
+        })
+
+        // fetch(`http://cf8a-2405-201-401a-dd3e-4d2d-28b9-2bc3-722f.ngrok.io/dishes/${params.dishId}`)
+        //     .then(res => res.json())
+        //     .then((response) => {
+        //         if (response && response.payload) {
+        //             setDishData(response.payload)
+        //         }
+        //     }, (error) => {
+        //         console.log(error)
+        //     })
     }
 
 
