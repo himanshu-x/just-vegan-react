@@ -18,6 +18,15 @@ class signUp extends React.Component {
         }
     }
 
+    onInputChange = (event) => {
+        const { signUpModel } = this.state;
+        const { name, value } = event.target;
+        signUpModel[name] = value
+        this.setState({
+            signUpModel: signUpModel
+        })
+
+    }
 
     // handleSubmit = (event) => {
     //     e.preventDefault();
@@ -45,30 +54,30 @@ class signUp extends React.Component {
 
                         <label htmlFor="email" className="text-sm text-slate-600">Email*</label>
 
-                        <input type="text" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
+                        <input type="email" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:outline-none" id="email" name="email"
-                            placeholder="Email" />
+                            placeholder="Email" onInput={this.onInputChange} />
                     </div> <div className="flex flex-col gap-2 w-72">
 
                         <label htmlFor="name" className="text-sm text-slate-600"> Name*</label>
 
                         <input type="text" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:outline-none" id="name" name="name"
-                            placeholder=" Name" />
+                            placeholder=" Name" onInput={this.onInputChange} />
                     </div> <div className="flex flex-col gap-2 w-72">
 
                         <label htmlFor="phone" className="text-sm text-slate-600">Phone*</label>
 
                         <input type="text" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:outline-none" id="phone" name="phone"
-                            placeholder="Phone" />
+                            placeholder="Phone" onInput={this.onInputChange} />
                     </div> <div className="flex flex-col gap-2 w-72">
 
                         <label htmlFor="password" className="text-sm text-slate-600">Password*</label>
 
                         <input type="text" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:outline-none" id="password" name="password"
-                            placeholder="Password" />
+                            placeholder="Password" onInput={this.onInputChange} />
                     </div>
 
 

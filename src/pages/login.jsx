@@ -8,7 +8,7 @@ class Login extends React.Component {
 
         this.state = {
 
-            loginDetailModel: {
+            loginDetailsModel: {
                 email: "",
                 password: "",
             }
@@ -17,15 +17,21 @@ class Login extends React.Component {
     }
 
 
-    // onInputChange = (){
+    onInputChange = (event) => {
+        const { loginDetailsModel } = this.state;
+        const { value, name } = event.target
+        loginDetailsModel[name] = value;
+        this.setState({
+
+            loginDetailsModel: loginDetailsModel
+
+        })
+    }
 
 
-    // }
 
 
-
-
-    // handleSubmit = (event) {
+    // handleSubmit = (event) => {
     //     event.preventDefault();
 
 
@@ -48,7 +54,7 @@ class Login extends React.Component {
 
                         <label htmlFor="email" className="text-sm text-slate-600">Email*</label>
 
-                        <input type="text" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
+                        <input type="email" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:outline-none" id="email" name="email"
                             placeholder="Email" onInput={this.onInputChange} />
                     </div>
@@ -56,7 +62,7 @@ rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:out
 
                         <label htmlFor="password" className="text-sm text-slate-600">Password*</label>
 
-                        <input type="text" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
+                        <input type="password" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:outline-none" id="password" name="password"
                             placeholder="Password" onInput={this.onInputChange} />
                     </div>
