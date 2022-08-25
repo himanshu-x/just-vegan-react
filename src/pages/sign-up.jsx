@@ -35,15 +35,11 @@ class signUp extends React.Component {
     // }
 
 
-
-
-
-
     render() {
 
         return (
             <div className="container my-4 p-8 rounded-lg shadow-lg mx-auto flex w-1/2  gap-4 " >
-                <div className=" basis-1/2  relative"><img className=" rounded-lg "
+                <div className=" basis-1/2  relative"><img className="w-full rounded-lg"
                     src="https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmVnYW4lMjBmb29kfGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt="new" ></img>
 
                     <h2 className="absolute left-4 top-6 text-white font-medium text-2xl">Sign-Up</h2>

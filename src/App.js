@@ -8,6 +8,7 @@ import Offer from './pages/offers';
 import NewOffer from "./pages/new-offer";
 import OfferDetails from './pages/offer-details';
 import Navbar from './components/utility-components/Navbar';
+import AuthOptions from './components/page-components/auth/AuthOptions'
 import Auth from './pages/auth';
 import Login from "./pages/login";
 import SignUp from './pages/sign-up';
@@ -20,14 +21,15 @@ function App() {
       <Navbar />
 
       <Routes>
-        {/* <Route path="auth" element={<Auth />}>
+        <Route path="home" element={<Home />}></Route>
+        <Route path="auth" element={<Auth />}>
+          <Route index element={<AuthOptions />} />
           <Route path="login" element={<Login />}></Route>
           <Route path="sign-up" element={<SignUp />}></Route>
-        </Route> */}
-        <Route path="home" element={<Home />}></Route>
-        <Route path="auth" element={<Auth />}></Route>
+        </Route>
+        {/* <Route path="auth" element={<Auth />}></Route>
         <Route path="auth/login" element={<Login />}></Route>
-        <Route path="auth/sign-up" element={<SignUp />}></Route>
+        <Route path="auth/sign-up" element={<SignUp />}></Route> */}
         <Route path="dishes" element={<Dishes />} ></Route>
         <Route path="dishes/:dishId" element={<DishDetails />} />
         <Route path="new-dish" element={<NewDish />} />
