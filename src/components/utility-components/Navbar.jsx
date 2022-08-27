@@ -1,8 +1,44 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import React from "react";
+import { UserContext } from "../../App";
 
 
 function Navbar() {
+
+    const { state, dispatch } = useContext(UserContext);
+
+    const RenderMenu = () => {
+        if (state) {
+            return (
+                <>
+                    <div>
+                        <Link to="my-account" className="inline-block bg-teal-600 text-sm px-4 py-2 leading-none border rounded text-white
+                     border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">My-Account</Link>
+                    </div>
+                    <div>
+                        <Link to="auth" className="inline-block text-sm px-4 py-2 leading-none border rounded
+                     text-white border-white bg-orange-600 hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Log-Out</Link>
+                    </div>
+                </>
+            )
+
+        } else {
+            return (
+                <>
+                    <div>
+                        <Link to="auth/login" className="inline-block bg-teal-600 text-sm px-4 py-2 leading-none border rounded text-white
+                     border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Login</Link>
+                    </div>
+                    <div>
+                        <Link to="auth/sign-up" className="inline-block text-sm px-4 py-2 leading-none border rounded
+                     text-white border-white bg-teal-600 hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Sign-Up</Link>
+                    </div>
+                </>
+            )
+        }
+
+    }
     return (
 
         <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-4">
@@ -29,14 +65,9 @@ function Navbar() {
 
                 </div>
                 <div className="flex gap-3">
-                    <div>
-                        <Link to="auth/login" className="inline-block bg-teal-600 text-sm px-4 py-2 leading-none border rounded text-white
-                     border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Login</Link>
-                    </div>
-                    <div>
-                        <Link to="auth/sign-up" className="inline-block text-sm px-4 py-2 leading-none border rounded
-                     text-white border-white bg-teal-600 hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Sign-Up</Link>
-                    </div>
+
+                    <RenderMenu />
+
                 </div>
 
             </div>

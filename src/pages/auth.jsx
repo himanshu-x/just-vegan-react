@@ -1,8 +1,6 @@
 import React from "react";
 import { Link, Outlet } from 'react-router-dom';
-// import Login from "./login";
-// import SignUp from "./sign-up";
-// import background from "../images/vegan-food.jpg";
+
 
 export default class Auth extends React.Component {
 

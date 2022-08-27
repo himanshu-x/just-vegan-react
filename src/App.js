@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useReducer } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import './App.css';
 import Dishes from './pages/dishes';
@@ -11,34 +11,49 @@ import Navbar from './components/utility-components/Navbar';
 import AuthOptions from './components/page-components/auth/AuthOptions'
 import Auth from './pages/auth';
 import Login from "./pages/login";
+import MyAccount from "./pages/my-account";
+import MyList from "./components/page-components/account/AccountList"
+import Addresses from "./pages/addresses"
+import NewAddress from "./pages/newAddresses"
 import SignUp from './pages/sign-up';
 import Home from "./pages/home";
-// import ToDo from './components/practicePart/ToDoList'
+import LogOut from "./pages/log-out";
+import { initialState, reducer } from "./reducer/useReducer";
+
+export const UserContext = createContext();
 
 function App() {
-  return (
-    <div>
-      <Navbar />
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-      <Routes>
-        <Route path="home" element={<Home />}></Route>
-        <Route path="auth" element={<Auth />}>
-          <Route index element={<AuthOptions />} />
-          <Route path="login" element={<Login />}></Route>
-          <Route path="sign-up" element={<SignUp />}></Route>
-        </Route>
-        {/* <Route path="auth" element={<Auth />}></Route>
-        <Route path="auth/login" element={<Login />}></Route>
-        <Route path="auth/sign-up" element={<SignUp />}></Route> */}
-        <Route path="dishes" element={<Dishes />} ></Route>
-        <Route path="dishes/:dishId" element={<DishDetails />} />
-        <Route path="new-dish" element={<NewDish />} />
-        <Route path="offers" element={<Offer />} />
-        <Route path="offers/:offerId" element={<OfferDetails />} />
-        <Route path="new-offer" element={<NewOffer />} />
-      </Routes >
-    </div>
-  );
+
+  return (
+
+    <>
+      <UserContext.Provider value={{ state, dispatch }}>
+        <Navbar />
+        <Routes>
+          <Route path="home" element={<Home />}></Route>
+          <Route path="my-account" element={< MyList />}>
+            <Route index element={<MyAccount />} />
+            <Route path="addresses" element={<Addresses />}></Route>
+            <Route path="new-addresses" element={<NewAddress />}></Route>
+          </Route>
+          <Route path="auth" element={<Auth />}>
+            <Route index element={<AuthOptions />} />
+            <Route path="login" element={<Login />}></Route>
+            <Route path="sign-up" element={<SignUp />}></Route>
+          </Route>
+          <Route path="dishes" element={<Dishes />} ></Route>
+          <Route path="dishes/:dishId" element={<DishDetails />} />
+          <Route path="new-dish" element={<NewDish />} />
+          <Route path="offers" element={<Offer />} />
+          <Route path="offers/:offerId" element={<OfferDetails />} />
+          <Route path="new-offer" element={<NewOffer />} />
+          <Route path="auth" element={<LogOut />} />
+        </Routes >
+      </UserContext.Provider>
+    </>
+  )
 }
 
 export default App;
