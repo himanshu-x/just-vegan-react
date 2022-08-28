@@ -14,7 +14,10 @@ import Login from "./pages/login";
 import MyAccount from "./pages/my-account";
 import MyList from "./components/page-components/account/AccountList"
 import Addresses from "./pages/addresses"
-import NewAddress from "./pages/newAddresses"
+import AddressDetails from "./pages/addressDetails"
+import AddAddress from "./pages/addAddresses"
+import FavouriteDishes from "./pages/favourite-dishes";
+import MyOrders from "./pages/my-order"
 import SignUp from './pages/sign-up';
 import Home from "./pages/home";
 import LogOut from "./pages/log-out";
@@ -36,7 +39,10 @@ function App() {
           <Route path="my-account" element={< MyList />}>
             <Route index element={<MyAccount />} />
             <Route path="addresses" element={<Addresses />}></Route>
-            <Route path="new-addresses" element={<NewAddress />}></Route>
+            <Route path="addresses/:address" element={<AddressDetails />}></Route>
+            <Route path="add-addresses" element={<AddAddress />}></Route>
+            <Route path="favourite-dishes" element={<FavouriteDishes />}></Route>
+            <Route path="my-orders" element={<MyOrders />}></Route>
           </Route>
           <Route path="auth" element={<Auth />}>
             <Route index element={<AuthOptions />} />

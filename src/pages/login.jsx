@@ -5,20 +5,14 @@ import { useNavigate } from "react-router-dom";
 import loginService from "../services/loginService";
 import { setLocalStorage } from "../utils/common.util";
 import { UserContext } from "../App";
+
+
+
 function Login() {
 
     const { state, dispatch } = useContext(UserContext)
     const [loginDetailsModel, setLoginDetailsModel] = useState({})
     const navigate = useNavigate();
-
-    const handle = (e) => {
-        let { loginDetailsModel } = this.state
-        const { emailId, password } = loginDetailsModel;
-
-        // localStorage.setItem("loginModel", JSON.stringify(loginDetailsModel))
-    }
-
-
 
     const onInputChange = (event) => {
 
