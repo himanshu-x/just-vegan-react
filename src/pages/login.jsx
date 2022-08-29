@@ -10,7 +10,7 @@ import { UserContext } from "../App";
 
 function Login() {
 
-    const { state, dispatch } = useContext(UserContext)
+    // const { state, dispatch } = useContext(UserContext)
     const [loginDetailsModel, setLoginDetailsModel] = useState({})
     const navigate = useNavigate();
 
@@ -32,10 +32,11 @@ function Login() {
             console.log(loginResult)
             if (loginResult && loginResult.payload && loginResult.payload.accessToken) {
                 setLocalStorage('userData', loginResult.payload);
-                navigate(`/my-account`, {
-                    replace: true
-                });
-                dispatch({ type: "USER", payload: true })
+                // navigate(`/my-account`, {
+                //     replace: true
+                // });
+                window.location.href = '/my-account'
+                // dispatch({ type: "USER", payload: true })
                 // navigate(`my-account/${loginResult.payload.userId}`);
             } else {
                 alert('Invalid login details, please use correct credentials.')

@@ -5,7 +5,6 @@ import { getLocalStorage } from "../utils/common.util";
 
 export default function MyAccount() {
     let [accountDetails, setaccountDetails] = useState({})
-
     const userData = getLocalStorage('userData');
     // const params = useParams()
     console.log(userData)
@@ -16,6 +15,7 @@ export default function MyAccount() {
 
     function getAccDetails() {
         loginService.getLoginAccountDetails(userData.userId).then((account) => {
+
             setaccountDetails(account)
         })
     }
@@ -34,8 +34,10 @@ export default function MyAccount() {
 
 
     return (
+
+
         <div className="container">
-            <section className=" h-screen">
+            <section className=" h-screen ">
                 <div className="mx-auto container max-w-2xl md:w-3/4 shadow-md">
                     <div className="bg-gray-100 p-4 border-t-2 bg-opacity-5 border-indigo-400 rounded-t">
                         <div className="max-w-sm mx-auto md:w-full md:mx-0">
@@ -122,52 +124,6 @@ export default function MyAccount() {
                                         <p className="w-11/12 focus:outline-none focus:text-gray-600 p-2">{accountDetails.phone}</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-
-                        <hr />
-                        <div className="md:inline-flex w-full space-y-4 md:space-y-0 p-8 text-gray-500 items-center">
-                            <h2 className="md:w-4/12 max-w-sm mx-auto"> password</h2>
-
-                            <div className="md:w-5/12 w-full md:pl-9 max-w-sm mx-auto space-y-5 md:inline-flex pl-2">
-                                <div className="w-full inline-flex border-b">
-                                    <div className="w-1/12 pt-2">
-                                        <svg
-                                            fill="none"
-                                            className="w-6 text-gray-400 mx-auto"
-                                            viewBox="0 0 24 24"
-                                            stroke="currentColor"
-                                        >
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                                            />
-                                        </svg>
-                                    </div>
-                                    <p className="w-11/12  focus:outline-none focus:text-gray-600 p-2">{accountDetails.favouriteDishes}</p>
-                                </div>
-                            </div>
-
-                            <div className="md:w-3/12 text-center md:pl-6">
-                                <button className="text-white w-full mx-auto max-w-sm rounded-md text-center bg-indigo-400 py-2 px-4 inline-flex items-center focus:outline-none md:float-right">
-                                    <svg
-                                        fill="none"
-                                        className="w-4 text-white mr-2"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                                        />
-                                    </svg>
-                                    Update
-                                </button>
                             </div>
                         </div>
 

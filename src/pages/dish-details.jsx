@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, useSearchParams } from "react-router-dom";
 import dishService from '../services/dishService'
 
 function DishDetails(props) {
     let [dishData, setDishData] = useState({})
     const params = useParams()
+    const locationData = useLocation();
+    const [searchParams] = useSearchParams();
+
+    console.log(`params`)
+    console.log(params)
+    console.log(`location => `, locationData)
+    console.log(`searchParams => `, searchParams)
+
+    console.log(`searchParams => `, searchParams.get('hitesh'))
+    console.log(`searchParams => `, searchParams.get('a'))
+
+
 
     const dishProperties = [
         { valueKey: 'energy', displayKey: 'ENERGY(KCAL)' },

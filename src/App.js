@@ -14,20 +14,18 @@ import Login from "./pages/login";
 import MyAccount from "./pages/my-account";
 import MyList from "./components/page-components/account/AccountList"
 import Addresses from "./pages/addresses"
-import AddressDetails from "./pages/addressDetails"
+import AddressDetails from "./pages/my-address"
 import AddAddress from "./pages/addAddresses"
 import FavouriteDishes from "./pages/favourite-dishes";
 import MyOrders from "./pages/my-order"
 import SignUp from './pages/sign-up';
 import Home from "./pages/home";
-import LogOut from "./pages/log-out";
 import { initialState, reducer } from "./reducer/useReducer";
 
 export const UserContext = createContext();
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-
 
   return (
 
@@ -38,9 +36,10 @@ function App() {
           <Route path="home" element={<Home />}></Route>
           <Route path="my-account" element={< MyList />}>
             <Route index element={<MyAccount />} />
-            <Route path="addresses" element={<Addresses />}></Route>
+            <Route path="addresses" element={<Addresses />}>
+              <Route path="add-addresses" element={<AddAddress />}></Route>
+            </Route>
             <Route path="addresses/:address" element={<AddressDetails />}></Route>
-            <Route path="add-addresses" element={<AddAddress />}></Route>
             <Route path="favourite-dishes" element={<FavouriteDishes />}></Route>
             <Route path="my-orders" element={<MyOrders />}></Route>
           </Route>
@@ -55,7 +54,6 @@ function App() {
           <Route path="offers" element={<Offer />} />
           <Route path="offers/:offerId" element={<OfferDetails />} />
           <Route path="new-offer" element={<NewOffer />} />
-          <Route path="auth" element={<LogOut />} />
         </Routes >
       </UserContext.Provider>
     </>

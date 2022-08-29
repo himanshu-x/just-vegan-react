@@ -11,7 +11,8 @@ export default {
         })
             .then((response) => response.json())
             .then((response) => {
-                return console.log('Success:', response);
+                console.log('Success:', response);
+                return response
             })
     },
 }

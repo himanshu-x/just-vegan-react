@@ -1,5 +1,5 @@
 import React from "react";
-// import newAccountService from '../services/signUpService'
+import signUpService from '../services/signUpService'
 
 class signUp extends React.Component {
 
@@ -31,20 +31,29 @@ class signUp extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const { signUpModel } = this.state;
-        fetch('http://8abb-2405-201-401a-dd3e-e5ad-ac6f-2be2-5b4e.ngrok.io/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(signUpModel),
+
+        signUpService.newAccountService(signUpModel).then((data) => {
+            console.log(data)
         })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Success:', data);
-            })
             .catch((error) => {
                 console.error('Error:', error);
             });
+
+
+        // fetch('http://8abb-2405-201-401a-dd3e-e5ad-ac6f-2be2-5b4e.ngrok.io/users', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(signUpModel),
+        // })
+        //     .then((response) => response.json())
+        //     .then((data) => {
+        //         console.log('Success:', data);
+        //     })
+        //     .catch((error) => {
+        //         console.error('Error:', error);
+        //     });
     }
 
     render() {

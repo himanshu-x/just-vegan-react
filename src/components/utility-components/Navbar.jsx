@@ -1,25 +1,36 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import React from "react";
-import { UserContext } from "../../App";
+// import { UserContext } from "../../App";
+import { getLocalStorage } from "../../utils/common.util";
 
 
 function Navbar() {
 
-    const { state, dispatch } = useContext(UserContext);
+    // const { state, dispatch } = useContext(UserContext);
+
+    const userData = getLocalStorage('userData');
+    console.log(userData);
+    const navigate = useNavigate();
+
+    function handleLogout() {
+        localStorage.clear(userData)
+        navigate(`/auth/login`, {
+            replace: true
+        });
+    }
 
     const RenderMenu = () => {
-        if (state) {
+        if (userData && userData.accessToken) {
             return (
+
                 <>
-                    <div>
-                        <Link to="my-account" className="inline-block bg-teal-600 text-sm px-4 py-2 leading-none border rounded text-white
-                     border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">My-Account</Link>
-                    </div>
-                    <div>
-                        <Link to="auth" className="inline-block text-sm px-4 py-2 leading-none border rounded
-                     text-white border-white bg-orange-600 hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Log-Out</Link>
-                    </div>
+                    <button className="bg-teal-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"><Link to="/my-account">  My-Account</Link>
+
+                    </button>
+                    <button className="bg-teal-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded" onClick={handleLogout}>
+                        Log-Out
+                    </button>
                 </>
             )
 
@@ -39,6 +50,7 @@ function Navbar() {
         }
 
     }
+
     return (
 
         <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-4">
