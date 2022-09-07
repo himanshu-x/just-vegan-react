@@ -35,116 +35,76 @@ export default function AddAddress() {
 
     return (
 
-        <div className="mt-10 sm:mt-0">
-            <div className="md:grid md:grid-cols-3 md:gap-6">
-                <div className="mt-5 md:mt-0 md:col-span-2">
-                    <form action="#" onSubmit={handleSubmit}>
-                        <div className="shadow overflow-hidden sm:rounded-md">
-                            <div className="px-4 py-5 bg-white sm:p-6">
-                                <div className="grid grid-cols-6 gap-6">
 
-                                    <div className="col-span-6 sm:col-span-4 rounded-lg bg-teal-400 p-2 text-center w-fit">
-                                        New-Address
-                                    </div>
-                                    <div className="col-span-6 sm:col-span-3">
-                                        <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-                                        <input type="text" name="name" id="name" autocomplete="given-name" className="mt-1
-                                         focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
-                                            onInput={inputsHandle} />
-                                    </div>
+        <div className="shadow-md flex flex-col gap-4">
+            <h2 className="p-3 text-3xl"> New Address </h2>
+            <form action="#" onSubmit={handleSubmit}>
+                <div className="flex flex-col gap-2 ">
+                    <div className=" grid lg:grid-cols-2 gap-4 p-4">
 
-                                    <div className="col-span-6 sm:col-span-3">
-                                        <label htmlFor="phone1" className="block text-sm font-medium text-gray-700">Phone1</label>
-                                        <input type="text" name="phone1" id="phone1" autocomplete="phone1" className="mt-1
-                                         focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
-                                            onInput={inputsHandle} />
-                                    </div>
-
-                                    <div className="col-span-6 sm:col-span-4">
-                                        <label htmlFor="email-address" className="block text-sm font-medium  text-gray-700">Email address</label>
-                                        <input type="text" name="emailAddress" id="email-address" autocomplete="email" className="mt-1
-                                         focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
-                                            onInput={inputsHandle} />
-                                    </div>
-                                    <div className="col-span-6 sm:col-span-3">
-                                        <div class="flex justify-center w-fit">
-                                            <div class="mb-3 xl:w-96  col-span-6 sm:col-span-4 rounded-lg p-2 text-center ">
-                                                <label htmlFor="addressType" className="block text-sm font-medium text-gray-700">Address-Type</label>
-                                                <select onInput={inputsHandle} name="addressType" id="addressType" class="form-select appearance-none
-      block
-      w-full
-      px-3
-      py-1
-      text-base
-      font-normal
-      text-gray-700
-      bg-white bg-clip-padding bg-no-repeat
-      border border-solid border-gray-300
-      rounded
-      transition
-      ease-in-out
-      m-0
-      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                                                    <option selected>Open this select Address Type</option>
-                                                    <option value="home" name="addressType">Home</option>
-                                                    <option value="office" name="addressType">Office</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-span-6 sm:col-span-3">
-                                        <label htmlFor="locality" className="block text-sm font-medium text-gray-700">Locality</label>
-                                        <input type="text" name="locality" id="locality" autocomplete="locality" className="mt-1
-                                         focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
-                                            onInput={inputsHandle} />
-                                    </div>
-
-
-
-                                    <div className="col-span-6">
-                                        <label htmlFor="addressLine" className="block text-sm font-medium text-gray-700">Address-Line</label>
-                                        <input type="text" name="addressLine" id="addressLine" autocomplete="addressLine" className="mt-1
-                                         focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
-                                            onInput={inputsHandle} />
-                                    </div>
-                                    <div className="col-span-6">
-                                        <label htmlFor="landmark" className="block text-sm font-medium text-gray-700">Landmark</label>
-                                        <input type="text" name="landmark" id="landmark" autocomplete="landmark" className="mt-1
-                                         focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
-                                            onInput={inputsHandle} />
-                                    </div>
-
-                                    <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                                        <label htmlFor="city" className="block text-sm font-medium text-gray-700">City</label>
-                                        <input type="text" name="city" id="city" autocomplete="address-level2" className="mt-1 focus:ring-indigo-500
-                                         focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
-                                            onInput={inputsHandle} />
-                                    </div>
-                                    <div className="col-span-6 sm:col-span-3">
-                                        <label htmlFor="pincode" className="block text-sm font-medium text-gray-700">Pincode</label>
-                                        <input type="text" name="pincode" id="pincode" autocomplete="pincode" className="mt-1
-                                         focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
-                                            onInput={inputsHandle} />
-                                    </div>
-
-                                    <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                                        <label htmlFor="state" className="block text-sm font-medium text-gray-700">State / Province</label>
-                                        <input type="text" name="state" id="state" autocomplete="address-level1" className="mt-1 focus:ring-indigo-500
-                                         focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
-                                            onInput={inputsHandle} />
-                                    </div>
-
-
-                                </div>
-                            </div>
-                            <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium 
-                                    rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
-                            </div>
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="name">Name</label>
+                            <input onInput={inputsHandle} type="text" id="name" name="name" className="border border-gray-300 rounded-md " required />
                         </div>
-                    </form>
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="phone1">Phone1</label>
+                            <input onInput={inputsHandle} id="phone1" type="text" name="phone1" className="border border-gray-300 rounded-md " required />
+                        </div>
+
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="locality">Locality</label>
+                            <input onInput={inputsHandle} id="locality" type="text" name="locality" className="border border-gray-300 rounded-md " />
+                        </div>
+
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="landmark">Landmark</label>
+                            <input onInput={inputsHandle} id="landmark" type="text" name="landmark" className="border border-gray-300 rounded-md " />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="city">City</label>
+                            <input onInput={inputsHandle} id="city" type="text" name="city" className="border border-gray-300 rounded-md " required />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="pincode">Pincode</label>
+                            <input onInput={inputsHandle} id="pincode" type="text" name="pincode" className="border border-gray-300 rounded-md " />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="state">State/Province</label>
+                            <input onInput={inputsHandle} id="state" type="text" name="state" className="border border-gray-300 rounded-md " />
+                        </div>
+
+                        <div class=" flex flex-col justify-center gap-2 mb-3 xl:w-96">
+                            <label htmlFor="state">Address Type</label>
+                            <select onInput={inputsHandle} name="addressType" className="form-select appearance-none
+block
+w-full
+px-2
+text-base
+font-normal
+text-gray-700
+bg-white bg-clip-padding bg-no-repeat
+border border-solid border-gray-300
+rounded-md
+transition
+ease-in-out
+m-0
+focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example" required>
+                                <option selected>Choose Address Type</option>
+                                <option value="Home">Home</option>
+                                <option value="Office">Office</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="flex flex-col gap-2 mx-4">
+                        <label htmlFor="addressLine">Address-line</label>
+                        <input onInput={inputsHandle} id="addressLine" type="text" name="addressLine" className="border border-gray-300 rounded-md " />
+                    </div>
+
+                    <button type="submit" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 w-fit
+             to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300
+              font-medium rounded-lg text-md px-6 mx-4 py-1 text-center mr-2 mb-2"> Save</button>
                 </div>
-            </div>
+            </form>
         </div>
     )
 

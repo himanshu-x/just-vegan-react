@@ -36,8 +36,8 @@ export default function MyAccount() {
     return (
 
 
-        <div className="container">
-            <section className=" h-screen ">
+        <div className="container ">
+            <section className=" h-screen  ">
                 <div className="mx-auto container max-w-2xl md:w-3/4 shadow-md">
                     <div className="bg-gray-100 p-4 border-t-2 bg-opacity-5 border-indigo-400 rounded-t">
                         <div className="max-w-sm mx-auto md:w-full md:mx-0">
