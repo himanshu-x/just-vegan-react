@@ -24,25 +24,25 @@ function DishCard(props) {
         imgClass = imgClass + 'origin-center rotate-45'
     }
 
-    const onImageMouseOver = () => {
-        // console.log('onImageMouseOver')
-        // setCounter(counter+1);
-        // setCardState({
-        //     ...cardState,
-        //     isOnImage: true
-        // });
-    }
+    // const onImageMouseOver = () => {
+    //     // console.log('onImageMouseOver')
+    //     // setCounter(counter+1);
+    //     // setCardState({
+    //     //     ...cardState,
+    //     //     isOnImage: true
+    //     // });
+    // }
 
-    const onImageMouseOut = () => {
-        // setCardState({
-        //     ...cardState,
-        //     isOverImage: false
-        // });
-    }
+    // const onImageMouseOut = () => {
+    //     // setCardState({
+    //     //     ...cardState,
+    //     //     isOverImage: false
+    //     // });
+    // }
 
     return (
         <div className="flex flex-col gap-3 border rounded p-2 shadow-xl" key={'dish-' + dish._id}>
-            <Link to={'/dishes/' + dish._id} onMouseOver={onImageMouseOver} onMouseOut={onImageMouseOut}>
+            <Link to={'/dishes/' + dish._id}>
                 <img className={imgClass} src={dish.imgUrl}></img>
             </Link>
 

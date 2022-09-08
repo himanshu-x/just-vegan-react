@@ -6,30 +6,12 @@ import dishService from '../services/dishService'
 
 export default function Dishes() {
     const [dishList, setDishList] = useState([]);
-    const params = useParams();
-    const locationData = useLocation();
-    // const match = useMatch();
-
-    console.log(`params => `, params)
-    console.log(`location => `, locationData)
-    // console.log(`match => `, match)
-
-    // constructor(props) {
-    //     super(props)
-
-    //     this.state = {
-    //         dishList: [],
-
-    //     }
-    // }
 
     function getDishes() {
 
         dishService.getDishes().then((dishes) => {
             setDishList(dishes)
-            // this.setState({
-            //     dishList: dishes
-            // })
+
         })
         // fetch(`${BASE_API_URL}/dishes`)
         //     .then(res => res.json())
@@ -48,15 +30,6 @@ export default function Dishes() {
     useEffect(() => {
         getDishes()
     }, [])
-
-
-
-    // componentDidMount() {
-    //     this.getDishes();
-    // }
-
-
-    // const { dishList } = this.state;
 
     return (
         <div className="m-6">

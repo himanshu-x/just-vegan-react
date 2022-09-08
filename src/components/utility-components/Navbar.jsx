@@ -1,16 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { Link, Navigate } from "react-router-dom";
 import React from "react";
-// import { UserContext } from "../../App";
 import { getLocalStorage } from "../../utils/common.util";
 
 
 function Navbar() {
 
-    // const { state, dispatch } = useContext(UserContext);
-
     const userData = getLocalStorage('userData');
-    console.log(userData);
+    // console.log(userData);
     const navigate = useNavigate();
 
     function handleLogout() {

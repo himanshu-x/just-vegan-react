@@ -25,7 +25,7 @@ export default class newOffer extends React.Component {
 
     }
 
-    person = { name: "Vishal" };
+    // person = { name: "Vishal" };
 
     handleSubmit = (event) => {
         event.preventDefault();
