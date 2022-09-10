@@ -42,11 +42,10 @@ function DishDetails(props) {
 
 
     return (
-        <div className="container mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex p-2 mx-auto">
-                    <img className=" p-4 object-center object-cover max-h-xl max-w-xl sm:w-full " src={dishData.imgUrl}></img>
-                </div>
+
+        <div className="flex flex-col gap-3 h-screen w-full sm:w-fit sm:bg-slate-100   bg-slate-100 container">
+            <div className="grid sm:grid-cols-1 lg:grid-cols-2 w-full">
+                <img className="max-h-xl sm:w-full " src={dishData.imgUrl}></img>
                 <div className="flex p-2 flex-col justify-evenly">
                     <div className="flex flex-col  mt-4 ml-4   ">
                         <div className="flex">
@@ -116,10 +115,6 @@ focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
 
     )

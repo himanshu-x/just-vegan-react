@@ -56,7 +56,7 @@ export default class Offers extends React.Component {
 
 
         return (
-            <div className="m-6">
+            <div className="m-6 ">
 
                 <h2 className="text-2xl font-semibold tracking-tight text-gray-900">OFFERS</h2>
                 <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 ">
@@ -66,7 +66,7 @@ export default class Offers extends React.Component {
 
                             return (
 
-                                <div className="flex flex-col gap-3 border p-2 shadow-xl" key={'offer-' + offer._id}>
+                                <div className="flex flex-col gap-3 border p-2 shadow-xl sm:hover:scale-105  hover:scale-105  duration-300" key={'offer-' + offer._id}>
                                     <div >
                                         <Link to={'/offers/' + offer._id}>
                                             <img className="w-full h-full object-center object-cover  lg:w-full lg:h-full " src={offer.imgUrl}></img>

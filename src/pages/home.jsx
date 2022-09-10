@@ -13,8 +13,8 @@ function Home() {
     }, [])
 
     return (
-        <div>
-            <img className="w-full h-screen flex relative "
+        <div className="container">
+            <img className="sm:w-fit  h-screen flex relative lg:w-screen "
                 src="https://foodandnutrition.org/wp-content/uploads/big-bowl-vegetables-1047798504-1-780x520.jpg"
                 alt="new" ></img>
 

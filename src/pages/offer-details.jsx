@@ -30,9 +30,9 @@ function OfferDetails(props) {
     }
 
     return (
-        <div className="flex flex-col gap-3 bg-slate-100 container">
-            <div className="flex gap-3 ">
-                <img className="max-h-xl max-w-xl sm:w-full" src={offerData.imgUrl}></img>
+        <div className="flex flex-col gap-3 w-full sm:w-fit sm:bg-slate-100  bg-slate-100 container  ">
+            <div className="grid sm:grid-cols-1 lg:grid-cols-2 w-full ">
+                <img className="max-h-xl sm:w-full " src={offerData.imgUrl}></img>
                 <div className="flex flex-col justify-center sm:w-full ml-3 gap-3">
                     <div className=" text-sm text-black-700"><b>OFFER DETAILS :</b></div>
                     <div className=" text-4xl text-pink-600">{offerData.offerName}</div>

@@ -16,8 +16,8 @@ export default class Auth extends React.Component {
     render() {
 
         return (
-            <div className="container my-4 p-8 rounded-lg shadow-lg mx-auto w-2/4 flex content-around  ">
-                <div className=" basis-1/2  relative"><img className="max-w-full h-auto rounded-lg"
+            <div className="container my-4 p-8 rounded-lg shadow-lg mx-auto w-2/4 grid lg:grid-cols-2 sm:grid-cols-1 content-around  ">
+                <div className=" relative"><img className="max-w-full h-auto rounded-lg"
                     src="https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmVnYW4lMjBmb29kfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
                     alt="new" ></img>
 
@@ -25,7 +25,7 @@ export default class Auth extends React.Component {
                     <p className="absolute left-4 top-14 text-white ">Connect with friends ,grow your business and more</p>
                 </div>
 
-                <div className="flex flex-col justify-center items-center basis-1/2 gap-6">
+                <div className="flex flex-col justify-center items-center gap-6">
 
 
 
