@@ -21,7 +21,6 @@ import MyOrders from "./pages/my-order"
 import SignUp from './pages/sign-up';
 import Home from "./pages/home";
 import { initialState, reducer } from "./reducer/useReducer";
-// import HeadingCard from './pages/headingCards'
 
 export const UserContext = createContext();
 

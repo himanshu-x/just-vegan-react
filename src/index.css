@@ -23,4 +23,7 @@ code {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-left: 16px;
+  margin-right: 16px;
+  border-radius: 16px;
 }
