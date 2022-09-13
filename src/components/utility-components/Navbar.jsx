@@ -98,7 +98,7 @@ function Navbar() {
                         </svg>
                     }
                 </div>
-                <div className={!nav ? 'hidden' : "lg:hidden absolute top-[-50] bg-white p-4 text-teal-600 right-2 flex flex-col mt-6 text-2xl font-bold "}>
+                <div className={!nav ? 'hidden' : "lg:hidden absolute top-[-50] bg-white p-4 shadow-lg text-teal-600 right-2 flex flex-col mt-6 text-2xl font-bold "}>
                     <Link onClick={handleClick} to="home" className=" ">
                         Home
                     </Link>

@@ -1,30 +1,30 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import HeadingCard from '../pages/headingCards'
 
 function Home() {
     const [homeHeading, setHomeHeading] = useState(false)
 
     useEffect(() => {
-        setInterval(() => {
+        setTimeout(() => {
             setHomeHeading(!homeHeading)
-        }, 2000);
+        }, [2000]);
 
     }, [])
 
     return (
-        <div className="container">
-            <img className="sm:w-fit  h-screen flex relative lg:w-screen "
-                src="https://foodandnutrition.org/wp-content/uploads/big-bowl-vegetables-1047798504-1-780x520.jpg"
-                alt="new" ></img>
+        <>
 
-            {
-                homeHeading && <span className="absolute text-teal-300 left-8 top-60  font-semibold text-5xl"> Nothing  Testes
-                    <br></br>   as Good as Vegan Feels</span>
+            <div className="home-bg">
 
-            }
+                {
+                    homeHeading && <span className="absolute text-teal-300 lg:left-8 lg:top-60  font-semibold  text-xl md:text-3xl  lg:text-5xl top-40  left-2"> Nothing  Tastes
+                        <br></br>   as Good as Vegan Feels</span>
+                }
 
-        </div>
+            </div>
+            <HeadingCard />
+        </>
+
 
     )
 }
