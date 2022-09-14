@@ -9,6 +9,7 @@ export default function AddAddress() {
     const [addressAddModel, setAddressAddModel] = useState({})
 
     const inputsHandle = (event) => {
+        event.preventDefault();
         const { name, value } = event.target
 
         setAddressAddModel({
@@ -25,6 +26,11 @@ export default function AddAddress() {
         addressService.getAddresses(addressAddModel, userData.userId).then((addressResult) => {
 
             console.log(addressResult)
+            if (addressResult && addressResult._id) {
+
+                alert('New dish with dish id ${addressResult._id} has been created.')
+
+            }
 
         })
             .catch((error) => {

@@ -150,13 +150,13 @@ export default class newOffer extends React.Component {
                         <div className="font-medium leading-tight text-2xl mt-0 mb-2 text-slate-600">IsActive</div>
                         <div className="flex gap-2">
                             <div className="form-check form-check-inline">
-                                <input className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600
+                                <input className="form-check-input  appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600
      checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                                     type="radio" name="isActive" id="active" value="true" onInput={this.handleChange} />
                                 <label className="form-check-label inline-block text-gray-800" htmlFor="active">Active</label>
                             </div>
                             <div className="form-check form-check-inline">
-                                <input className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white
+                                <input className="form-check-input  appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white
      checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                                     type="radio" name="isActive" id="nonActive" value="false" onInput={this.handleChange} />
                                 <label className="form-check-label inline-block text-gray-800" htmlFor="nonActive">Non Active</label>

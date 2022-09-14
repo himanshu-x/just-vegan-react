@@ -29,17 +29,5 @@ export default {
             })
 
     },
-    createFavouriteDish: function (favouriteDishModel) {
-        return fetch(`${BASE_API_URL}/users/:userId/address/add-favourite-dish`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(favouriteDishModel),
-        })
-            .then((response) => response.json())
-            .then((response) => {
-                return console.log('Success:', response);
-            })
-    }
+
 }
