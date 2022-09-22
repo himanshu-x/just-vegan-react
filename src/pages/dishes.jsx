@@ -2,26 +2,38 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams, useLocation, Link } from "react-router-dom";
 import dishService from '../services/dishService'
+import loginService from "../services/loginService";
 import DishCard from "../components/page-components/DishCard";
+import { getLocalStorage } from "../utils/common.util"
 
 export default function Dishes() {
-    const params = useParams()
+    // const params = useParams()
 
     const [dishList, setDishList] = useState([]);
+    const [userData, setUserData] = useState({});
 
-
-    function getDishes() {
-
-        dishService.getDishes().then((dishes) => {
-            setDishList(dishes)
-
-        })
-
+    function getUserDetails() {
+        const loginData = getLocalStorage('loginData');
+        return loginService.getLoginAccountDetails(loginData.userId).then((userPayload) => {
+            setUserData(userPayload)
+            // console.log('userPayload pay', userPayload);
+        });
     }
 
+    function getDishes() {
+        return dishService.getDishes().then((dishesPayload) => {
+            setDishList(dishesPayload);
+            return dishesPayload;
+        });
+    }
+
+    async function fetchAsync() {
+        await getUserDetails();
+        getDishes();
+    }
 
     useEffect(() => {
-        getDishes()
+        fetchAsync();
     }, [])
 
 
@@ -35,7 +47,7 @@ export default function Dishes() {
                     dishList.map((dish) => {
 
                         return (
-                            <DishCard dish={dish} />
+                            <DishCard dish={dish} key={dish._id} userData={userData} reFetchUser={getUserDetails} />
 
                         )
 

@@ -36,11 +36,11 @@ function App() {
           <Route path="home" element={<Home />}></Route>
           <Route path="my-account" element={< MyList />}>
             <Route index element={<MyAccount />} />
+            <Route path="favourite-dishes" element={<FavouriteDishes />}></Route>
             <Route path="addresses" element={<Addresses />}>
               <Route path="add-addresses" element={<AddAddress />}></Route>
             </Route>
             <Route path="addresses/:address" element={<AddressDetails />}></Route>
-            <Route path="favourite-dishes" element={<FavouriteDishes />}></Route>
             <Route path="my-orders" element={<MyOrders />}></Route>
           </Route>
           <Route path="auth" element={<Auth />}>

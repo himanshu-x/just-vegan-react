@@ -8,7 +8,6 @@ export function isJson(str) {
 }
 
 export function setLocalStorage(key, value) {
-    console.log('set  called')
     if (typeof value === 'object') {
         localStorage.setItem(key, JSON.stringify(value));
     } else {
@@ -17,7 +16,6 @@ export function setLocalStorage(key, value) {
 }
 
 export function getLocalStorage(key) {
-    console.log('get  called')
     const value = localStorage.getItem(key)
     if (isJson(value)) {
         return JSON.parse(value);

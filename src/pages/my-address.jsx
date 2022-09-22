@@ -7,8 +7,8 @@ import { getLocalStorage } from "../utils/common.util";
 export default function MyAddress() {
 
     const [addresses, setAddresses] = useState([])
-    const userData = getLocalStorage('userData');
-    console.log(userData)
+    const loginData = getLocalStorage('loginData');
+    console.log(loginData)
 
     useEffect(() => {
         getAddress();
@@ -16,7 +16,7 @@ export default function MyAddress() {
 
 
     function getAddress() {
-        addressService.getAddressDetails(userData.userId).then((addressDetails) => {
+        addressService.getAddressDetails(loginData.userId).then((addressDetails) => {
             console.log(addressDetails)
             setAddresses(addressDetails.addresses)
         })

@@ -26,13 +26,8 @@ export default class Auth extends React.Component {
                 </div>
 
                 <div className="flex flex-col justify-center items-center gap-6">
+                    <Outlet />
 
-
-
-                    <Outlet>
-
-
-                    </Outlet>
                 </div>
             </div >
         )

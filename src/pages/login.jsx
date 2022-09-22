@@ -31,7 +31,7 @@ function Login() {
         loginService.getLoginDetails(loginDetailsModel).then((loginResult) => {
             console.log(loginResult)
             if (loginResult && loginResult.payload && loginResult.payload.accessToken) {
-                setLocalStorage('userData', loginResult.payload);
+                setLocalStorage('loginData', loginResult.payload);
                 // navigate(`/my-account`, {
                 //     replace: true
                 // });
@@ -47,7 +47,7 @@ function Login() {
     }
     return (
 
-        <div className="container  p-8 rounded-lg shadow-lg">
+        <div className="p-8 rounded-lg shadow-lg">
             <form className="flex flex-col gap-6 justify-start items-center" onSubmit={handleSubmit}>
                 <div className="flex flex-col gap-2 w-72">
 

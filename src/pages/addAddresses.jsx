@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { getLocalStorage } from "../utils/common.util";
 
 export default function AddAddress() {
-    const userData = getLocalStorage('userData');
+    const loginData = getLocalStorage('loginData');
     const [addressAddModel, setAddressAddModel] = useState({})
 
     const inputsHandle = (event) => {
@@ -23,7 +23,7 @@ export default function AddAddress() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        addressService.getAddresses(addressAddModel, userData.userId).then((addressResult) => {
+        addressService.getAddresses(addressAddModel, loginData.userId).then((addressResult) => {
 
             console.log(addressResult)
             if (addressResult && addressResult._id) {

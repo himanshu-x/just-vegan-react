@@ -1,154 +1,57 @@
 import React, { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import loginService from "../services/loginService";
 import { getLocalStorage } from "../utils/common.util";
 
 export default function MyAccount() {
     let [accountDetails, setaccountDetails] = useState({})
-    const userData = getLocalStorage('userData');
-    // const params = useParams()
-    console.log(userData)
+    const loginData = getLocalStorage('loginData');
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         getAccDetails();
     }, [])
 
     function getAccDetails() {
-        loginService.getLoginAccountDetails(userData.userId).then((account) => {
-
+        loginService.getLoginAccountDetails(loginData.userId).then((account) => {
             setaccountDetails(account)
         })
     }
-    // function getAccDetails() {
-    //   
-    //     fetch("https://8abb-2405-201-401a-dd3e-e5ad-ac6f-2be2-5b4e.ngrok.io/users")
-    //         .then(res => res.json())
-    //         .then((response) => {
-    //             if (response && response.payload) {
-    //                 setaccountDetails(response.payload)
-    //             }
-    //         }, (error) => {
-    //             console.log(error)
-    //         })
-    // }
 
+    function handleLogout() {
+        localStorage.clear(loginData)
+        navigate(`/auth/login`, {
+            replace: true
+        });
+    }
 
     return (
 
 
         <div className="container ">
-            <section className=" h-screen  ">
-                <div className="mx-auto container max-w-2xl md:w-3/4 shadow-md">
-                    <div className="bg-gray-100 p-4 border-t-2 bg-opacity-5 border-indigo-400 rounded-t">
-                        <div className="max-w-sm mx-auto md:w-full md:mx-0">
-                            <div className="inline-flex items-center space-x-4">
-                                <img
-                                    className="w-10 h-10 object-cover rounded-full"
-                                    alt="User avatar"
-                                    src="https://avatars3.githubusercontent.com/u/72724639?s=400&u=964a4803693899ad66a9229db55953a3dbaad5c6&v=4"
-                                />
-
-                                <h1 className="text-gray-600">My Account</h1>
-                            </div>
+            <div className="mx-auto right-0 mt-2 w-60">
+                <div className="bg-white rounded overflow-hidden shadow-lg">
+                    <div className="text-center p-6 bg-gray-800 border-b">
+                        (<svg aria-hidden="true" role="img" className="h-24 w-24 text-white rounded-full mx-auto" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256">
+                            <path fill="currentColor" d="M172 120a44 44 0 1 1-44-44a44 44 0 0 1 44 44Zm60 8A104 104 0 1 1 128 24a104.2 104.2 0 0 1 104 104Zm-16 0a88 88 0 1 0-153.8 58.4a81.3 81.3 0 0 1 24.5-23a59.7 59.7 0 0 0 82.6 0a81.3 81.3 0 0 1 24.5 23A87.6 87.6 0 0 0 216 128Z"></path></svg>
+                        <p className="pt-2 text-lg font-semibold text-gray-50">{accountDetails.name}</p>
+                        <p className=" text-sm text-gray-50">{accountDetails.phone}</p>
+                        <p className="text-sm text-gray-100">{accountDetails.emailId}</p>
+                        <div className="mt-5">
+                            <a
+                                className="border rounded-full py-2 px-4 text-xs font-semibold text-gray-100"
+                            >
+                                Manage your Account
+                            </a>
                         </div>
                     </div>
-                    <div className="bg-white space-y-6">
-                        <div className="md:inline-flex space-y-4 md:space-y-0 w-full p-4 text-gray-500 items-center">
-                            <h2 className="md:w-1/3 max-w-sm mx-auto">Account</h2>
-                            <div className="md:w-2/3 max-w-sm mx-auto">
-                                <label className="text-sm text-gray-400">Email</label>
-                                <div className="w-full inline-flex border">
-                                    <div className="pt-2 w-1/12 bg-gray-100 bg-opacity-50">
-                                        <svg
-                                            fill="none"
-                                            className="w-6 text-gray-400 mx-auto"
-                                            viewBox="0 0 24 24"
-                                            stroke="currentColor"
-                                        >
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                                            />
-                                        </svg>
-                                    </div>
-                                    <p className="w-11/12 focus:outline-none focus:text-gray-600 p-2">{accountDetails.emailId}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr />
-                        <div className="md:inline-flex  space-y-4 md:space-y-0  w-full p-4 text-gray-500 items-center">
-                            <h2 className="md:w-1/3 mx-auto max-w-sm">Personal info</h2>
-                            <div className="md:w-2/3 mx-auto max-w-sm space-y-5">
-                                <div>
-                                    <label className="text-sm text-gray-400">Full name</label>
-                                    <div className="w-full inline-flex border">
-                                        <div className="w-1/12 pt-2 bg-gray-100">
-                                            <svg
-                                                fill="none"
-                                                className="w-6 text-gray-400 mx-auto"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                            >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke-width="2"
-                                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                                                />
-                                            </svg>
-                                        </div>
-                                        <p className="w-11/12 focus:outline-none focus:text-gray-600 p-2">{accountDetails.name}</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label className="text-sm text-gray-400">Phone number</label>
-                                    <div className="w-full inline-flex border">
-                                        <div className="pt-2 w-1/12 bg-gray-100">
-                                            <svg
-                                                fill="none"
-                                                className="w-6 text-gray-400 mx-auto"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                            >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke-width="2"
-                                                    d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-                                                />
-                                            </svg>
-                                        </div>
-                                        <p className="w-11/12 focus:outline-none focus:text-gray-600 p-2">{accountDetails.phone}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr />
-                        <div className="w-full p-4 text-right text-gray-500">
-                            <button className="inline-flex items-center focus:outline-none mr-4">
-                                <svg
-                                    fill="none"
-                                    className="w-4 mr-2"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                                    />
-                                </svg>
-                                Delete account
-                            </button>
-                        </div>
-                    </div>
+                    <button onClick={handleLogout} className="w-full px-4 py-2 pb-4 hover:bg-gray-100 flex">
+                        <p className="text-sm font-medium text-gray-800 leading-none"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="h-4 w-4 text-gray-800 fill-current animate-spin" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1024 1024"><path fill="currentColor" d="M988 548c-19.9 0-36-16.1-36-36c0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9a437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7c26.7 63.1 40.2 130.2 40.2 199.3c.1 19.9-16 36-35.9 36z"></path></svg> Logout
+                        </p>
+                    </button>
                 </div>
-            </section>
+            </div>
         </div>
     )
 }
