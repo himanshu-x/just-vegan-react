@@ -14,10 +14,12 @@ export default function Dishes() {
 
     function getUserDetails() {
         const loginData = getLocalStorage('loginData');
-        return loginService.getLoginAccountDetails(loginData.userId).then((userPayload) => {
-            setUserData(userPayload)
-            // console.log('userPayload pay', userPayload);
-        });
+        // console.log(loginData)
+        if (loginData && loginData.userId) {
+            return loginService.getLoginAccountDetails(loginData.userId).then((userPayload) => {
+                setUserData(userPayload)
+            })
+        }
     }
 
     function getDishes() {

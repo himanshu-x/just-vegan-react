@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function HeadingCard() {
 
     return (
-        <div className="max-w-[1400px] mx-auto p-4 py-6 grid md:grid-cols-3 gap-6">
+        <div className="max-w-[1400px] mx-auto p-4 py-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Link to='/dishes'> <div className="rounded-xl relative hover:scale-105 hover:duration-500 ">
                 <div className="absolute w-full h-full bg-black/50 rounded-xl text-white">
                     <p className="font-bold text-2xl px-2 pt-4 text-green-500">New Dishes</p>

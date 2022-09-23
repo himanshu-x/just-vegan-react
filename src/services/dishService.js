@@ -59,7 +59,7 @@ export default {
                 return console.log('Success:', response);
             })
     },
-    getFavouriteDish: function (userId) {
+    getFavouriteDishes: function (userId) {
         return fetch(`${BASE_API_URL}/users/${userId}`)
             .then(res => res.json())
             .then((response) => {

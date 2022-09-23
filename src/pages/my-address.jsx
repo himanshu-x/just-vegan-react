@@ -24,11 +24,11 @@ export default function MyAddress() {
 
 
     return (
-        <div className="flex flex-col gap-8 divide-y-2 bg-white ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6  bg-white ">
             {
                 addresses.map((address) => {
                     return (
-                        <div className="flex flex-col w-full shadow-sm py-3 px-3">
+                        <div className="flex flex-col  shadow-sm py-3 px-3">
                             <div className="flex gap-6">
                                 <div className="font-normal "> {address.addressType} </div>
                                 <div className="flex gap-1  ">
@@ -42,11 +42,11 @@ export default function MyAddress() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex gap-2 font-semibold">
+                            <div className="flex flex-col lg:flex-row gap-2 font-semibold">
                                 <div>{address.name}</div>
                                 <div>{address.phone1}</div>
                             </div>
-                            <div className="flex gap-1 text-gray-400">
+                            <div className="flex flex-col lg:flex-row text-gray-400">
                                 <div>{address.landmark} </div>
                                 <div>{address.addressLine}</div>
                                 <div>{address.city}</div>

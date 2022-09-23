@@ -11,7 +11,7 @@ export default function FavouriteDishes() {
 
     function getFavouriteDishes() {
         const UserData = getLocalStorage('loginData');
-        dishService.getFavouriteDish(UserData.userId).then((favData) => {
+        dishService.getFavouriteDishes(UserData.userId).then((favData) => {
             setFavouriteDishData(favData.favouriteDishes)
         })
     }
@@ -34,7 +34,7 @@ export default function FavouriteDishes() {
 
     return (
 
-        <div className="grid grid-cols-2 gap-6 mx-auto w-[1000px]" >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mx-auto w-[1000px]" >
             {
                 FavouriteDishData.map((favourite) => {
                     return (

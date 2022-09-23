@@ -13,19 +13,19 @@ function Home() {
     }, [])
 
     return (
-        <>
+        <div>
 
-            <div className="home-bg">
+            <div className="home-bg  object-cover bg-cover">
 
                 {
-                    homeHeading && <span className="absolute text-green-600 lg:left-8 lg:top-60  font-semibold  text-xl md:text-3xl  lg:text-5xl top-40  left-2"> Nothing  Tastes
+                    homeHeading && <span className="absolute text-white lg:text-green-600 top-40  left-6  lg:left-8 lg:top-60  font-semibold  text-2xl md:text-3xl lg:text-5xl "> Nothing  Tastes
                         <br></br>   as Good as Vegan Feels</span>
                 }
 
             </div>
             <HeadingCard />
             <Cerousel />
-        </>
+        </div>
 
 
     )

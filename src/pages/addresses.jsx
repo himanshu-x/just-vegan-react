@@ -6,7 +6,7 @@ export default function Addresses() {
 
   return (
 
-    <div className=" flex flex-col shadow-md rounded-sm  gap-3 p-6 ">
+    <div className=" flex flex-col shadow-md rounded-sm  gap-2 p-4 ">
       <div className="w-fit font-serif text-2xl">My Addresses</div>
       <div className="w-fit"> <MYAddress /></div>
       <div className="flex gap-3">

@@ -17,24 +17,24 @@ export default function DishCard(props) {
         setQuantity(quantity + 1);
     }
 
-    useEffect(() => {
-        console.log(userData);
-        console.log(dish);
+    // useEffect(() => {
+    //m-1
+    // if (userData && dish && userData.favouriteDishes) {
+    // for (let i = 0; i < userData.favouriteDishes.length; i++) {
+    //     const favDish = userData.favouriteDishes[i];
+    //     if (favDish._id === dish._id) {
+    //         setIsFavouriteDish(true)
+    //         break;
+    //     } else {
+    //         setIsFavouriteDish(false)
+    //     }
+    // }
 
+    // m-2 
+    // const hasFound = ------- ;using find function
+    // if hasFound set isFavouriteDish to true else false
+    useEffect(() => {
         if (userData && dish && userData.favouriteDishes) {
-            //m-1
-            // for (let i = 0; i < userData.favouriteDishes.length; i++) {
-            //     const favDish = userData.favouriteDishes[i];
-            //     if (favDish._id === dish._id) {
-            //         setIsFavouriteDish(true)
-            //         break;
-            //     } else {
-            //         setIsFavouriteDish(false)
-            //     }
-            // }
-            // m-2 
-            // const hasFound = ------- ;using find function
-            // if hasFound set isFavouriteDish to true else false
             const hasFound = userData['favouriteDishes'].find(favDish => {
                 return (favDish._id === dish._id)
             })
@@ -43,9 +43,6 @@ export default function DishCard(props) {
             } else {
                 setIsFavouriteDish(false)
             }
-
-
-
         } else {
             setIsFavouriteDish(false)
         }
@@ -78,7 +75,6 @@ export default function DishCard(props) {
     function addFavouriteDish() {
         console.log(dish);
         dishService.addFavouriteDish(dish._id, loginData.userId).then((favouriteDishId) => {
-            debugger;
             console.log(favouriteDishId)
             const { reFetchUser } = props
             reFetchUser();

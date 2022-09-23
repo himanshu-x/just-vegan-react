@@ -4,7 +4,7 @@ import React from "react";
 export default function Cerousel() {
 
     return (
-        <div id="carouselExampleIndicators" className="carousel slide relative lg:max-w-[1370px] mx-auto " data-bs-ride="carousel">
+        <div id="carouselExampleIndicators" className="carousel slide relative  " data-bs-ride="carousel">
             <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
                 <button
                     type="button"
@@ -27,7 +27,7 @@ export default function Cerousel() {
                     aria-label="Slide 3"
                 ></button>
             </div>
-            <div className="carousel-inner relative w-full overflow-hidden  h-[400px] mb-8 rounded-3xl ">
+            <div className="carousel-inner relative overflow-hidden mx-4  max-h-[400px] mb-8 rounded-3xl ">
                 <div className="carousel-item active float-left w-full">
                     <img
                         src="https://images.moneycontrol.com/static-mcnews/2021/10/the-matter-of-food-MAcTXz4-qH8-unsplash-1.jpg?impolicy=website&width=770&height=431"
