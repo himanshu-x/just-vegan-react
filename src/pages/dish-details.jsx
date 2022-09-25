@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation, useSearchParams } from "react-router-dom";
 import dishService from '../services/dishService'
+import BaseButton from "../components/base-components/base-button/BaseButton";
 
 function DishDetails(props) {
     let [dishData, setDishData] = useState({})
     const params = useParams()
-    const locationData = useLocation();
-    const [searchParams] = useSearchParams();
 
     const dishProperties = [
-        { valueKey: 'energy', displayKey: 'ENERGY(KCAL)' },
-        { valueKey: 'fat', displayKey: 'FAT(g)' },
-        { valueKey: 'carbs', displayKey: 'CARBS(g)' },
-        { valueKey: 'fiber', displayKey: 'FIBER(g)' },
-        { valueKey: 'protein', displayKey: 'PROTIEN(g)' },
+        { valueKey: 'energy', displayKey: 'ENERGY : ', displayValue: "(KCAL)" },
+        { valueKey: 'fat', displayKey: 'FAT : ', displayValue: "(g)" },
+        { valueKey: 'carbs', displayKey: 'CARBS : ', displayValue: "(g)" },
+        { valueKey: 'fiber', displayKey: 'FIBER : ', displayValue: "(g)" },
+        { valueKey: 'protein', displayKey: 'PROTIEN : ', displayValue: "(g)" },
     ]
 
     useEffect(() => {
@@ -42,81 +41,42 @@ function DishDetails(props) {
 
 
     return (
-
-        <div className="flex flex-col gap-3 h-screen w-full sm:w-fit sm:bg-slate-100   bg-slate-100 container">
-            <div className="grid sm:grid-cols-1 lg:grid-cols-2 w-full">
-                <img className="max-h-xl sm:w-full " src={dishData.imgUrl}></img>
-                <div className="flex p-2 flex-col justify-evenly">
-                    <div className="flex flex-col  mt-4 ml-4   ">
-                        <div className="flex">
-                            <div className="font-medium leading-tight text-3xl  mb-2 text-slate-700">{dishData.dishName}</div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                            </svg>
-                        </div>
-
-                        <div className="text-gray-500 text-xs  mt-3">{dishData.description}</div>
+        <div className="grid sm:grid-cols-1 lg:grid-cols-2 w-full">
+            <img className="mx-auto w-[500px]" src={dishData.imgUrl}></img>
+            <div className="flex p-2 flex-col justify-evenly">
+                <div className="flex flex-col    ">
+                    <div className="flex">
+                        <div className="font-medium leading-tight text-3xl  text-slate-700">{dishData.dishName}</div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
                     </div>
 
-
-
-                    <ul>
-                        {dishProperties.map((prop, index) => {
-
-                            return (
-                                <li className="flex flex-col gap-1">
-                                    <div className="text-3xl">{dishData[prop.valueKey]}</div>
-                                    <div className="text-gray-400 text-xs">{prop.displayKey}</div>
-                                </li>
-                            )
-
-                        })}
-                    </ul>
-                    {/* <div className="flex flex-col gap-1">
-                        <div className="text-3xl">{dishData.energy}</div>
-                        <div className="text-gray-400 text-xs">ENERGY(KCAL)</div>
-                    </div>
-                    <div className="flex flex-col gap-1">
-                        <div className="text-3xl">{dishData.fat}</div>
-                        <div className="text-gray-400 text-xs">FAT(g)</div>
-                    </div>
-                    <div className="flex flex-col gap-1">
-                        <div className="text-3xl">{dishData.carbs}</div>
-                        <div className="text-gray-400 text-xs">CARBS(g)</div>
-                    </div>
-                    <div className="flex flex-col gap-1">
-                        <div className="text-3xl">{dishData.fiber}</div>
-                        <div className="text-gray-400 text-xs">FIBER(g)</div>
-                    </div>
-
-                    <div className="flex flex-col gap-1">
-                        <div className="text-2xl">{dishData.protein}</div>
-                        <div className="text-gray-400 text-xs">PROTIEN(g)</div>
-                    </div> */}
-                    <div className="flex flex-col gap-1">
-                        <div>
-                            <button type="submit" className="inline-block px-2 py-1.5 bg-green-500 text-white font-medium text-l 
-leading-tight  rounded shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg 
-focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out">ADD</button>
-
-                        </div>
-                        <div>
-                            <button type="submit" className="inline-block px-2 py-1.5 bg-green-500 text-white font-medium text-l 
-leading-tight  rounded shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg 
-focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out">Price: 400</button>
-
-                        </div>
-                        <div>
-                            <button type="submit" className="inline-block px-2 py-1.5 bg-green-500 text-white font-medium text-l 
-leading-tight  rounded shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg 
-focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out">Discount Price</button>
-
-                        </div>
-                    </div>
+                    <div className="text-gray-500 text-md">{dishData.description}</div>
                 </div>
+                <ul>
+                    {dishProperties.map((prop, index) => {
+
+                        return (
+                            <div>
+                                <li className="flex gap-1">
+                                    <div className="text-2xl">{prop.displayKey}{dishData[prop.valueKey]}</div>
+                                    <div className="text-sm">{prop.displayValue}</div>
+
+                                </li>
+
+                            </div>
+                        )
+
+                    })}
+                </ul>
+                <div className="flex gap-1">
+                    <div className="font-bold text-[#D11243]">MRP:&#8377;{dishData.price} </div>
+                    <div className="text-gray-700"><del>&#8377;{dishData.price}</del></div>
+                </div>
+                <BaseButton type="submit" className="px-4 py-2 w-fit" variant="secondary">ADD </BaseButton>
             </div>
         </div>
-
     )
 }
 
