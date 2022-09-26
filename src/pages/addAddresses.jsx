@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import addressService from "../services/addressService";
 import { Link } from "react-router-dom";
 import { getLocalStorage } from "../utils/common.util";
+import BaseButton from "../components/base-components/base-button/BaseButton";
 
 export default function AddAddress() {
     const loginData = getLocalStorage('loginData');
@@ -105,10 +106,7 @@ focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" ari
                         <label htmlFor="addressLine">Address-line</label>
                         <input onInput={inputsHandle} id="addressLine" type="text" name="addressLine" className="border border-gray-300 rounded-md " />
                     </div>
-
-                    <button type="submit" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 w-fit
-             to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300
-              font-medium rounded-lg text-md px-6 mx-4 py-1 text-center mr-2 mb-2"> Save</button>
+                    <BaseButton className="px-4 py-2 w-fit my-2 ml-4" type="submit" variant="secondary">Save</BaseButton>
                 </div>
             </form>
         </div>

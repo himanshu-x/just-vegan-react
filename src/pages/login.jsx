@@ -3,16 +3,13 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import loginService from "../services/loginService";
 import { setLocalStorage } from "../utils/common.util";
-import { UserContext } from "../App";
+import BaseButton from "../components/base-components/base-button/BaseButton";
 
 
 
 function Login() {
 
-    // const { state, dispatch } = useContext(UserContext)
     const [loginDetailsModel, setLoginDetailsModel] = useState({})
-    const navigate = useNavigate();
-
     const onInputChange = (event) => {
 
         const { value, name } = event.target
@@ -28,15 +25,10 @@ function Login() {
         event.preventDefault();
 
         loginService.getLoginDetails(loginDetailsModel).then((loginResult) => {
-            console.log(loginResult)
+            // console.log(loginResult)
             if (loginResult && loginResult.payload && loginResult.payload.accessToken) {
                 setLocalStorage('loginData', loginResult.payload);
-                // navigate(`/my-account`, {
-                //     replace: true
-                // });
                 window.location.href = '/my-account'
-                // dispatch({ type: "USER", payload: true })
-                // navigate(`my-account/${loginResult.payload.userId}`);
             } else {
                 alert('Invalid login details, please use correct credentials.')
             }
@@ -66,11 +58,7 @@ rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:out
                         value={loginDetailsModel.password}
                         placeholder="Password" onInput={onInputChange} required />
                 </div>
-                <button type="submit" className=" px-6 py-2.5 bg-teal-600 text-white font-medium text-xs
-                    leading-tight uppercase rounded shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg
-                    focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out">Login</button>
-
-
+                <BaseButton type="submit" variant="secondary">Login</BaseButton>
             </form>
         </div>
 

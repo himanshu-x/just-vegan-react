@@ -33,8 +33,6 @@ export default function HeadingCard() {
                 <img className="max-h-[160px] md:max-h-[250px] w-full object cover rounded-xl" src=" https://images.unsplash.com/photo-1631311695255-8dde6bf96cb5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8dmVnYW4lMjBmb29kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="food cards" />
             </div>
             </Link>
-
-
         </div>
     )
 }

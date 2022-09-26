@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import loginService from "../services/loginService";
 import { getLocalStorage } from "../utils/common.util";
 
 export default function MyAccount() {
     let [accountDetails, setaccountDetails] = useState({})
     const loginData = getLocalStorage('loginData');
-    const navigate = useNavigate();
+
 
 
     useEffect(() => {
@@ -21,9 +20,8 @@ export default function MyAccount() {
 
     function handleLogout() {
         localStorage.clear(loginData)
-        navigate(`/auth/login`, {
-            replace: true
-        });
+        window.location.href = '/auth/login'
+
     }
 
     return (

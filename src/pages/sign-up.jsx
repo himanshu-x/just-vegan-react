@@ -1,4 +1,5 @@
 import React from "react";
+import BaseButton from "../components/base-components/base-button/BaseButton";
 import signUpService from '../services/signUpService'
 
 class signUp extends React.Component {
@@ -38,70 +39,37 @@ class signUp extends React.Component {
             .catch((error) => {
                 console.error('Error:', error);
             });
-
-
-        // fetch('http://8abb-2405-201-401a-dd3e-e5ad-ac6f-2be2-5b4e.ngrok.io/users', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(signUpModel),
-        // })
-        //     .then((response) => response.json())
-        //     .then((data) => {
-        //         console.log('Success:', data);
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //     });
     }
 
     render() {
 
         return (
             <div className="  p-8 rounded-lg shadow-md " >
-                {/* <div className=" basis-1/2  relative"><img className="w-full rounded-lg"
-                    src="https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmVnYW4lMjBmb29kfGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt="new" ></img>
-
-                    <h2 className="absolute left-4 top-6 text-white font-medium text-2xl">Sign-Up</h2>
-                    <p className="absolute left-4 top-14 text-white ">Connect with friends ,grow your business and more</p>
-                </div> */}
                 <form className="flex flex-col gap-4 items-center  " onSubmit={this.handleSubmit}>
                     <div className="flex flex-col gap-2 w-72">
-
                         <label htmlFor="email" className="text-sm text-slate-600">Email*</label>
-
                         <input type="email" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:outline-none" id="email" name="emailId"
                             placeholder="Email" onInput={this.onInputChange} required />
                     </div> <div className="flex flex-col gap-2 w-72">
-
                         <label htmlFor="name" className="text-sm text-slate-600"> Name*</label>
-
                         <input type="text" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:outline-none" id="name" name="name"
                             placeholder=" Name" onInput={this.onInputChange} required />
                     </div> <div className="flex flex-col gap-2 w-72">
-
                         <label htmlFor="phone" className="text-sm text-slate-600">Phone*</label>
-
                         <input type="text" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:outline-none" id="phone" name="phone"
                             placeholder="Phone" onInput={this.onInputChange} required />
                     </div> <div className="flex flex-col gap-2 w-72">
-
                         <label htmlFor="password" className="text-sm text-slate-600">Password*</label>
-
                         <input type="password" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:outline-none" id="password" name="password"
                             placeholder="Password" onInput={this.onInputChange} required />
                     </div>
-
-
-                    <button type="submit" className="inline-block mx-auto px-6 py-2.5 bg-teal-600 text-white font-medium text-xs 
-                    leading-tight uppercase rounded shadow-md hover:bg-teal-600 hover:shadow-lg focus:bg-teal-600 focus:shadow-lg 
-                    focus:outline-none focus:ring-0 active:bg-teal-700 active:shadow-lg transition duration-150 ease-in-out">Sign-Up</button>
-
+                    <BaseButton type="submit" variant="secondary">
+                        Sign-up
+                    </BaseButton>
                 </form>
             </div >
         )

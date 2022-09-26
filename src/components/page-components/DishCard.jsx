@@ -100,9 +100,9 @@ export default function DishCard(props) {
 
                 {
                     isFavouriteDish ?
-                        <BaseIcon className="text-rose-600 h-6 w-6" atClick={onHeartClick} iconName="solid-heart" />
+                        <BaseIcon className="text-rose-600 h-6 w-6" onClick={onHeartClick} iconName="solid-heart" />
                         :
-                        <BaseIcon atClick={onHeartClick} iconName="heart" className="h-6 w-6" />
+                        <BaseIcon onClick={onHeartClick} iconName="heart" className="h-6 w-6" />
 
                 }
             </div>
@@ -118,7 +118,7 @@ export default function DishCard(props) {
 
                 {
                     showAddCart ?
-                        <BaseButton atClick={() => handleAddCart()} variant="secondary">Add Cart </BaseButton>
+                        <BaseButton onClick={() => handleAddCart()} variant="secondary">Add Cart </BaseButton>
                         :
                         <div className="flex gap-2">
                             <button onClick={() => setQuantity(quantity - 1)} className="bg-[#D11243] hover:bg-green-700 text-white   py-1 px-3.5 border  rounded-full">
