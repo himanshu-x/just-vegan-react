@@ -7,10 +7,8 @@ import BaseIcon from "../base-components/base-icon/BaseIcon";
 import BaseButton from "../base-components/base-button/BaseButton";
 
 function Navbar() {
-    console.log("navbarrrr")
+
     const loginData = getLocalStorage('loginData');
-    let [menuDropdownData, setMenuDropdownData] = useState({});
-    // const navigate = useNavigate();
     function handleLogout() {
         localStorage.clear(loginData)
         window.location.href = '/auth/login'
@@ -19,10 +17,13 @@ function Navbar() {
 
         if (loginData && loginData.accessToken) {
             return (
-                <BaseDropdown className="h-6 w-6  lg:hidden"
+                <BaseDropdown icon1="menu" icon2="x-mark" className="h-6 w-6 lg:hidden"
                     options={[
                         { text: 'My Profile', icon: '', url: '/my-account' },
                         { text: 'Wishlist', icon: '', url: '/my-account/favourite-dishes' },
+                        { text: 'Home', icon: '', url: 'home' },
+                        { text: 'Dishes', icon: '', url: 'dishes' },
+                        { text: 'Offers', icon: '', url: 'offers' },
                         { text: 'Logout', icon: '', event: handleLogout, },
                     ]}>
                 </BaseDropdown>
@@ -30,10 +31,13 @@ function Navbar() {
 
         } else {
             return (
-                <BaseDropdown className="h-6 w-6  lg:hidden"
+                <BaseDropdown icon1="menu" icon2="x-mark" className="h-6 w-6 lg:hidden"
                     options={[
                         { text: 'Login', icon: '', url: '/auth/login' },
                         { text: 'Sign-up', icon: '', url: '/auth/sign-up' },
+                        { text: 'Home', icon: '', url: 'home' },
+                        { text: 'Dishes', icon: '', url: 'dishes' },
+                        { text: 'Offers', icon: '', url: 'offers' },
 
                     ]}>
                 </BaseDropdown>
@@ -46,19 +50,18 @@ function Navbar() {
         if (loginData && loginData.accessToken) {
             return (
 
-                <>
+                <Fragment>
                     <BaseButton variant="primary" iconName="cart" className="flex gap-2" >
                         <BaseIcon iconName="cart" className="h-6 w-6"></BaseIcon> Cart
                     </BaseButton>
-                    <BaseDropdown
-                        dropdownText={loginData.name}
+                    <BaseDropdown dropdownText={loginData.name}
                         options={[
                             { text: 'My Profile', icon: '', url: '/my-account' },
                             { text: 'Wishlist', icon: '', url: '/my-account/favourite-dishes' },
                             { text: 'Logout', icon: '', event: handleLogout },
                         ]}>
                     </BaseDropdown>
-                </>
+                </Fragment>
             )
 
         } else {
@@ -107,39 +110,7 @@ function Navbar() {
             </div>
 
             {/* mobile view  */}
-            <div className="flex flex-col md:hidden">
-                <BaseDropdown
-                    options={[
-                        { text: 'Home', icon: '', url: 'home' },
-                        { text: 'Dishes', icon: '', url: 'dishes' },
-                        { text: 'Offers', icon: '', url: 'offers' },
-                    ]}
-
-                    onStateChange={(childData) => {
-                        // console.log(childData)
-                        setMenuDropdownData(childData)
-                    }}
-                >
-
-                    {
-                        menuDropdownData.isOpen ?
-                            <Fragment>
-                                Open
-                                <BaseIcon iconName="menu" className="h-6 w-6"></BaseIcon>
-                            </Fragment>
-
-                            :
-                            <Fragment>
-                                Close
-                                <BaseIcon iconName="x-mark" className="h-6 w-6"></BaseIcon>
-                            </Fragment>
-
-
-                    }
-                </BaseDropdown>
-            </div>
             <MobileDataRenderMenu />
-
         </nav>
 
     )

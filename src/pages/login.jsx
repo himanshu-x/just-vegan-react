@@ -1,6 +1,5 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import loginService from "../services/loginService";
 import { setLocalStorage } from "../utils/common.util";
 import BaseButton from "../components/base-components/base-button/BaseButton";

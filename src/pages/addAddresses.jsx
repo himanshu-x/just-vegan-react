@@ -1,7 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import addressService from "../services/addressService";
-import { Link } from "react-router-dom";
 import { getLocalStorage } from "../utils/common.util";
 import BaseButton from "../components/base-components/base-button/BaseButton";
 
@@ -28,21 +27,15 @@ export default function AddAddress() {
 
             console.log(addressResult)
             if (addressResult && addressResult._id) {
-
                 alert('New dish with dish id ${addressResult._id} has been created.')
-
             }
-
         })
             .catch((error) => {
                 alert(error)
             })
-
     }
 
     return (
-
-
         <div className="shadow-md flex flex-col gap-4">
             <h2 className="p-3 text-3xl"> New Address </h2>
             <form action="#" onSubmit={handleSubmit}>

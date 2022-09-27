@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useLocation, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import dishService from '../services/dishService'
 import BaseButton from "../components/base-components/base-button/BaseButton";
 
@@ -33,17 +33,10 @@ function DishDetails(props) {
     }, [])
 
     function getDish() {
-
-
         dishService.getDish(params.dishId).then((Dish) => {
             setDishData(Dish)
-
         })
-
     }
-
-
-
     return (
 
         <div className=" grid grid-cols-1 md:grid-cols-2 max-w-[1000px] m-4 md:mx-auto rounded-md overflow-hidden shadow-lg ">
