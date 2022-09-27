@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useRef } from "react";
 import { getLocalStorage } from "../../utils/common.util";
 import LogoVegan from '../../images/vegan.png'
 import BaseDropdown from "../base-components/base-elements/BaseDropdown";
@@ -9,6 +9,7 @@ import BaseButton from "../base-components/base-button/BaseButton";
 function Navbar() {
 
     const loginData = getLocalStorage('loginData');
+    // const profileDropdownRef = useRef();
     function handleLogout() {
         localStorage.clear(loginData)
         window.location.href = '/auth/login'
@@ -46,19 +47,29 @@ function Navbar() {
         }
     }
 
+    // const onRefButtonClick = () => {
+    //     console.log(profileDropdownRef.current)
+    //     profileDropdownRef.current.value = "Vihhsal thegreat!"
+    // }
+
     const RenderMenu = () => {
         if (loginData && loginData.accessToken) {
             return (
 
                 <Fragment>
-                    <BaseButton variant="primary" iconName="cart" className="flex gap-2" >
+                    <BaseButton variant="primary" className="flex px-4 py-2 gap-2" >
                         <BaseIcon iconName="cart" className="h-6 w-6"></BaseIcon> Cart
                     </BaseButton>
+
+                    {/* <input type="text" name="refInpt" id="refInput" ref={profileDropdownRef} /> */}
+
+
                     <BaseDropdown dropdownText={loginData.name}
+
                         options={[
                             { text: 'My Profile', icon: '', url: '/my-account' },
                             { text: 'Wishlist', icon: '', url: '/my-account/favourite-dishes' },
-                            { text: 'Logout', icon: '', event: handleLogout },
+                            { text: 'Logout', icon: 'logout', event: handleLogout },
                         ]}>
                     </BaseDropdown>
                 </Fragment>
@@ -89,6 +100,8 @@ function Navbar() {
             <div className="flex items-center flex-shrink-0 text-white mr-6 gap-2">
                 <img src={LogoVegan} alt="vegan" style={{ width: "40px" }} />
                 <span className="font-semibold text-3xl text-green-700  tracking-tight">VEGAN</span>
+                {/* <button onClick={onRefButtonClick}>My Ref Button</button> */}
+
             </div>
 
             <div className="w-full flex-grow hidden lg:flex lg:items-center lg:w-auto">

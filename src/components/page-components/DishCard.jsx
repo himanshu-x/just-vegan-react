@@ -67,7 +67,7 @@ export default function DishCard(props) {
 
     function removeFavouriteDish() {
         dishService.removeFavouriteDish(dish._id, loginData.userId).then((favouriteDishId) => {
-            console.log(favouriteDishId)
+            // console.log(favouriteDishId)
             const { reFetchUser } = props
             reFetchUser();
         })
@@ -84,7 +84,7 @@ export default function DishCard(props) {
     }
 
 
-    let imgClass = 'w-full h-full object-center object-cover lg:w-full lg:h-full rounded-2xl'
+    let imgClass = 'w-full max-h-[350px] min-h-[350px]  object-center object-cover  rounded-2xl'
 
 
     return (
