@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import BaseButton from "../components/base-components/base-button/BaseButton";
+import BaseInput from "../components/base-components/base-input/BaseInput";
 import dishService from '../services/dishService'
 
 export default function NewDish() {
@@ -17,10 +18,18 @@ export default function NewDish() {
     };
 
     return (
-        <div className="container my-4 p-8 rounded-lg shadow-lg mx-auto w-2/4">
+        <div className="container my-4 p-8 rounded-lg shadow-lg mx-auto md:w-2/4">
             <p className="font-medium leading-tight text-4xl mt-0 mb-2 text-slate-600 ">{headerText}</p>
-            <form className="m-4" onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-group mb-6">
+            <form className="m-4 flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+                <BaseInput type="text" name="dishName" id="dishName" register={register} errors={errors} placeholder="Dish-Name" validationRules={{
+                    required: true,
+                    minLength: 6
+                }} >Dish Name</BaseInput>
+
+                <BaseInput type="number" name="price" id="price" register={register} errors={errors} placeholder="Dish-Price" validationRules={{
+                    required: true,
+                }} >Dish Price</BaseInput>
+                {/* <div className="form-group mb-6">
                     <div className="flex flex-col gap-2">
                         <label htmlFor="dishName" className="text-sm text-slate-600">Dish Name*</label>
                         <input type="text" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
@@ -36,14 +45,14 @@ export default function NewDish() {
                             })} />
                         {errors?.dishName && <p role="alert" className="text-red-700">{errors.dishName.message}</p>}
                     </div>
-                </div>
-                <div className="form-group mb-6">
+                </div> */}
+                {/* <div className="form-group mb-6">
                     <label htmlFor="dishPrice" className="text-sm text-gray-500">Dish Price*</label>
-                    <input type="text" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
+                    <input type="number" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
         rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:outline-none" id="dishPrice" name="price"
                         placeholder="Price" {...register("price", { required: true, min: 50 })} />
-                    {errors.dishName?.type === 'required' && <p role="alert" className="text-red-700">Dish Price is required</p>}
-                </div>
+                    {errors.price?.type === 'required' && <p role="alert" className="text-red-700">Dish Price is required</p>}
+                </div> */}
                 <div>
                     <label
                         htmlFor="dishCategory"

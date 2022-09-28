@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useState, Fragment, useRef } from "react";
 import { getLocalStorage } from "../../utils/common.util";
 import LogoVegan from '../../images/vegan.png'
-import BaseDropdown from "../base-components/base-elements/BaseDropdown";
+import BaseDropdown from "../base-components/base-dropdown-elements/BaseDropdown";
 import BaseIcon from "../base-components/base-icon/BaseIcon";
 import BaseButton from "../base-components/base-button/BaseButton";
 
@@ -69,7 +69,7 @@ function Navbar() {
                         options={[
                             { text: 'My Profile', icon: '', url: '/my-account' },
                             { text: 'Wishlist', icon: '', url: '/my-account/favourite-dishes' },
-                            { text: 'Logout', icon: 'logout', event: handleLogout },
+                            { text: 'Logout', icon: '', event: handleLogout },
                         ]}>
                     </BaseDropdown>
                 </Fragment>
