@@ -29,6 +29,7 @@ export default function BaseInput(props) {
                 value: validationRules[rulesKey],
                 message: setErrorMessage(name, rulesKey, validationRules[rulesKey])
             }
+
         }
         return finalRules
     }
@@ -52,7 +53,8 @@ export default function BaseInput(props) {
           focus:bg-white
           focus:border-blue-600 
             focus:outline-none" id={name}  {...register(`${name}`,
-                validFormRule(validationRules)
+                validFormRule(validationRules),
+
             )} />
             {errors && errors[name] && <p role="alert" className="text-red-700">{errors[name].message}</p>}
             <label htmlFor={name} className="text-gray-400">{children}</label>

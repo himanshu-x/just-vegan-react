@@ -39,7 +39,7 @@ export default function NewOffer() {
                 <BaseRadioInput labelName="IsActive" register={register} errors={errors} name="isActive"
                     options={[
                         { optionName: 'Active', value: 'true' },
-                        { optionName: 'Non-Active', value: 'true' },
+                        { optionName: 'Non-Active', value: 'false' },
                     ]}>
                 </BaseRadioInput>
 
