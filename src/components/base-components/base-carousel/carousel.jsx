@@ -1,10 +1,10 @@
 import React from "react";
 
 
-export default function Cerousel() {
+export default function Carousel() {
 
     return (
-        <div id="carouselExampleIndicators" className="carousel slide relative  " data-bs-ride="carousel">
+        <div id="carouselExampleIndicators" className="carousel slide relative" data-bs-ride="carousel">
             <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
                 <button
                     type="button"

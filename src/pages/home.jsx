@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HeadingCard from '../pages/headingCards'
-import Cerousel from "../components/base-components/base-cerousel/cerousel";
+import Carousel from "../components/base-components/base-carousel/carousel";
 
 function Home() {
     const [homeHeading, setHomeHeading] = useState(false)
@@ -24,7 +24,7 @@ function Home() {
 
             </div>
             <HeadingCard />
-            <Cerousel />
+            <Carousel />
         </div>
 
 

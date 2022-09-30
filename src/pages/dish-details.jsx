@@ -39,7 +39,7 @@ function DishDetails(props) {
     }
     return (
 
-        <div className=" grid grid-cols-1 md:grid-cols-2 max-w-[1000px] m-4 md:mx-auto rounded-md overflow-hidden shadow-lg ">
+        <div className=" grid grid-cols-1 md:grid-cols-2 max-w-[1000px] max-h-[500px] object-center object-coverbg-cover m-4 md:mx-auto rounded-md overflow-hidden shadow-lg ">
             <img className="w-full rounded-xl" src={dishData.imgUrl} alt="Sunset in the mountains" />
             <div className="px-6 py-4 flex flex-col gap-4">
                 <div>

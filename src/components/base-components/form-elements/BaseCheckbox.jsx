@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
+import BaseErrors from "./BaseErrors";
 
-
-export default function BaseSingleCheckbox(props) {
+export default function BaseCheckbox(props) {
     const { name, register, errors, children } = props;
 
     return (
@@ -13,7 +13,8 @@ export default function BaseSingleCheckbox(props) {
                     {...register(`${name}`)} />
                 <label htmlFor={name} className="text-md text-gray-400 dark:text-gray-300">{children}</label>
             </div>
-            {errors && errors[name] && <p role="alert" className="text-red-700">{errors[name].message}</p>}
+            {/* {errors && errors[name] && <p role="alert" className="text-red-700">{errors[name].message}</p>} */}
+            <BaseErrors name={name} errors={errors} />
         </Fragment>
     )
 }

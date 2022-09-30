@@ -1,22 +1,18 @@
 import React from "react";
-// import { useForm } from "react-hook-form";
-
-
-
 
 export default function BaseInput(props) {
 
-    const { type, children, name, register, errors, validationRules, ...restInputProps } = props;
+    const { type, name, labelName, register, errors, validationRules, ...restInputProps } = props;
 
-    const setErrorMessage = (fieldName, rulesKey, validationValue) => {
+    const setErrorMessage = (rulesKey, validationValue) => {
         const messageList = {
-            required: `${fieldName} is requried`,
-            minLength: `${fieldName} is need to be min ${validationValue} length`,
-            maxLength: `${fieldName} is need to be max ${validationValue} length`,
-            max: `${fieldName} is need to be max ${validationValue} number`,
-            min: `${fieldName} is need to be min ${validationValue} number`,
-            pattern: `${fieldName} must be follow this ${(/[A-Za-z]{3}/)} pattern`,
-            disabled: `${fieldName} is disabled`,
+            required: `${labelName} is requried`,
+            minLength: `${labelName} is need to be min ${validationValue} length`,
+            maxLength: `${labelName} is need to be max ${validationValue} length`,
+            max: `${labelName} is need to be max ${validationValue} number`,
+            min: `${labelName} is need to be min ${validationValue} number`,
+            pattern: `${labelName} must be follow this ${validationValue} pattern`,
+            disabled: `${labelName} is disabled`,
         };
 
         return messageList[rulesKey];
@@ -27,10 +23,19 @@ export default function BaseInput(props) {
         for (let rulesKey in validationRules) {
             finalRules[rulesKey] = {
                 value: validationRules[rulesKey],
-                message: setErrorMessage(name, rulesKey, validationRules[rulesKey])
+                message: setErrorMessage(rulesKey, validationRules[rulesKey])
             }
-
         }
+
+        // finalRules = {
+        //     require:
+        //         max: 4;
+        // }
+
+        if (type === 'number') {
+            finalRules['valueAsNumber'] = true
+        }
+
         return finalRules
     }
 
@@ -57,7 +62,10 @@ export default function BaseInput(props) {
 
             )} />
             {errors && errors[name] && <p role="alert" className="text-red-700">{errors[name].message}</p>}
-            <label htmlFor={name} className="text-gray-400">{children}</label>
+            <label htmlFor={name} className="text-gray-400">
+                {labelName}
+                {validationRules?.required && '*'}
+            </label>
         </div>
 
     )

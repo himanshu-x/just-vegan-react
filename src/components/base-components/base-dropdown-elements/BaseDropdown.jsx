@@ -10,10 +10,6 @@ export default function BaseDropdown(props) {
         setIsOpen(!isOpen);
     };
 
-    // const changeOpenState = () => {
-    //     onDropdownClick();
-    // }
-
     const hideDropdown = () => {
         setIsOpen(false)
     };
@@ -45,15 +41,15 @@ export default function BaseDropdown(props) {
 
                                 option.url ?
                                     <Link to={option.url} className="w-full" key={'dropdown-option' + index + option.text}>
-                                        <li className="flex hover:bg-slate-50 px-4 py-2 text-sm">
-                                            {option.text}
+                                        <li className="flex gap-3 hover:bg-slate-50 px-4 py-2 text-sm">
+                                            <BaseIcon iconName={option.icon} ></BaseIcon> {option.text}
                                         </li>
 
                                     </Link>
                                     :
                                     <button onClick={option.event} className="w-full" key={'dropdown-option' + index + option.text}>
-                                        <li className="flex hover:bg-slate-50 px-4 py-2 text-sm">
-                                            {option.text}
+                                        <li className="flex gap-3 hover:bg-slate-50 px-4 py-2 text-sm">
+                                            <BaseIcon iconName={option.icon} ></BaseIcon>  {option.text}
                                         </li>
                                     </button>
                             )

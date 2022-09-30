@@ -1,29 +1,19 @@
 import React from "react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import loginService from "../services/loginService";
 import { setLocalStorage } from "../utils/common.util";
 import BaseButton from "../components/base-components/base-button/BaseButton";
+import BaseInput from "../components/base-components/form-elements/BaseInput";
 
 
 
-function Login() {
+export default function Login() {
 
-    const [loginDetailsModel, setLoginDetailsModel] = useState({})
-    const onInputChange = (event) => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
-        const { value, name } = event.target
-
-        setLoginDetailsModel({
-            ...loginDetailsModel,
-            [name]: value
-        })
-
-    }
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        loginService.getLoginDetails(loginDetailsModel).then((loginResult) => {
+    const onSubmit = (data) => {
+        loginService.getLoginDetails(data).then((loginResult) => {
             // console.log(loginResult)
             if (loginResult && loginResult.payload && loginResult.payload.accessToken) {
                 setLocalStorage('loginData', loginResult.payload);
@@ -38,8 +28,16 @@ function Login() {
     return (
 
         <div className="p-8 rounded-lg shadow-lg">
-            <form className="flex flex-col gap-6 justify-start items-center" onSubmit={handleSubmit}>
-                <div className="flex flex-col gap-2 w-72">
+            <form className="flex flex-col gap-6 justify-start items-center" onSubmit={handleSubmit(onSubmit)}>
+
+                <BaseInput type="email" id="emailId" name="emailId" register={register} errors={errors} validationRules={{
+                    required: true,
+                }} placeholder="Email" >Email</BaseInput>
+                <BaseInput type="password" id="password" name="password" register={register} errors={errors} placeholder="password" validationRules={{
+                    required: true,
+                }} >Password</BaseInput>
+                <BaseButton type="submit" variant="secondary">Login</BaseButton>
+                {/* <div className="flex flex-col gap-2 w-72">
 
                     <label htmlFor="emailId" className="text-sm text-slate-600">Email*</label>
 
@@ -56,12 +54,10 @@ rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:out
 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:outline-none" id="password" name="password"
                         value={loginDetailsModel.password}
                         placeholder="Password" onInput={onInputChange} required />
-                </div>
-                <BaseButton type="submit" variant="secondary">Login</BaseButton>
+                </div> */}
+
             </form>
         </div>
 
     )
 }
-
-export default Login
