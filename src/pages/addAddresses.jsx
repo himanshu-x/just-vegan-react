@@ -30,13 +30,13 @@ export default function AddAddress() {
                 <div className="flex flex-col gap-6 p-4 ">
                     <div className=" grid grid-cols-1 md:grid-cols-2 gap-4 ">
 
-                        <BaseInput type="text" name="name" id="name" register={register} errors={errors} placeholder="Name" validationRules={{
+                        <BaseInput labelName="Name" type="text" name="name" id="name" register={register} errors={errors} placeholder="Name" validationRules={{
                             required: true,
-                        }} >Name</BaseInput>
+                        }} />
 
-                        <BaseInput type="number" name="phone1" id="phone1" register={register} errors={errors} placeholder="Phone1" validationRules={{
+                        <BaseInput labelName="Phone1" type="number" name="phone1" id="phone1" register={register} errors={errors} placeholder="Phone1" validationRules={{
                             required: true,
-                        }} >Phone1</BaseInput>
+                        }} />
 
                         <BaseSelectOption name="addressType" labelName="Choose Address Type" register={register} errors={errors} options={[
                             { optionName: "Home", value: "Home" },
@@ -44,30 +44,30 @@ export default function AddAddress() {
                         ]} >
                         </BaseSelectOption>
 
-                        <BaseInput type="text" name="locality" id="locality" register={register} errors={errors} placeholder="Locality" validationRules={{
+                        <BaseInput labelName="Locality" type="text" name="locality" id="locality" register={register} errors={errors} placeholder="Locality" validationRules={{
                             required: true,
-                        }} >Locality</BaseInput>
+                        }} />
 
-                        <BaseInput type="text" name="landmark" id="landmark" register={register} errors={errors} placeholder="Landmark" validationRules={{
+                        <BaseInput labelName="Landmark" type="text" name="landmark" id="landmark" register={register} errors={errors} placeholder="Landmark" validationRules={{
                             required: true,
-                        }} >Landmark</BaseInput>
+                        }} />
 
-                        <BaseInput type="text" name="city" id="city" register={register} errors={errors} placeholder="City" validationRules={{
+                        <BaseInput labelName="City" type="text" name="city" id="city" register={register} errors={errors} placeholder="City" validationRules={{
                             required: true,
-                        }} >City</BaseInput>
+                        }} />
 
-                        <BaseInput type="number" name="pincode" id="pincode" register={register} errors={errors} placeholder="Pincode" validationRules={{
+                        <BaseInput labelName="Pincode" type="number" name="pincode" id="pincode" register={register} errors={errors} placeholder="Pincode" validationRules={{
                             required: true,
-                        }} >Pincode</BaseInput>
+                        }} />
 
-                        <BaseInput type="text" name="state" id="state" register={register} errors={errors} placeholder="State/Province" validationRules={{
+                        <BaseInput labelName="State/Province" type="text" name="state" id="state" register={register} errors={errors} placeholder="State/Province" validationRules={{
                             required: true,
-                        }} >State/Province</BaseInput>
+                        }} />
 
                     </div>
-                    <BaseInput type="text" name="addressLine" id="addressLine" register={register} errors={errors} placeholder="Address Line" validationRules={{
+                    <BaseInput labelName="Address Line" type="text" name="addressLine" id="addressLine" register={register} errors={errors} placeholder="Address Line" validationRules={{
                         required: true,
-                    }} >Address Line</BaseInput>
+                    }} />
                     <BaseButton className="px-4 py-2 w-fit" type="submit" variant="secondary">Save</BaseButton>
                 </div>
             </form>

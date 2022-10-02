@@ -22,21 +22,21 @@ export default function SignUp() {
     return (
         <div className="  p-8 rounded-lg shadow-md " >
             <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit(onSubmit)}>
-                <BaseInput type="email" name="emailId" id="emailId" register={register} errors={errors} placeholder="emailId" validationRules={{
+                <BaseInput labelName="Email" type="email" name="emailId" id="emailId" register={register} errors={errors} placeholder="emailId" validationRules={{
                     required: true,
-                }} >Email</BaseInput>
-                <BaseInput type="text" name="name" id="name" register={register} errors={errors} placeholder="name" validationRules={{
+                }} />
+                <BaseInput labelName="Name" type="text" name="name" id="name" register={register} errors={errors} placeholder="name" validationRules={{
                     required: true,
-                }} >Name</BaseInput>
-                <BaseInput type="number" name="phone" id="phone" register={register} errors={errors} placeholder="phone" validationRules={{
+                }} />
+                <BaseInput labelName="Phone" type="number" name="phone" id="phone" register={register} errors={errors} placeholder="phone" validationRules={{
                     required: true,
                     maxLength: 11,
                     minLength: 10,
-                }} >Phone</BaseInput>
-                <BaseInput type="password" name="password" id="password" register={register} errors={errors} placeholder="password" validationRules={{
+                }} />
+                <BaseInput labelName="Password" type="password" name="password" id="password" register={register} errors={errors} placeholder="password" validationRules={{
                     required: true,
                     pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$/,
-                }} >Password</BaseInput>
+                }} />
                 <BaseButton type="submit" variant="secondary">
                     Sign-up
                 </BaseButton>

@@ -30,12 +30,12 @@ export default function Login() {
         <div className="p-8 rounded-lg shadow-lg">
             <form className="flex flex-col gap-6 justify-start items-center" onSubmit={handleSubmit(onSubmit)}>
 
-                <BaseInput type="email" id="emailId" name="emailId" register={register} errors={errors} validationRules={{
+                <BaseInput labelName="Email" type="email" id="emailId" name="emailId" register={register} errors={errors} validationRules={{
                     required: true,
-                }} placeholder="Email" >Email</BaseInput>
-                <BaseInput type="password" id="password" name="password" register={register} errors={errors} placeholder="password" validationRules={{
+                }} placeholder="Email" />
+                <BaseInput labelName="Password" type="password" id="password" name="password" register={register} errors={errors} placeholder="password" validationRules={{
                     required: true,
-                }} >Password</BaseInput>
+                }} />
                 <BaseButton type="submit" variant="secondary">Login</BaseButton>
                 {/* <div className="flex flex-col gap-2 w-72">
 

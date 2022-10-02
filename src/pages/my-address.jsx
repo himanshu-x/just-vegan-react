@@ -24,9 +24,9 @@ export default function MyAddress() {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6  bg-white ">
             {
-                addresses.map((address) => {
+                addresses.map((address, index) => {
                     return (
-                        <div className="flex flex-col  shadow-sm py-3 px-3">
+                        <div className="flex flex-col shadow-sm py-3 px-3" key={"address" + index}>
                             <div className="flex gap-6">
                                 <div className="font-normal"> {address.addressType} </div>
                                 <div className="flex gap-1">
