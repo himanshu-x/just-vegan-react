@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import dishService from "../../services/dishService";
-import { getLocalStorage } from "../../utils/common.util"
+import { getLocalStorage, setLocalStorage } from "../../utils/common.util"
 import BaseButton from "../base-components/base-button/BaseButton";
 import BaseIcon from "../base-components/base-icon/BaseIcon";
 
@@ -9,31 +9,63 @@ export default function DishCard(props) {
     const { dish, userData } = props
     const [isFavouriteDish, setIsFavouriteDish] = useState(false);
     const [quantity, setQuantity] = useState(0);
-    const [showAddCart, setShowAddCart] = useState(true)
     const loginData = getLocalStorage('loginData');
 
-
-    const handleAddCart = () => {
-        setShowAddCart(!showAddCart);
-        setQuantity(quantity + 1);
+    const setStoreQuantity = () => {
+        const cartDishes = getLocalStorage('cartDishes');
+        let matchedCartDish;
+        if (cartDishes && cartDishes.length) {
+            matchedCartDish = cartDishes.find((cDish) => cDish._id === dish._id)
+        }
+        // const quantity = matchedCartDish?.quantity || 0;
+        const currentQuantity = matchedCartDish && matchedCartDish.quantity ? matchedCartDish.quantity : 0;
+        setQuantity(currentQuantity);
     }
 
-    // useEffect(() => {
-    //m-1
-    // if (userData && dish && userData.favouriteDishes) {
-    // for (let i = 0; i < userData.favouriteDishes.length; i++) {
-    //     const favDish = userData.favouriteDishes[i];
-    //     if (favDish._id === dish._id) {
-    //         setIsFavouriteDish(true)
-    //         break;
-    //     } else {
-    //         setIsFavouriteDish(false)
-    //     }
-    // }
 
-    // m-2 
-    // const hasFound = ------- ;using find function
-    // if hasFound set isFavouriteDish to true else false
+    useEffect(() => {
+        setStoreQuantity();
+    }, [])
+
+    const addDishQuantity = () => {
+        const cartDishes = getLocalStorage('cartDishes');
+        if (cartDishes && cartDishes.length > 0) {
+            const matchedDishIndex = cartDishes.findIndex((dItem) => dItem._id === dish._id);
+
+            if (matchedDishIndex > -1) {
+                cartDishes[matchedDishIndex].quantity++;
+                setLocalStorage('cartDishes', cartDishes);
+            }
+            else {
+                cartDishes.push({
+                    ...dish, quantity: 1
+                })
+                setLocalStorage('cartDishes', cartDishes)
+            }
+        } else {
+            setLocalStorage('cartDishes', [{ ...dish, quantity: 1 }])
+        }
+
+        setStoreQuantity();
+    }
+
+
+    const removeDishQuantity = () => {
+        const cartDishes = getLocalStorage('cartDishes');
+
+        const matchedDishIndex = cartDishes.findIndex(dishid => dishid._id === dish._id);
+        cartDishes[matchedDishIndex].quantity--;
+        if (cartDishes[matchedDishIndex].quantity < 1) {
+            // you need to remove the dish from cartDishes
+            setLocalStorage(cartDishes.splice(matchedDishIndex, 1))
+            setLocalStorage('cartDishes', [])
+
+        }
+        localStorage.setItem('cartDishes', JSON.stringify(cartDishes));
+        setStoreQuantity();
+    }
+
+
     useEffect(() => {
         if (userData && dish && userData.favouriteDishes) {
             const hasFound = userData['favouriteDishes'].find(favDish => {
@@ -49,11 +81,7 @@ export default function DishCard(props) {
         }
     }, [userData])
 
-    useEffect(() => {
-        if (quantity === 0) {
-            setShowAddCart(true);
-        }
-    }, [quantity]);
+
 
     const onHeartClick = (event) => {
         event.preventDefault();
@@ -62,12 +90,11 @@ export default function DishCard(props) {
         } else {
             addFavouriteDish();
         }
-        // setisFavouriteDish(!isFavouriteDish)
     }
 
     function removeFavouriteDish() {
         dishService.removeFavouriteDish(dish._id, loginData.userId).then((favouriteDishId) => {
-            // console.log(favouriteDishId)
+            console.log(favouriteDishId)
             const { reFetchUser } = props
             reFetchUser();
         })
@@ -117,21 +144,21 @@ export default function DishCard(props) {
             <div className=" border-t-2 rounded pt-3 flex gap-2">
 
                 {
-                    showAddCart ?
-                        <BaseButton onClick={() => handleAddCart()} variant="secondary">Add Cart </BaseButton>
-                        :
+                    quantity ?
                         <div className="flex gap-2">
-                            <button onClick={() => setQuantity(quantity - 1)} className="bg-[#D11243] hover:bg-green-700 text-white   py-1 px-3.5 border  rounded-full">
+                            <button onClick={removeDishQuantity} className="bg-[#D11243] hover:bg-green-700 text-white   py-1 px-3.5 border  rounded-full">
                                 -
                             </button>
                             <div className="text-pink-700">{quantity}</div>
-                            <button onClick={() => setQuantity(quantity + 1)} className="bg-[#D11243]  hover:bg-green-700 text-white  py-1 px-3 border  rounded-full">
+                            <button onClick={addDishQuantity} className="bg-[#D11243]  hover:bg-green-700 text-white  py-1 px-3 border  rounded-full">
                                 +
                             </button>
                         </div>
+                        :
+                        <BaseButton onClick={addDishQuantity}
+                            variant="secondary">Add Cart </BaseButton>
                 }
             </div>
         </div>
     )
 }
-

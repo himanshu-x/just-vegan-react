@@ -67,5 +67,33 @@ export default {
             })
 
     },
+    addCartOrder: function (cartDishes, userId, orderAmount) {
+        return fetch(`${BASE_API_URL}/orders`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                dishes: cartDishes,
+                userId: userId,
+                deliveryStatus: "received",
+                orderAmount: orderAmount
+            }),
+        })
+            .then((response) => response.json())
+            .then((response) => {
+                return console.log('Success:', response);
+            })
+    },
+    getCartOrders: function (userId) {
+        return fetch(`${BASE_API_URL}/users/${userId}/orders`)
+            .then(res => {
+                console.log(res)
+                return res.json()
+            })
+            .then((response) => {
+                return response.payload
+            })
+    },
 
 }

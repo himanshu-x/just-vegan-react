@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useParams, useLocation, Link } from "react-router-dom";
 import dishService from '../services/dishService'
 import loginService from "../services/loginService";
 import DishCard from "../components/page-components/DishCard";
 import { getLocalStorage } from "../utils/common.util"
 
 export default function Dishes() {
-    // const params = useParams()
 
     const [dishList, setDishList] = useState([]);
     const [userData, setUserData] = useState({});

@@ -33,7 +33,7 @@ function App() {
       <UserContext.Provider value={{ state, dispatch }}>
         <Navbar />
         <Routes>
-          <Route path="home" element={<Home />}></Route>
+          <Route path="/" element={<Home />}></Route>
           <Route path="my-account" element={< MyList />}>
             <Route index element={<MyAccount />} />
             <Route path="favourite-dishes" element={<FavouriteDishes />}></Route>

@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function BaseIcon(props) {
-    const { iconName, children, className = "h-6 w-6", ...restProps } = props;
+    const { iconName, className = "h-6 w-6", ...restProps } = props;
 
     const iconList = {
         play: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
