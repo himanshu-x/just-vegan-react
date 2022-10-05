@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import dishService from '../services/dishService'
-import loginService from "../services/loginService";
-import DishCard from "../components/page-components/DishCard";
-import { getLocalStorage } from "../utils/common.util"
+import dishService from '../../services/dishService'
+import loginService from "../../services/loginService";
+import DishCard from "../../components/page-components/DishCard";
+import { getLocalStorage } from "../../utils/common.util"
 
 export default function Dishes() {
 

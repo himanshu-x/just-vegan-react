@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import offerService from "../services/OfferService"
+import offerService from "../../services/OfferService"
 
 
 export default function Offers() {

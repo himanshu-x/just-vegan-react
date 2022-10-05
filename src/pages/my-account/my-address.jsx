@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import BaseIcon from "../components/base-components/base-icon/BaseIcon";
-import addressService from "../services/addressService";
-import { getLocalStorage } from "../utils/common.util";
+import BaseIcon from "../../components/base-components/base-icon/BaseIcon";
+import addressService from "../../services/addressService";
+import { getLocalStorage } from "../../utils/common.util";
 
 
 

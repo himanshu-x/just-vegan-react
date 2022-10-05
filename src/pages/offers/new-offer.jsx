@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import BaseButton from '../components/base-components/base-button/BaseButton';
-import BaseInput from '../components/base-components/form-elements/BaseInput';
-import BaseRadioInput from '../components/base-components/form-elements/BaseRadioInput';
-import OfferService from '../services/OfferService';
+import BaseButton from '../../components/base-components/base-button/BaseButton';
+import BaseInput from '../../components/base-components/form-elements/BaseInput';
+import BaseRadioInput from '../../components/base-components/form-elements/BaseRadioInput';
+import OfferService from '../../services/OfferService';
 
 export default function NewOffer() {
 

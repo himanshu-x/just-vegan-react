@@ -23,9 +23,13 @@ export default function CartSideBar(props) {
         alert("Order Successfull")
         localStorage.removeItem('cartDishes')
         window.location.href = '/dishes'
-
     }
 
+    // const removeHandle = () => {
+    //     alert("wfscijaf")
+    //     localStorage.removeItem('cartDishes')
+
+    // }
 
 
     return (

@@ -1,10 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import addressService from "../services/addressService";
-import { getLocalStorage } from "../utils/common.util";
-import BaseButton from "../components/base-components/base-button/BaseButton";
-import BaseInput from "../components/base-components/form-elements/BaseInput";
-import BaseSelectOption from "../components/base-components/form-elements/BaseSelect";
+import addressService from "../../services/addressService";
+import { getLocalStorage } from "../../utils/common.util";
+import BaseButton from "../../components/base-components/base-button/BaseButton";
+import BaseInput from "../../components/base-components/form-elements/BaseInput";
+import BaseSelectOption from "../../components/base-components/form-elements/BaseSelect";
 
 export default function AddAddress() {
     const loginData = getLocalStorage('loginData');

@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import loginService from "../services/loginService";
-import { setLocalStorage } from "../utils/common.util";
-import BaseButton from "../components/base-components/base-button/BaseButton";
-import BaseInput from "../components/base-components/form-elements/BaseInput";
+import loginService from "../../services/loginService";
+import { setLocalStorage } from "../../utils/common.util";
+import BaseButton from "../../components/base-components/base-button/BaseButton";
+import BaseInput from "../../components/base-components/form-elements/BaseInput";
 
 
 

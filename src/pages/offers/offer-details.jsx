@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import BaseButton from "../components/base-components/base-button/BaseButton";
-import OfferService from "../services/OfferService";
+import BaseButton from "../../components/base-components/base-button/BaseButton";
+import OfferService from "../../services/OfferService";
 
 function OfferDetails(props) {
     let [offerData, setOfferData] = useState({})

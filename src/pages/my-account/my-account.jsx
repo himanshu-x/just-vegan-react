@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import BaseButton from "../components/base-components/base-button/BaseButton";
-import BaseIcon from "../components/base-components/base-icon/BaseIcon";
-import loginService from "../services/loginService";
-import { getLocalStorage } from "../utils/common.util";
+import BaseButton from "../../components/base-components/base-button/BaseButton";
+import BaseIcon from "../../components/base-components/base-icon/BaseIcon";
+import loginService from "../../services/loginService";
+import { getLocalStorage } from "../../utils/common.util";
 
 export default function MyAccount() {
     let [accountDetails, setaccountDetails] = useState({})

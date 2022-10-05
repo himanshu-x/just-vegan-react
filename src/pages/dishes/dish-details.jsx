@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import dishService from '../services/dishService'
-import BaseButton from "../components/base-components/base-button/BaseButton";
+import dishService from '../../services/dishService'
+import BaseButton from "../../components/base-components/base-button/BaseButton";
 
 
 function DishDetails(props) {
