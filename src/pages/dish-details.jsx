@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
+import DishCartContext from "../contexts/dish-cart/DishCart.Context";
 import { useParams } from "react-router-dom";
 import dishService from '../services/dishService'
 import BaseButton from "../components/base-components/base-button/BaseButton";
 
 
-function DishDetails(props) {
+function DishDetails() {
     let [dishData, setDishData] = useState({});
-    const [quantity, setQuantity] = useState(0);
-    const [showAddCart, setShowAddCart] = useState(true)
     const params = useParams()
 
     const dishProperties = [
@@ -17,26 +16,42 @@ function DishDetails(props) {
         { valueKey: 'fiber', displayKey: 'FIBER : ', displayValue: "(g)" },
         { valueKey: 'protein', displayKey: 'PROTIEN : ', displayValue: "(g)" },
     ]
-    const handleAddCart = () => {
-        setShowAddCart(!showAddCart);
-        setQuantity(quantity + 1);
-    }
-    useEffect(() => {
-        if (quantity === 0) {
-            setShowAddCart(true);
+
+    const renderCardButtons = ({ cartDishes, addDishToCart, removeDishFromCart }) => {
+        // console.log(`Dish card caallled ${dish.dishName}`)
+
+        let matchedCartDish;
+        if (cartDishes && cartDishes.length) {
+            matchedCartDish = cartDishes.find((cDish) => cDish._id === dishData._id)
         }
-    }, [quantity]);
-
-
-    useEffect(() => {
-        getDish();
-    }, [])
+        // const currentQuantity = matchedCartDish?.quantity || 0;
+        const currentQuantity = matchedCartDish && matchedCartDish.quantity ? matchedCartDish.quantity : 0;
+        return (
+            currentQuantity ?
+                <div className="flex gap-2">
+                    <button onClick={() => { removeDishFromCart(dishData) }} className="bg-[#D11243] hover:bg-green-700 text-white   py-1 px-3.5 border  rounded-full">
+                        -
+                    </button>
+                    <div className="text-pink-700">{currentQuantity}</div>
+                    <button onClick={() => { addDishToCart(dishData) }} className="bg-[#D11243]  hover:bg-green-700 text-white  py-1 px-3 border  rounded-full">
+                        +
+                    </button>
+                </div>
+                :
+                <BaseButton onClick={() => { addDishToCart(dishData) }}
+                    variant="secondary">Add Cart </BaseButton>
+        )
+    }
 
     function getDish() {
         dishService.getDish(params.dishId).then((Dish) => {
             setDishData(Dish)
         })
     }
+
+    useEffect(() => {
+        getDish();
+    }, [])
     return (
 
         <div className=" grid grid-cols-1 md:grid-cols-2 max-w-[1000px] lg:max-h-[500px] object-center object-coverbg-cover m-4 md:mx-auto rounded-md overflow-hidden shadow-lg ">
@@ -62,7 +77,16 @@ function DishDetails(props) {
                     <div className="font-bold text-[#D11243]">MRP:&#8377;{dishData.price} </div>
                     <div className="text-gray-700"><del>&#8377;{dishData.price}</del></div>
                 </div>
-                <div className=" border-t-2 rounded pt-3 flex gap-2">
+                <DishCartContext.Consumer >
+                    {
+                        (ctx) => (
+                            <div className=" border-t-2 rounded pt-3 flex gap-2">
+                                {renderCardButtons(ctx)}
+                            </div>
+                        )
+                    }
+                </DishCartContext.Consumer >
+                {/* <div className=" border-t-2 rounded pt-3 flex gap-2">
 
                     {
                         showAddCart ?
@@ -78,7 +102,7 @@ function DishDetails(props) {
                                 </button>
                             </div>
                     }
-                </div>
+                </div> */}
             </div>
         </div>
 

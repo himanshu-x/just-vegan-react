@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import './App.css';
 import Dishes from './pages/dishes';
-import NewDish from './pages/new-dish';
+import NewDish from "../src/pages/New-Dish"
 import DishDetails from './pages/dish-details';
 import Offer from './pages/offers';
 import NewOffer from "./pages/new-offer";
@@ -21,44 +21,44 @@ import MyOrders from "./pages/my-order"
 import SignUp from './pages/sign-up';
 import Home from "./pages/home";
 import DishCartProvider from "./contexts/dish-cart/DishCart.Provider";
-import { initialState, reducer } from "./reducer/useReducer";
+// import { initialState, reducer } from "./reducer/useReducer";
 
 export const UserContext = createContext();
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  // const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
 
     <>
-      <UserContext.Provider value={{ state, dispatch }}>
-        <DishCartProvider>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="my-account" element={< MyList />}>
-              <Route index element={<MyAccount />} />
-              <Route path="favourite-dishes" element={<FavouriteDishes />}></Route>
-              <Route path="addresses" element={<Addresses />}>
-                <Route path="add-addresses" element={<AddAddress />}></Route>
-              </Route>
-              <Route path="addresses/:address" element={<AddressDetails />}></Route>
-              <Route path="my-orders" element={<MyOrders />}></Route>
+      {/* <UserContext.Provider value={{ state, dispatch }}> */}
+      <DishCartProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="my-account" element={< MyList />}>
+            <Route index element={<MyAccount />} />
+            <Route path="favourite-dishes" element={<FavouriteDishes />}></Route>
+            <Route path="addresses" element={<Addresses />}>
+              <Route path="add-addresses" element={<AddAddress />}></Route>
             </Route>
-            <Route path="auth" element={<Auth />}>
-              <Route index element={<AuthOptions />} />
-              <Route path="login" element={<Login />}></Route>
-              <Route path="sign-up" element={<SignUp />}></Route>
-            </Route>
-            <Route path="dishes" element={<Dishes />} ></Route>
-            <Route path="dishes/:dishId" element={<DishDetails />} />
-            <Route path="new-dish" element={<NewDish />} />
-            <Route path="offers" element={<Offer />} />
-            <Route path="offers/:offerId" element={<OfferDetails />} />
-            <Route path="new-offer" element={<NewOffer />} />
-          </Routes >
-        </DishCartProvider>
-      </UserContext.Provider>
+            <Route path="addresses/:address" element={<AddressDetails />}></Route>
+            <Route path="my-orders" element={<MyOrders />}></Route>
+          </Route>
+          <Route path="auth" element={<Auth />}>
+            <Route index element={<AuthOptions />} />
+            <Route path="login" element={<Login />}></Route>
+            <Route path="sign-up" element={<SignUp />}></Route>
+          </Route>
+          <Route path="dishes" element={<Dishes />} ></Route>
+          <Route path="dishes/:dishId" element={<DishDetails />} />
+          <Route path="new-dish" element={<NewDish />} />
+          <Route path="offers" element={<Offer />} />
+          <Route path="offers/:offerId" element={<OfferDetails />} />
+          <Route path="new-offer" element={<NewOffer />} />
+        </Routes >
+      </DishCartProvider>
+      {/* </UserContext.Provider> */}
     </>
   )
 }

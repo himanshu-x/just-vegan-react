@@ -50,7 +50,7 @@ export default function DishCard(props) {
             console.log(favouriteDishId)
             const { reFetchUser } = props
             reFetchUser();
-            // setFavouriteDishList(favouriteDishId)
+
         })
     }
 
@@ -58,7 +58,7 @@ export default function DishCard(props) {
     let imgClass = 'w-full max-h-[350px] min-h-[350px]  object-center object-cover  rounded-2xl'
 
     const renderCardButtons = ({ cartDishes, addDishToCart, removeDishFromCart }) => {
-        console.log(`Dish card caallled ${dish.dishName}`)
+        // console.log(`Dish card caallled ${dish.dishName}`)
 
         let matchedCartDish;
         if (cartDishes && cartDishes.length) {
@@ -84,38 +84,39 @@ export default function DishCard(props) {
     }
 
     return (
-        <DishCartContext.Consumer >
-            {
-                (ctx) => (
-                    <div className="flex flex-col gap-3 border rounded p-2 shadow-xl" key={'dish-' + dish._id}>
-                        <Link to={'/dishes/' + dish._id}>
-                            <img className={imgClass} src={dish.imgUrl}></img>
-                        </Link>
+        <div className="flex flex-col gap-3 border rounded p-2 shadow-xl" key={'dish-' + dish._id}>
+            <Link to={'/dishes/' + dish._id}>
+                <img className={imgClass} src={dish.imgUrl}></img>
+            </Link>
 
-                        <div className="flex gap-2">
-                            <div>{dish.dishName}</div>
+            <div className="flex gap-2">
+                <div>{dish.dishName}</div>
 
-                            {
-                                isFavouriteDish ?
-                                    <BaseIcon className="text-rose-600 h-6 w-6" onClick={onHeartClick} iconName="solid-heart" />
-                                    :
-                                    <BaseIcon onClick={onHeartClick} iconName="heart" className="h-6 w-6" />
+                {
+                    isFavouriteDish ?
+                        <BaseIcon className="text-rose-600 h-6 w-6" onClick={onHeartClick} iconName="solid-heart" />
+                        :
+                        <BaseIcon onClick={onHeartClick} iconName="heart" className="h-6 w-6" />
 
-                            }
-                        </div>
-                        <div className="flex flex-col">
-                            <div className="flex gap-1">
-                                <div className="font-bold text-[#D11243]">MRP:&#8377;{dish.price} </div>
-                                <div className="text-gray-700"><del>&#8377;{dish.price}</del></div>
-                            </div>
+                }
+            </div>
+            <div className="flex flex-col">
+                <div className="flex gap-1">
+                    <div className="font-bold text-[#D11243]">MRP:&#8377;{dish.price} </div>
+                    <div className="text-gray-700"><del>&#8377;{dish.price}</del></div>
+                </div>
 
-                            <div className="text-gray-600">{dish.description}</div>
-                        </div>
+                <div className="text-gray-600">{dish.description}</div>
+            </div>
+            <DishCartContext.Consumer >
+                {
+                    (ctx) => (
                         <div className=" border-t-2 rounded pt-3 flex gap-2">
                             {renderCardButtons(ctx)}
                         </div>
-                    </div>
-                )}
-        </DishCartContext.Consumer>
+                    )
+                }
+            </DishCartContext.Consumer >
+        </div>
     )
 }

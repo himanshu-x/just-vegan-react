@@ -57,10 +57,10 @@ function Navbar() {
                     <DishCartContext.Consumer>
                         {
                             (context) => (
+
                                 <BaseButton onClick={() => setNav(!nav)} variant="primary" className="flex px-4 py-2 gap-2" >
                                     <BaseIcon iconName="cart" className="h-6 w-6"></BaseIcon> Cart
                                     {/* <span>{context.cartDishes?.length}</span> */}
-
                                     <span className="bg-green-100 text-green-800 text-xs font-semibold mx-1 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">
                                         {
                                             context.cartDishes && context.cartDishes.length && context.cartDishes.reduce((total, item) => total + item.quantity, 0)

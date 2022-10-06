@@ -33,10 +33,11 @@ export default function DishCartProvider({ children }) {
     }
 
     const removeDishFromCart = (dish) => {
-        console.log(`removeDishFromCart`)
-        console.log(dish)
+        // console.log(`removeDishFromCart`)
+        // console.log(dish)
 
         let cartDishesCopy = JSON.parse(JSON.stringify(cartDishes))
+        //to create a deep copy.
         let updateCardDishes = [];
 
         const matchedDishIndex = cartDishesCopy.findIndex(dishid => dishid._id === dish._id);
@@ -44,7 +45,7 @@ export default function DishCartProvider({ children }) {
         updateCardDishes = cartDishesCopy;
 
         if (cartDishesCopy[matchedDishIndex].quantity < 1) {
-            // you need to remove the dish from cartDishes
+
             cartDishesCopy.splice(matchedDishIndex, 1)
             updateCardDishes = cartDishesCopy
         }
