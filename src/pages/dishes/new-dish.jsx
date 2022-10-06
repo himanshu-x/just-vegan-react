@@ -1,10 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import BaseButton from "../components/base-components/base-button/BaseButton";
-import BaseInput from "../components/base-components/form-elements/BaseInput";
-import dishService from '../services/dishService'
-import BaseCheckbox from "../components/base-components/form-elements/BaseCheckbox";
-import BaseSelectOption from "../components/base-components/form-elements/BaseSelect";
+import BaseButton from "../../components/base-components/base-button/BaseButton";
+import BaseInput from "../../components/base-components/form-elements/BaseInput";
+import dishService from '../../services/dishService'
+import BaseCheckbox from "../../components/base-components/form-elements/BaseCheckbox";
+import BaseSelectOption from "../../components/base-components/form-elements/BaseSelect";
 
 export default function NewDish() {
     const headerText = 'New Dish';

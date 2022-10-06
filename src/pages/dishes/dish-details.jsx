@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import DishCartContext from "../contexts/dish-cart/DishCart.Context";
+import DishCartContext from "../../contexts/dish-cart/DishCart.Context";
 import { useParams } from "react-router-dom";
-import dishService from '../services/dishService'
-import BaseButton from "../components/base-components/base-button/BaseButton";
+import dishService from '../../services/dishService'
+import BaseButton from "../../components/base-components/base-button/BaseButton";
 
 
 function DishDetails() {

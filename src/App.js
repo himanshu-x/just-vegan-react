@@ -1,24 +1,24 @@
 import React, { createContext, useReducer } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import './App.css';
-import Dishes from './pages/dishes';
-import NewDish from "../src/pages/New-Dish"
-import DishDetails from './pages/dish-details';
-import Offer from './pages/offers';
-import NewOffer from "./pages/new-offer";
-import OfferDetails from './pages/offer-details';
-import Navbar from './components/utility-components/Navbar';
-import AuthOptions from './components/page-components/auth/AuthOptions'
-import Auth from './pages/auth';
-import Login from "./pages/login";
-import MyAccount from "./pages/my-account";
+import Dishes from "./pages/dishes/dishes";
+import NewDish from "./pages/dishes/new-dish";
+import DishDetails from "./pages/dishes/dish-details";
+import Offer from "./pages/offers/offers";
+import NewOffer from "./pages/offers/new-offer";
+import OfferDetails from "./pages/offers/offer-details";
+import Navbar from "./components/utility-components/Navbar";
+import AuthOptions from "./components/page-components/auth/AuthOptions";
+import Auth from "./pages/auth/auth";
+import Login from "./pages/auth/login";
+import MyAccount from "./pages/my-account/my-account";
 import MyList from "./components/page-components/account/AccountList"
-import Addresses from "./pages/addresses"
-import AddressDetails from "./pages/my-address"
-import AddAddress from "./pages/addAddresses"
-import FavouriteDishes from "./pages/favourite-dishes";
-import MyOrders from "./pages/my-order"
-import SignUp from './pages/sign-up';
+import Addresses from "./pages/my-account/addresses";
+import AddressDetails from "./pages/my-account/my-address"
+import AddAddress from "./pages/my-account/addAddresses";
+import FavouriteDishes from "./pages/dishes/favourite-dishes";
+import MyOrders from "./pages/my-account/my-order";
+import SignUp from "./pages/auth/sign-up";
 import Home from "./pages/home";
 import DishCartProvider from "./contexts/dish-cart/DishCart.Provider";
 // import { initialState, reducer } from "./reducer/useReducer";

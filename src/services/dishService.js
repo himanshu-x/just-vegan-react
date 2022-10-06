@@ -88,7 +88,7 @@ export default {
     getCartOrders: function (userId) {
         return fetch(`${BASE_API_URL}/users/${userId}/orders`)
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 return res.json()
             })
             .then((response) => {
