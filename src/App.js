@@ -20,17 +20,19 @@ import FavouriteDishes from "./pages/dishes/favourite-dishes";
 import MyOrders from "./pages/my-account/my-order";
 import SignUp from "./pages/auth/sign-up";
 import Home from "./pages/home";
-import { initialState, reducer } from "./reducer/useReducer";
+import DishCartProvider from "./contexts/dish-cart/DishCart.Provider";
+// import { initialState, reducer } from "./reducer/useReducer";
 
 export const UserContext = createContext();
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  // const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
 
     <>
-      <UserContext.Provider value={{ state, dispatch }}>
+      {/* <UserContext.Provider value={{ state, dispatch }}> */}
+      <DishCartProvider>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />}></Route>
@@ -55,7 +57,8 @@ function App() {
           <Route path="offers/:offerId" element={<OfferDetails />} />
           <Route path="new-offer" element={<NewOffer />} />
         </Routes >
-      </UserContext.Provider>
+      </DishCartProvider>
+      {/* </UserContext.Provider> */}
     </>
   )
 }
