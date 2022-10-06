@@ -9,7 +9,7 @@ export default function SignUp() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
-        // console.log(data)
+        console.log(data)
         signUpService.newAccountService(data).then((signupData) => {
             console.log(signupData)
         })
