@@ -4,6 +4,9 @@ import dishService from '../../services/dishService'
 import loginService from "../../services/loginService";
 import DishCard from "../../components/page-components/DishCard";
 import { getLocalStorage } from "../../utils/common.util"
+import withBox from "../../components/hoc-components/withBox";
+
+const DishCardBox = withBox(DishCard)
 
 export default function Dishes() {
 
@@ -47,8 +50,7 @@ export default function Dishes() {
                     dishList.map((dish) => {
 
                         return (
-                            <DishCard dish={dish} key={dish._id} userData={userData} reFetchUser={getUserDetails} />
-
+                            <DishCardBox dish={dish} key={dish._id} userData={userData} reFetchUser={getUserDetails} />
                         )
 
                     })

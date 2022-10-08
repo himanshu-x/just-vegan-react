@@ -8,6 +8,8 @@ import BaseIcon from "../base-components/base-icon/BaseIcon";
 import BaseButton from "../base-components/base-button/BaseButton";
 import CartSideBar from "../utility-components/CartSideBar";
 
+
+
 function Navbar() {
 
     const loginData = getLocalStorage('loginData');
@@ -16,6 +18,8 @@ function Navbar() {
         localStorage.removeItem('loginData')
         window.location.href = '/auth/login'
     }
+
+
     const MobileDataRenderMenu = () => {
 
         if (loginData && loginData.accessToken) {
@@ -48,6 +52,8 @@ function Navbar() {
 
         }
     }
+
+
 
     const RenderMenu = () => {
         if (loginData && loginData.accessToken) {

@@ -4,10 +4,9 @@ import BaseIcon from "../../components/base-components/base-icon/BaseIcon";
 import loginService from "../../services/loginService";
 import { getLocalStorage } from "../../utils/common.util";
 
-export default function MyAccount() {
+const MyAccount = function () {
     let [accountDetails, setaccountDetails] = useState({})
     const loginData = getLocalStorage('loginData');
-
 
 
     useEffect(() => {
@@ -41,3 +40,7 @@ export default function MyAccount() {
         </div>
     )
 }
+
+
+// export default MyAccountBox
+export default MyAccount

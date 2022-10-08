@@ -14,7 +14,7 @@ export default function Login() {
 
     const onSubmit = (data) => {
         loginService.getLoginDetails(data).then((loginResult) => {
-            // console.log(loginResult)
+            console.log(loginResult)
             if (loginResult && loginResult.payload && loginResult.payload.accessToken) {
                 setLocalStorage('loginData', loginResult.payload);
                 window.location.href = '/my-account'
@@ -37,24 +37,6 @@ export default function Login() {
                     required: true,
                 }} />
                 <BaseButton type="submit" variant="secondary">Login</BaseButton>
-                {/* <div className="flex flex-col gap-2 w-72">
-
-                    <label htmlFor="emailId" className="text-sm text-slate-600">Email*</label>
-
-                    <input type="email" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
-rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:outline-none" id="emailId" name="emailId"
-                        value={loginDetailsModel.emailId}
-                        placeholder="Email" onInput={onInputChange} required />
-                </div>
-                <div className="flex flex-col gap-2 w-72">
-
-                    <label htmlFor="password" className="text-sm text-slate-600">Password*</label>
-
-                    <input type="password" className="form-control block border w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding
-rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:outline-none" id="password" name="password"
-                        value={loginDetailsModel.password}
-                        placeholder="Password" onInput={onInputChange} required />
-                </div> */}
 
             </form>
         </div>

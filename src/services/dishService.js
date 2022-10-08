@@ -23,6 +23,7 @@ export default {
         })
             .then((response) => {
                 console.log(response)
+                return response.data.payload
             })
             .catch(function (error) {
                 console.log(error);
