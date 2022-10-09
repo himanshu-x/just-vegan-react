@@ -14,7 +14,7 @@ export default function Login() {
 
     const onSubmit = (data) => {
         loginService.getLoginDetails(data).then((loginResult) => {
-            console.log(loginResult)
+            // console.log(loginResult.payload)
             if (loginResult && loginResult.payload && loginResult.payload.accessToken) {
                 setLocalStorage('loginData', loginResult.payload);
                 window.location.href = '/my-account'

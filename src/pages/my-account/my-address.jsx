@@ -16,13 +16,14 @@ export default function MyAddress() {
 
     function getAddress() {
         addressService.getAddressDetails(loginData.userId).then((addressDetails) => {
+            // console.log(addressDetails.addresses)
             setAddresses(addressDetails.addresses)
         })
     }
 
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6  bg-white ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6  bg-white w-full ">
             {
                 addresses.map((address, index) => {
                     return (
@@ -38,9 +39,9 @@ export default function MyAddress() {
                                 <div>{address.name}</div>
                                 <div>{address.phone1}</div>
                             </div>
-                            <div className="flex flex-col lg:flex-row text-gray-400">
-                                <div>{address.landmark} </div>
+                            <div className="flex flex-col md:flex-row text-gray-400 gap-2">
                                 <div>{address.addressLine}</div>
+                                <div>{address.landmark} </div>
                                 <div>{address.city}</div>
                                 <div>{address.state}</div>
                                 <div>{address.locality} </div>

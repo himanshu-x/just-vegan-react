@@ -10,6 +10,7 @@ export default function FavouriteDishes() {
     function getFavouriteDishes() {
         const UserData = getLocalStorage('loginData');
         dishService.getFavouriteDishes(UserData.userId).then((favData) => {
+            // console.log(favData.favouriteDishes)
             setFavouriteDishData(favData.favouriteDishes)
         })
     }

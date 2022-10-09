@@ -35,17 +35,8 @@ export default function DishCard(props) {
             addFavouriteDish();
         }
     }
-
-    function removeFavouriteDish() {
-        dishService.removeFavouriteDish(dish._id, loginData.userId).then((favouriteDishId) => {
-            console.log(favouriteDishId)
-            const { reFetchUser } = props
-            reFetchUser();
-        })
-    }
-
     function addFavouriteDish() {
-        console.log(dish);
+        // console.log(dish);
         dishService.addFavouriteDish(dish._id, loginData.userId).then((favouriteDishId) => {
             console.log(favouriteDishId)
             const { reFetchUser } = props
@@ -53,6 +44,16 @@ export default function DishCard(props) {
 
         })
     }
+
+    function removeFavouriteDish() {
+        dishService.removeFavouriteDish(dish._id, loginData.userId).then((removeFavouriteDishId) => {
+            console.log(removeFavouriteDishId)
+            // console.log(props)
+            const { reFetchUser } = props
+            reFetchUser();
+        })
+    }
+
 
 
     let imgClass = 'w-full max-h-[350px] min-h-[350px]  object-center object-cover  rounded-2xl'

@@ -45,6 +45,7 @@ function DishDetails() {
 
     function getDish() {
         dishService.getDish(params.dishId).then((Dish) => {
+            // console.log(Dish)
             setDishData(Dish)
         })
     }

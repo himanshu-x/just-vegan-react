@@ -14,6 +14,7 @@ function OfferDetails(props) {
     function getOffer() {
 
         OfferService.getOffer(params.offerId).then((offer) => {
+            // console.log(offer)
             setOfferData(offer)
         })
     }

@@ -15,6 +15,7 @@ const MyAccount = function () {
 
     function getAccDetails() {
         loginService.getLoginAccountDetails(loginData.userId).then((account) => {
+            // console.log(account)
             setaccountDetails(account)
         })
     }

@@ -52,11 +52,10 @@ export default {
             data: { dishId: favDishId }
         })
             .then((response) => {
-                console.log(response)
+                // console.log(response)
+                return response.data.payload
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+
     },
     removeFavouriteDish: function (favDishId, userId) {
 
@@ -67,10 +66,9 @@ export default {
         })
             .then((response) => {
                 console.log(response)
+                return response.data.payload
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+
     },
 
     getFavouriteDishes: function (userId) {
@@ -95,10 +93,9 @@ export default {
         })
             .then((response) => {
                 console.log(response)
+                return response.data
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+
     },
 
     getCartOrders: function (userId) {

@@ -5,11 +5,11 @@ import offerService from "../../services/OfferService"
 
 
 export default function Offers() {
-
     const [offerList, setOfferList] = useState([]);
 
     const getoffers = () => {
         offerService.getOffers().then((offers) => {
+            // console.log(offers)
             setOfferList(offers)
         })
     }

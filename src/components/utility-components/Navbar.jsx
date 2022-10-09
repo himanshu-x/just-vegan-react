@@ -63,7 +63,6 @@ function Navbar() {
                     <DishCartContext.Consumer>
                         {
                             (context) => (
-
                                 <BaseButton onClick={() => setNav(!nav)} variant="primary" className="flex px-4 py-2 gap-2" >
                                     <BaseIcon iconName="cart" className="h-6 w-6"></BaseIcon> Cart
                                     {/* <span>{context.cartDishes?.length}</span> */}
@@ -83,7 +82,7 @@ function Navbar() {
                         { text: 'Logout', icon: 'logout', event: handleLogout },
                     ]}>
                     </BaseDropdown>
-                </Fragment>
+                </Fragment >
 
             )
 

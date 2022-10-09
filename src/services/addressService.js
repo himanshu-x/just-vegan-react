@@ -11,13 +11,6 @@ export default {
             .catch((error) => {
                 console.log(error)
             })
-        // return fetch(`${BASE_API_URL}/users/${userId}`)
-        //     .then(res => res.json())
-        //     .then((response) => {
-        //         console.log(response.payload)
-        //         return response.payload
-        //     })
-
     },
 
 
@@ -29,7 +22,7 @@ export default {
         })
             .then((response) => {
                 console.log('Success:', response);
-                return response
+                return response.data
             })
             .catch((error) => {
                 console.log(error)

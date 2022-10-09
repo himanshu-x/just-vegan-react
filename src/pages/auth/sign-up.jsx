@@ -11,7 +11,8 @@ export default function SignUp() {
     const onSubmit = (data) => {
         console.log(data)
         signUpService.newAccountService(data).then((signupData) => {
-            console.log(signupData)
+            // console.log(signupData.payload)
+            return signupData.payload;
         })
             .catch((error) => {
                 console.error('Error:', error);

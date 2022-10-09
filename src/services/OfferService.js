@@ -31,11 +31,9 @@ export default {
             data: offerModel
         })
             .then((response) => {
-                console.log(response)
+                // console.log(response)
+                return response.data
             })
-            .catch(function (error) {
-                console.log(error);
-            });
 
         // return fetch(`${BASE_API_URL}/offers`, {
         //     method: 'POST',

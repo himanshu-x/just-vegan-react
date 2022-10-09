@@ -12,15 +12,14 @@ export default function AddAddress() {
 
     function onSubmit(data) {
         addressService.getAddresses(data, loginData.userId).then((addressResult) => {
+            // console.log(addressResult.payload)
 
-            console.log(addressResult)
-            if (addressResult && addressResult._id) {
-                alert('New dish with dish id ${addressResult._id} has been created.')
+            if (addressResult.payload && addressResult.payload._id) {
+                alert(`New dish with dish id ${addressResult.payload._id} has been created.`)
             }
+            return addressResult.payload
         })
-            .catch((error) => {
-                alert(error)
-            })
+
     }
 
     return (

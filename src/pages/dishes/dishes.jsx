@@ -24,9 +24,10 @@ export default function Dishes() {
     }
 
     function getDishes() {
-        return dishService.getDishes().then((dishesPayload) => {
-            setDishList(dishesPayload);
-            return dishesPayload;
+        return dishService.getDishes().then((dishesData) => {
+            // console.log(dishesData)
+            setDishList(dishesData);
+            // return dishesPayload;        
         });
     }
 

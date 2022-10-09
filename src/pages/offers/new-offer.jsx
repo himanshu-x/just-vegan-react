@@ -13,10 +13,12 @@ export default function NewOffer() {
     const onSubmit = data => {
         // console.log(data);
         OfferService.createNewOffer(data).then((createOfferCard) => {
-            console.log(createOfferCard)
-            if (createOfferCard && createOfferCard._id) {
-                alert(`New offer with offer id ${createOfferCard._id} has been created.`)
+            // console.log(createOfferCard)
+            // console.log(createOfferCard.payload)
+            if (createOfferCard.payload && createOfferCard.payload._id) {
+                alert(`New offer with offer id ${createOfferCard.payload._id} has been created.`)
             }
+            return createOfferCard.payload
         })
     }
 

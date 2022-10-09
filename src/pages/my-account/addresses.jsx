@@ -9,7 +9,7 @@ export default function Addresses() {
 
     <div className=" flex flex-col shadow-md rounded-sm  gap-2 p-4 ">
       <div className="w-fit font-serif text-2xl">My Addresses</div>
-      <div className="w-fit"> <MyAddress /></div>
+      <div className=""> <MyAddress /></div>
       <div className="flex flex-col md:flex-row gap-3">
         <Link to="/my-account/addresses/add-addresses">
           <BaseButton variant="secondary">
