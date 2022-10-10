@@ -6,6 +6,7 @@ export default function DishCartProvider({ children }) {
     const storageCartDishes = getLocalStorage('cartDishes') || [];
     const [cartDishes, setCartDishes] = useState(storageCartDishes)
 
+
     const setStoreQuantity = (updateCardDishes) => {
         setLocalStorage('cartDishes', updateCardDishes);
     }
@@ -32,9 +33,19 @@ export default function DishCartProvider({ children }) {
         setStoreQuantity(updateCardDishes);
     }
 
+    const deleteDishFromCart = (cIndex) => {
+        let cartDishesCopy = JSON.parse(JSON.stringify(cartDishes));
+        let updateCardDishes = [];
+        if (cartDishesCopy[cIndex]) {
+            // console.log(cIndex)
+            cartDishesCopy.splice(cIndex, 1)
+            updateCardDishes = cartDishesCopy
+        }
+        setCartDishes(updateCardDishes);
+        setStoreQuantity(updateCardDishes);
+    }
+
     const removeDishFromCart = (dish) => {
-        // console.log(`removeDishFromCart`)
-        // console.log(dish)
 
         let cartDishesCopy = JSON.parse(JSON.stringify(cartDishes))
         //to create a deep copy.
@@ -46,7 +57,7 @@ export default function DishCartProvider({ children }) {
 
         if (cartDishesCopy[matchedDishIndex].quantity < 1) {
 
-            cartDishesCopy.splice(matchedDishIndex, 1)
+            cartDishesCopy.splice(matchedDishIndex, 1)     // splice(position ,remove count , add itmes)
             updateCardDishes = cartDishesCopy
         }
 
@@ -54,12 +65,23 @@ export default function DishCartProvider({ children }) {
         setStoreQuantity(updateCardDishes);
     }
 
+
+    const clearMyCart = () => {
+        alert("Order Successfull")
+        localStorage.removeItem('cartDishes')
+    }
+    const orderAmount = cartDishes && cartDishes.length && cartDishes.map(item => item.price * item.quantity).reduce((total, value) => total + value, 0)
+
+
     return (
         <DishCartContext.Provider
             value={{
                 cartDishes,
                 addDishToCart,
-                removeDishFromCart
+                removeDishFromCart,
+                deleteDishFromCart,
+                clearMyCart,
+                orderAmount,
             }}>
             {children}
         </DishCartContext.Provider>

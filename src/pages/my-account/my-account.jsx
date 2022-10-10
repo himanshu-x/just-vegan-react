@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import BaseButton from "../../components/base-components/base-button/BaseButton";
 import BaseIcon from "../../components/base-components/base-icon/BaseIcon";
+import BaseModal from "../../components/base-components/base-modal/BaseModal";
 import loginService from "../../services/loginService";
 import { getLocalStorage } from "../../utils/common.util";
 
 const MyAccount = function () {
     let [accountDetails, setaccountDetails] = useState({})
     const loginData = getLocalStorage('loginData');
-
+    const [openModal, setOpenModal] = useState(false);
 
     useEffect(() => {
         getAccDetails();
@@ -37,7 +38,11 @@ const MyAccount = function () {
                 <p className="text-sm text-gray-100">{accountDetails.emailId}</p>
 
             </div>
-            <BaseButton onClick={handleLogout} variant="success" className="py-2 px-4 w-full">Logout</BaseButton>
+            <BaseButton onClick={() => setOpenModal(!openModal)} variant="success" className="py-2 px-4 w-full">Logout</BaseButton>
+            <BaseModal isShown={openModal} headerText="Logout">
+                <BaseButton variant="secondary" onClick={() => setOpenModal(!openModal)} >Cancel</BaseButton>
+                <BaseButton variant="secondary" onClick={handleLogout} >Yes</BaseButton>
+            </BaseModal>
         </div>
     )
 }

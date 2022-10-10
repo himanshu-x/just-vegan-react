@@ -6,12 +6,14 @@ import DishCard from "../../components/page-components/DishCard";
 import { getLocalStorage } from "../../utils/common.util"
 import withBox from "../../components/hoc-components/withBox";
 
+
 const DishCardBox = withBox(DishCard)
 
 export default function Dishes() {
 
     const [dishList, setDishList] = useState([]);
     const [userData, setUserData] = useState({});
+
 
     function getUserDetails() {
         const loginData = getLocalStorage('loginData');
@@ -39,6 +41,8 @@ export default function Dishes() {
     useEffect(() => {
         fetchAsync();
     }, [])
+
+
 
 
     return (
