@@ -4,6 +4,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 
 const useAuth = () => {
     const user = getLocalStorage('loginData');
+    // console.log(user)
     if (user) {
         return true
     } else {

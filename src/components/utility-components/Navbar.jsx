@@ -13,6 +13,7 @@ import CartSideBar from "../utility-components/CartSideBar";
 function Navbar() {
 
     const loginData = getLocalStorage('loginData');
+
     const [nav, setNav] = useState(false)
     function handleLogout() {
         localStorage.removeItem('loginData')

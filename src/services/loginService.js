@@ -25,18 +25,5 @@ export default {
         }).then((response) => {
             return response.data;
         });
-
-        // return fetch(`${BASE_API_URL}/auth/login`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(loginDetailsModel),
-        // })
-        //     .then((response) => response.json())
-        //     .then((response) => {
-        //         console.log('Success:', response);
-        //         return response
-        //     })
     },
 }

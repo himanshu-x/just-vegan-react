@@ -1,1 +1,1 @@
-export const BASE_API_URL = 'http://7eb4-2405-201-401a-dd3e-29d1-6a4d-b40e-bd26.ngrok.io';
+export const BASE_API_URL = 'http://ff3b-2405-201-401a-dd3e-19fb-5e9c-8c3a-8aa8.ngrok.io';

@@ -6,7 +6,8 @@ export default {
         return axios({
             method: "post",
             url: `${BASE_API_URL}/users`,
-            data: signUpModel
+            data: signUpModel,
+            userType: "customer",
         })
             .then((response) => {
                 console.log(response)

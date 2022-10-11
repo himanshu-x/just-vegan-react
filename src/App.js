@@ -1,5 +1,5 @@
 import React, { createContext, } from "react";
-import { Routes, Route, } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import './App.css';
 import Dishes from "./pages/dishes/dishes";
 import NewDish from "./pages/dishes/new-dish";
@@ -22,14 +22,19 @@ import SignUp from "./pages/auth/sign-up";
 import Home from "./pages/home";
 import DishCartProvider from "./contexts/dish-cart/DishCart.Provider";
 import withBox from "./components/hoc-components/withBox";
-import ProtectedRoutes from "./components/Protected-Public-routes/ProtectedRoutes";
-import PublicRoutes from "./components/Protected-Public-routes/PublicRoutes";
-
+import ProtectedRoutes from "./components/protected-public-admin-routes/ProtectedRoutes";
+import PublicRoutes from "./components/protected-public-admin-routes/PublicRoutes";
+import { getLocalStorage } from "./utils/common.util";
+import AdminRoutes from "./components/protected-public-admin-routes/AdminRoute";
 export const UserContext = createContext();
 const MyAccountBox = withBox(MyAccount)
 
 
+
 function App() {
+
+  const user = getLocalStorage("loginData")
+
 
   return (
 
@@ -55,12 +60,15 @@ function App() {
             <Route path="sign-up" element={<SignUp />}></Route>
           </Route>
         </Route>
+        <Route path="/" element={<AdminRoutes />}>
+          <Route path="new-dish" element={<NewDish />} />
+          <Route path="new-offer" element={<NewOffer />} />
+        </Route>
         <Route path="dishes" element={<Dishes />} ></Route>
         <Route path="dishes/:dishId" element={<DishDetails />} />
-        <Route path="new-dish" element={<NewDish />} />
         <Route path="offers" element={<Offer />} />
         <Route path="offers/:offerId" element={<OfferDetails />} />
-        <Route path="new-offer" element={<NewOffer />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes >
     </DishCartProvider >
   )

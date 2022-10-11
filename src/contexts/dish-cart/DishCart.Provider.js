@@ -34,10 +34,10 @@ export default function DishCartProvider({ children }) {
     }
 
     const deleteDishFromCart = (cIndex) => {
+
         let cartDishesCopy = JSON.parse(JSON.stringify(cartDishes));
         let updateCardDishes = [];
         if (cartDishesCopy[cIndex]) {
-            // console.log(cIndex)
             cartDishesCopy.splice(cIndex, 1)
             updateCardDishes = cartDishesCopy
         }

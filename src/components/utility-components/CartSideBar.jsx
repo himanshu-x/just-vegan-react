@@ -4,13 +4,15 @@ import BaseButton from "../base-components/base-button/BaseButton";
 import BaseIcon from "../base-components/base-icon/BaseIcon";
 import dishService from "../../services/dishService";
 import DishCartContext from "../../contexts/dish-cart/DishCart.Context";
-import BaseModal from "../base-components/base-modal/BaseModal";
+import withConfirm from "../hoc-components/withConfirm";
 
+const ConfirmButton = withConfirm(BaseButton, {
+    bodyText: "Are you sure you wan't Remove cart dish",
+});
 
 export default function CartSideBar(props) {
     const { nav, setNav } = props
     const loginData = getLocalStorage('loginData');
-    const [openModal, setOpenModal] = useState(false)
 
     const checkoutHandle = (cartDishes, clearMyCart, orderAmount,) => {
         return dishService.addCartOrder(cartDishes, loginData.userId, orderAmount)
@@ -65,16 +67,13 @@ export default function CartSideBar(props) {
                                                             </div>
                                                             <div className="flex flex-1 items-end justify-between text-sm">
                                                                 <p className="text-gray-500">Qty {product.quantity}</p>
-
-                                                                <BaseButton onClick={() => setOpenModal(!openModal)} variant="secondary">Remove</BaseButton>
-                                                                <BaseModal isShown={openModal} bodyText="Are you sure you wan't Remove cart dish">
-                                                                    <BaseButton variant="secondary" onClick={() => setOpenModal(!openModal)} >Cancel</BaseButton>
-                                                                    <BaseButton variant="secondary" onClick={() => {
-                                                                        setOpenModal(!openModal)
+                                                                <ConfirmButton
+                                                                    variant="secondary"
+                                                                    onConfirm={() => {
                                                                         ctx.deleteDishFromCart(cIndex)
-                                                                    }} >Yes</BaseButton>
-                                                                </BaseModal>
-
+                                                                    }}>
+                                                                    Remove
+                                                                </ConfirmButton>
                                                             </div>
                                                         </div>
                                                     </li>
