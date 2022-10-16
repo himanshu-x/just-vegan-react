@@ -26,6 +26,7 @@ import ProtectedRoutes from "./components/protected-public-admin-routes/Protecte
 import PublicRoutes from "./components/protected-public-admin-routes/PublicRoutes";
 import { getLocalStorage } from "./utils/common.util";
 import AdminRoutes from "./components/protected-public-admin-routes/AdminRoute";
+
 export const UserContext = createContext();
 const MyAccountBox = withBox(MyAccount)
 
@@ -41,6 +42,7 @@ function App() {
     <DishCartProvider>
       <Navbar />
       <Routes>
+
         <Route path="/" element={<Home />}></Route>
         <Route path="/" element={<ProtectedRoutes />} >
           <Route path="my-account" element={< MyList />}>

@@ -101,6 +101,7 @@ export default function DishCard(props) {
 
                 }
             </div>
+            <p>{dish.dishCategory}</p>
             <div className="flex flex-col">
                 <div className="flex gap-1">
                     <div className="font-bold text-[#D11243]">MRP:&#8377;{dish.price} </div>
