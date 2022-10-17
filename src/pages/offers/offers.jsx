@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import BaseSearch from "../../components/base-components/base-search/BaseSearch";
 import offerService from "../../services/OfferService"
 
 
 export default function Offers() {
     const [offerList, setOfferList] = useState([]);
-
+    const [searchInput, setSearchInput] = useState('');
     const getoffers = () => {
         offerService.getOffers().then((offers) => {
-            // console.log(offers)
             setOfferList(offers)
         })
     }
@@ -18,15 +18,24 @@ export default function Offers() {
         getoffers();
     }, [])
 
+    const handleSearch = (searchText) => {
+        console.log(searchText)
+        setSearchInput(searchText)
+    }
+
+    const filtered = !searchInput ? offerList :
+        offerList.filter((offer) => offer.offerName.toLowerCase().includes(searchInput));
+    const finleDataList = filtered ? filtered : offerList
 
     return (
         <div className="m-6 ">
 
             <h2 className="text-2xl font-semibold tracking-tight text-gray-900">OFFERS</h2>
+            <BaseSearch onSearch={handleSearch} labelName="Search Offers"></BaseSearch>
             <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 ">
                 {
 
-                    offerList.map((offer) => {
+                    finleDataList.map((offer) => {
 
                         return (
 

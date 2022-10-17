@@ -79,20 +79,11 @@ export default function Dishes() {
     const filtered = !searchInput ? finalFilteredDishes :
         finalFilteredDishes.filter((dish) => dish.dishName.toLowerCase().includes(searchInput));
 
-    // const onSearchSubmit = (searchTxt) => {
-    //     console.log('searchTxt');
-    //     console.log(searchTxt);
-
-    //     // setFilteredResults()
-    // }
-
     return (
         <div className="mx-6 my-2 flex flex-col gap-4">
 
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">Dishes</h2>
-            <div className="mx-auto w-full md:max-w-[600px]">
-                <BaseSearch onSearch={handleSearch} labelName="Search Dishes" ></BaseSearch>
-            </div>
+            <BaseSearch onSearch={handleSearch} labelName="Search Dishes" ></BaseSearch>
             <div className="fleex flex-col gap-2 border px-4 py-2 rounded-md">
                 <h3 className=" text-2xl border-b text-gray-500 font-medium" >Filters</h3>
                 <div className="flex  md:flex-row gap-2 border-b items-center py-4">
