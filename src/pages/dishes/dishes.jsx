@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import dishService from '../../services/dishService'
 import loginService from "../../services/loginService";
 import DishCard from "../../components/page-components/DishCard";
+import ReduxDishCard from "../../components/page-components/ReduxDishCard";
+
 import { getLocalStorage } from "../../utils/common.util"
 import BaseSearch from "../../components/base-components/base-search/BaseSearch";
 import BaseButton from "../../components/base-components/base-button/BaseButton";
@@ -165,7 +167,8 @@ export default function Dishes() {
                     {
                         finalFilteredDishes.map((dish) => {
                             return (
-                                <DishCard dish={dish} key={dish._id} userData={userData} reFetchUser={getUserDetails} />
+                                // <DishCard dish={dish} key={dish._id} userData={userData} reFetchUser={getUserDetails} />
+                                <ReduxDishCard dish={dish} key={dish._id} userData={userData} reFetchUser={getUserDetails} ></ReduxDishCard>
                             )
                         })
                     }
