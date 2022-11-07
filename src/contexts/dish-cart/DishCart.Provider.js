@@ -57,7 +57,7 @@ export default function DishCartProvider({ children }) {
 
         if (cartDishesCopy[matchedDishIndex].quantity < 1) {
 
-            cartDishesCopy.splice(matchedDishIndex, 1)     // splice(position ,remove count , add itmes)
+            cartDishesCopy.splice(matchedDishIndex, 1)     // splice(position ,remove count , add items)
             updateCardDishes = cartDishesCopy
         }
 
