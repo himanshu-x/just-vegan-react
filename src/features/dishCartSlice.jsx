@@ -35,8 +35,8 @@ const dishCartSlice = createSlice({
             setStoreQuantity(updateCardDishes);
         },
         removeDishFromCart: (state, { payload: dish }) => {
-            console.log(`removeDishFromCart`);
-            console.log(dish);
+            // console.log(`removeDishFromCart`);
+            // console.log(dish);
 
             let cartDishesCopy = JSON.parse(JSON.stringify(state.cartDishes))
             //to create a deep copy.
@@ -57,9 +57,24 @@ const dishCartSlice = createSlice({
 
         },
 
-        calculateCount: (state, data) => {
+        deleteDishFromCart: (state, { payload: cIndex }) => {
 
-        }
+            let cartDishesCopy = JSON.parse(JSON.stringify(state.cartDishes));
+            let updateCardDishes = [];
+            if (cartDishesCopy[cIndex]) {
+                cartDishesCopy.splice(cIndex, 1)
+                updateCardDishes = cartDishesCopy
+            }
+            state.cartDishes = updateCardDishes
+            setStoreQuantity(updateCardDishes);
+        },
+        clearMyCart: (state) => {
+            let updateCardDishes = [];
+            alert("Order Successfull")
+            localStorage.removeItem(state.cartDishes)
+            state.cartDishes = updateCardDishes
+            setStoreQuantity(updateCardDishes);
+        },
 
     },
 })
@@ -67,6 +82,7 @@ const dishCartSlice = createSlice({
 const { actions, reducer } = dishCartSlice;
 
 // // Action creators are generated for each case reducer function
-export const { addDishToCart, removeDishFromCart } = actions
+
+export const { addDishToCart, removeDishFromCart, deleteDishFromCart, clearMyCart, } = actions
 
 export default reducer

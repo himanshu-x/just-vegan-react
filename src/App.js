@@ -21,7 +21,8 @@ const PublicRoutes = lazy(() => import("./components/protected-public-admin-rout
 const AdminRoutes = lazy(() => import("./components/protected-public-admin-routes/AdminRoute"));
 const Dishes = lazy(() => import("./pages/dishes/dishes"));
 const NewDish = lazy(() => import("./pages/dishes/new-dish"));
-const DishDetails = lazy(() => import("./pages/dishes/dish-details"));
+// const DishDetails = lazy(() => import("./pages/dishes/dish-details"));
+const DishDetails = lazy(() => import("./pages/dishes/reduxDishDetails"));
 const Offers = lazy(() => import("./pages/offers/offers"));
 const NewOffer = lazy(() => import("./pages/offers/new-offer"));
 const Navbar = lazy(() => import("./components/utility-components/Navbar"));

@@ -7,7 +7,8 @@ import LogoVegan from '../../images/vegan.png'
 import BaseDropdown from "../base-components/base-dropdown-elements/BaseDropdown";
 import BaseIcon from "../base-components/base-icon/BaseIcon";
 import BaseButton from "../base-components/base-button/BaseButton";
-import CartSideBar from "../utility-components/CartSideBar";
+// import CartSideBar from "../utility-components/CartSideBar";
+import CartSideBar from "../utility-components/reduxCartSideBar";
 
 
 
