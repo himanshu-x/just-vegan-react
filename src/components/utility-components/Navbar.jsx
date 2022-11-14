@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-
+import { useForm } from "react-hook-form";
 import { getLocalStorage } from "../../utils/common.util";
 import LogoVegan from '../../images/vegan.png'
 import BaseDropdown from "../base-components/base-dropdown-elements/BaseDropdown";
@@ -9,19 +9,32 @@ import BaseIcon from "../base-components/base-icon/BaseIcon";
 import BaseButton from "../base-components/base-button/BaseButton";
 // import CartSideBar from "../utility-components/CartSideBar";
 import CartSideBar from "../utility-components/reduxCartSideBar";
+import BaseSelect from "../base-components/form-elements/BaseSelect";
+import addressService from "../../services/addressService";
 
 
 
 function Navbar() {
 
-    const loginData = getLocalStorage('loginData');
-    const cartDishes = useSelector((state) => state.dishCart.cartDishes);
-    const defaultAddress = useSelector((state) => state.deliveryAddress.default);
-
-    console.log(`cartDishes in navbar`);
-    console.log(cartDishes);
 
     const [nav, setNav] = useState(false)
+    const [addresses, setAddresses] = useState([])
+    const { register, formState: { errors } } = useForm();
+    const loginData = getLocalStorage('loginData');
+
+    const cartDishes = useSelector((state) => state.dishCart.cartDishes);
+    // const defaultAddress = useSelector((state) => state.deliveryAddress.default);
+    useEffect(() => {
+        getAddress();
+    }, [])
+
+    function getAddress() {
+        addressService.getAddressDetails(loginData.userId).then((addressDetails) => {
+            // console.log(addressDetails.addresses)
+            setAddresses(addressDetails.addresses)
+        })
+    }
+
     function handleLogout() {
         localStorage.removeItem('loginData')
         window.location.href = '/auth/login'
@@ -68,6 +81,51 @@ function Navbar() {
             return (
 
                 <Fragment>
+                    {/* <div className="w-40 ">
+                        <BaseSelect labelName="My-Address" register={register} errors={errors} options={[
+                            { optionName: "xzcx" },
+                            { optionName: "xzcx" },
+                            { optionName: "xzcx" },
+
+
+                        ]} ></BaseSelect>
+                    </div> */}
+                    <div className="flex justify-center">
+                        <div className="mb-3 xl:w-96">
+                            <select className="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                                <option selected>Open this select menu</option>
+                                {
+                                    addresses.map((address, index) => {
+                                        return (
+                                            <option value="1">Deliver to -
+                                                <p>{address.name},</p>
+
+                                                <p>{address.city},</p>
+                                                <p>{address.pincode}</p>
+
+                                            </option>
+                                        )
+                                    })
+                                }
+
+
+                            </select>
+                        </div>
+                    </div>
 
                     <BaseButton onClick={() => setNav(!nav)} variant="primary" className="flex px-4 py-2 gap-2" >
                         <BaseIcon iconName="cart" className="h-6 w-6"></BaseIcon> Cart

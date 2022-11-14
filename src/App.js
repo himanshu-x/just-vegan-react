@@ -35,7 +35,7 @@ const MyAccountBox = withBox(MyAccount)
 
 function App() {
 
-  const user = getLocalStorage("loginData")
+  // const user = getLocalStorage("loginData")
 
 
   return (
