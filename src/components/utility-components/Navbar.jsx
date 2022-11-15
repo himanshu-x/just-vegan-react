@@ -9,31 +9,18 @@ import BaseIcon from "../base-components/base-icon/BaseIcon";
 import BaseButton from "../base-components/base-button/BaseButton";
 // import CartSideBar from "../utility-components/CartSideBar";
 import CartSideBar from "../utility-components/reduxCartSideBar";
-import BaseSelect from "../base-components/form-elements/BaseSelect";
-import addressService from "../../services/addressService";
 
 
 
 function Navbar() {
-
-
     const [nav, setNav] = useState(false)
-    const [addresses, setAddresses] = useState([])
-    const { register, formState: { errors } } = useForm();
     const loginData = getLocalStorage('loginData');
 
     const cartDishes = useSelector((state) => state.dishCart.cartDishes);
+    const user = useSelector((state) => state.userStore.user);
+    console.log(user.addresses);
     // const defaultAddress = useSelector((state) => state.deliveryAddress.default);
-    useEffect(() => {
-        getAddress();
-    }, [])
 
-    function getAddress() {
-        addressService.getAddressDetails(loginData.userId).then((addressDetails) => {
-            // console.log(addressDetails.addresses)
-            setAddresses(addressDetails.addresses)
-        })
-    }
 
     function handleLogout() {
         localStorage.removeItem('loginData')
@@ -81,15 +68,7 @@ function Navbar() {
             return (
 
                 <Fragment>
-                    {/* <div className="w-40 ">
-                        <BaseSelect labelName="My-Address" register={register} errors={errors} options={[
-                            { optionName: "xzcx" },
-                            { optionName: "xzcx" },
-                            { optionName: "xzcx" },
 
-
-                        ]} ></BaseSelect>
-                    </div> */}
                     <div className="flex justify-center">
                         <div className="mb-3 xl:w-96">
                             <select className="form-select appearance-none
@@ -109,11 +88,10 @@ function Navbar() {
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
                                 <option selected>Open this select menu</option>
                                 {
-                                    addresses.map((address, index) => {
+                                    user && user.addresses && user.addresses.map((address, index) => {
                                         return (
                                             <option value="1">Deliver to -
                                                 <p>{address.name},</p>
-
                                                 <p>{address.city},</p>
                                                 <p>{address.pincode}</p>
 

@@ -1,9 +1,10 @@
-import React, { Suspense, lazy, createContext, } from "react";
+import React, { Suspense, lazy, createContext, useEffect, } from "react";
+import { useSelector, useDispatch } from 'react-redux'
 import { Routes, Route, Navigate } from "react-router-dom";
 import './App.css';
 import withBox from "./components/hoc-components/withBox";
 import { getLocalStorage } from "./utils/common.util";
-
+import userService from './services/userService'
 
 const Login = lazy(() => import("./pages/auth/login"));
 const MyAccount = lazy(() => import("./pages/my-account/my-account"));
@@ -31,11 +32,18 @@ const Auth = lazy(() => import("./pages/auth/auth"));
 const OfferDetails = lazy(() => import("./pages/offers/offer-details"));
 
 export const UserContext = createContext();
-const MyAccountBox = withBox(MyAccount)
+const MyAccountBox = withBox(MyAccount);
 
 function App() {
 
-  // const user = getLocalStorage("loginData")
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const loginData = getLocalStorage('loginData');
+    if (loginData && loginData.userId) {
+      userService.setUserStore(dispatch, loginData.userId);
+    }
+  }, [])
 
 
   return (

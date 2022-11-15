@@ -22,9 +22,7 @@ const MyAccount = function () {
 
     function getAccDetails() {
         loginService.getLoginAccountDetails(loginData.userId).then((account) => {
-            // console.log(account)
             setaccountDetails(account)
-            // setLocalStorage('userType', account.userType);
         })
     }
 
@@ -49,11 +47,6 @@ const MyAccount = function () {
                 <p className="text-sm text-gray-100">{accountDetails.emailId}</p>
 
             </div>
-            {/* <BaseButton onClick={() => setOpenModal(!openModal)} variant="success" className="py-2 px-4 w-full">Logout</BaseButton>
-            <BaseModal isShown={openModal} headerText="Logout">
-                <BaseButton variant="secondary" onClick={() => setOpenModal(!openModal)} >Cancel</BaseButton>
-                <BaseButton variant="secondary" onClick={handleLogout} >Yes</BaseButton>
-            </BaseModal> */}
             <ConfirmButton
                 isShown={openModal}
                 className="py-2 px-4 w-full"
@@ -64,7 +57,4 @@ const MyAccount = function () {
         </div >
     )
 }
-
-
-// export default MyAccountBox
 export default MyAccount
