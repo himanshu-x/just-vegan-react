@@ -1,9 +1,8 @@
-import React, { useState, Fragment } from "react";
-import BaseButton from "../base-button/BaseButton";
+import React from "react";
 import BaseIcon from "../base-icon/BaseIcon";
 
 export default function BaseModal(props) {
-    const { isShown, ctx, cIndex, headerText = "Confirm", bodyText = "Are you sure ?", onConfirm, children } = props;
+    const { isShown, headerText = "Confirm", bodyText = "Are you sure ?", children } = props;
 
     return (
         isShown && <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -20,9 +19,6 @@ export default function BaseModal(props) {
                         </div>
                         <div className="bg-gray-50 px-4 py-3 flex gap-8 justify-center">
                             {children}
-                            {/* {
-                                children || <BaseButton variant="primary" onClick={() => { onConfirm(ctx, cIndex) }}>Cancel</BaseButton>
-                            } */}
                         </div>
                     </div>
                 </div>

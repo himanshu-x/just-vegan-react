@@ -11,5 +11,20 @@ export default {
                 return response.data.payload;
             })
     },
+    setSelectAddress: function (userId, addressId) {
+        return axios({
+            method: "post",
+            url: `${BASE_API_URL}/users/${userId}/default-address`,
+            data: {
+                addressId: addressId
+            },
+        })
+            .then((response) => {
+                return response.data
+            })
+            .catch((error) => {
+                return error
+            })
 
+    }
 }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BaseButton from "../../components/base-components/base-button/BaseButton";
 import BaseIcon from "../../components/base-components/base-icon/BaseIcon";
-import BaseModal from "../../components/base-components/base-modal/BaseModal";
 import loginService from "../../services/loginService";
 import { getLocalStorage, setLocalStorage } from "../../utils/common.util";
 import withConfirm from "../../components/hoc-components/withConfirm";

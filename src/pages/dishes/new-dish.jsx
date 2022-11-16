@@ -11,12 +11,11 @@ export default function NewDish() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
-        // console.log(data);
         dishService.createNewDish(data).then((createResult) => {
-            console.log(createResult)
             if (createResult && createResult._id) {
                 alert(`New dish with dish id ${createResult._id} has been created.`)
             }
+            return createResult
         })
     };
 
