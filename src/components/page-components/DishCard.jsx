@@ -87,7 +87,7 @@ export default function DishCard(props) {
     return (
         <div className="flex flex-col gap-3 border rounded p-2 shadow-xl" key={'dish-' + dish._id}>
             <Link to={'/dishes/' + dish._id}>
-                <img className={imgClass} src={dish.imgUrl}></img>
+                <img className={imgClass} src={dish.imgUrl} alt="dish-images"></img>
             </Link>
 
             <div className="flex gap-2">

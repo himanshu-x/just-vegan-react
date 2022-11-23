@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { addDishToCart, removeDishFromCart } from '../../features/dishCartSlice'
 import { useParams } from "react-router-dom";
 import dishService from '../../services/dishService'
 import BaseButton from "../../components/base-components/base-button/BaseButton";
+
 
 
 function DishDetails() {
@@ -57,41 +58,47 @@ function DishDetails() {
 
     useEffect(() => {
         getDish();
-    }, [])
+    })
+
     return (
 
-        <div className=" grid grid-cols-1 md:grid-cols-2 max-w-[1000px] lg:max-h-[500px] object-center object-coverbg-cover m-4 md:mx-auto rounded-md overflow-hidden shadow-lg ">
-            <img className="w-full rounded-xl" src={dishData.imgUrl} alt="Sunset in the mountains" />
-            <div className="px-6 py-4 flex flex-col gap-4">
-                <div>
-                    <div className="font-bold text-3xl ">{dishData.dishName}</div>
-                    <p className="text-gray-700">{dishData.description}</p>
+        <Fragment>
+
+
+
+
+            <div className=" grid grid-cols-1 md:grid-cols-2 max-w-[1000px] lg:max-h-[500px] object-center object-coverbg-cover m-4 md:mx-auto rounded-md overflow-hidden shadow-lg ">
+                <img className="w-full rounded-xl" src={dishData.imgUrl} alt="Sunset in the mountains" />
+                <div className="px-6 py-4 flex flex-col gap-4">
+                    <div>
+                        <div className="font-bold text-3xl ">{dishData.dishName}</div>
+                        <p className="text-gray-700">{dishData.description}</p>
+                    </div>
+
+                    <ul>
+                        {dishProperties.map((prop, index) => {
+
+                            return (
+                                <li key={index} className="flex gap-2">
+                                    <span className=" py-1 text-sm font-semibold text-gray-700">{prop.displayKey}  <span className="text-gray-400">{dishData[prop.valueKey]}{prop.displayValue}</span></span>
+                                </li>
+                            )
+
+                        })}
+                    </ul>
+                    <div className="flex gap-1">
+                        <div className="font-bold text-[#D11243]">MRP:&#8377;{dishData.price} </div>
+                        <div className="text-gray-700"><del>&#8377;{dishData.price}</del></div>
+                    </div>
+
+                    <div className=" border-t-2 rounded pt-3 flex gap-2">
+                        {renderCardButtons()}
+                    </div>
+
+
                 </div>
-
-                <ul>
-                    {dishProperties.map((prop, index) => {
-
-                        return (
-                            <li key={index} className="flex gap-2">
-                                <span className=" py-1 text-sm font-semibold text-gray-700">{prop.displayKey}  <span className="text-gray-400">{dishData[prop.valueKey]}{prop.displayValue}</span></span>
-                            </li>
-                        )
-
-                    })}
-                </ul>
-                <div className="flex gap-1">
-                    <div className="font-bold text-[#D11243]">MRP:&#8377;{dishData.price} </div>
-                    <div className="text-gray-700"><del>&#8377;{dishData.price}</del></div>
-                </div>
-
-                <div className=" border-t-2 rounded pt-3 flex gap-2">
-                    {renderCardButtons()}
-                </div>
-
-
             </div>
-        </div>
-
+        </Fragment>
     )
 }
 

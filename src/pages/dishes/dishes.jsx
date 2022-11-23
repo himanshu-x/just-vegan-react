@@ -11,6 +11,7 @@ import BaseButton from "../../components/base-components/base-button/BaseButton"
 // import { Counter } from "../redux/counter";
 
 
+
 export default function Dishes() {
     const [dishList, setDishList] = useState([]);
     const [userData, setUserData] = useState({});
@@ -52,7 +53,7 @@ export default function Dishes() {
 
     useEffect(() => {
         fetchAsync();
-    }, [])
+    })
 
 
     const handlePricingSlide = (e) => {
@@ -86,7 +87,6 @@ export default function Dishes() {
         <div className="mx-6 my-2 flex flex-col gap-4">
 
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">Dishes</h2>
-            {/* <Counter /> */}
             <BaseSearch onSearch={handleSearch} labelName="Search Dishes" ></BaseSearch>
             <div className="fleex flex-col gap-2 border px-4 py-2 rounded-md">
                 <h3 className=" text-2xl border-b text-gray-500 font-medium" >Filters</h3>

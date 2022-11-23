@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, createContext, useEffect, } from "react";
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Routes, Route, Navigate } from "react-router-dom";
 import './App.css';
 import withBox from "./components/hoc-components/withBox";

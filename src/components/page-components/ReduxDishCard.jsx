@@ -61,7 +61,6 @@ export default function ReduxDishCard(props) {
 
 
 
-    let imgClass = 'w-full max-h-[350px] min-h-[350px]  object-center object-cover  rounded-2xl'
 
     const renderCardButtons = () => {
         // console.log(`Dish card caallled ${dish.dishName}`)
@@ -88,11 +87,12 @@ export default function ReduxDishCard(props) {
                     variant="secondary">Add Cart </BaseButton>
         )
     }
+    let imgClass = 'w-full max-h-[350px] min-h-[350px]  object-center object-cover  rounded-2xl'
 
     return (
         <div className="flex flex-col gap-3 border rounded p-2 shadow-xl" key={'dish-' + dish._id}>
             <Link to={'/dishes/' + dish._id}>
-                <img className={imgClass} src={dish.imgUrl}></img>
+                <img className={imgClass} src={dish.imgUrl} alt="dish-images"></img>
             </Link>
 
             <div className="flex gap-2">
