@@ -1,10 +1,9 @@
-import axios from "axios";
-import { BASE_API_URL } from "../helpers/constants";
+import http from "../utils/http.util"
 
-export default {
+const addressService = {
     getAddressDetails: function (userId) {
 
-        return axios.get(`${BASE_API_URL}/users/${userId}`)
+        return http.get({ url: `/users/${userId}` })
             .then((response) => {
                 return (response.data.payload)
             })
@@ -13,17 +12,14 @@ export default {
             })
     },
 
-
     getAddresses: function (addressAddModel, userId) {
-        return axios({
-            method: "post",
-            url: `${BASE_API_URL}/users/${userId}/address`,
+        return http.post({
+            url: `/users/${userId}/address`,
             data: addressAddModel,
+        }).then((response) => {
+            console.log('Success:', response);
+            return response.data
         })
-            .then((response) => {
-                console.log('Success:', response);
-                return response.data
-            })
             .catch((error) => {
                 console.log(error)
             })
@@ -45,3 +41,4 @@ export default {
     },
 
 }
+export default addressService

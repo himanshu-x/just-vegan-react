@@ -26,7 +26,6 @@ export default function FavouriteDishes() {
             {
                 FavouriteDishData.map((favourite) => {
                     return (
-
                         <div className="max-w-sm rounded-lg overflow-hidden shadow-lg" key={favourite._id}>
                             <img className="w-full max-h-[350px] min-h-[350px]" src={favourite.imgUrl} alt="Sunset in the mountains" />
                             <div className=" flex flex-col gap-2 px-6 py-4">
@@ -40,15 +39,10 @@ export default function FavouriteDishes() {
                                     <div className="text-gray-600">{favourite.description}</div>
                                 </div>
                             </div>
-
-
                         </div>
                     )
-
                 })
             }
-
-
         </div>
 
 

@@ -12,7 +12,7 @@ export default function MyAddress() {
 
     useEffect(() => {
         getAddress();
-    }, [])
+    })
 
     function getAddress() {
         addressService.getAddressDetails(loginData.userId).then((addressDetails) => {
@@ -20,7 +20,6 @@ export default function MyAddress() {
             setAddresses(addressDetails.addresses)
         })
     }
-
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6  bg-white w-full ">

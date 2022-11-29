@@ -1,24 +1,25 @@
-import { BASE_API_URL } from "../helpers/constants";
-import axios from "axios";
-export default {
+import http from "../utils/http.util"
+
+const signUpService = {
 
     newAccountService: function (signUpModel) {
-        return axios({
-            method: "post",
-            url: `${BASE_API_URL}/users`,
-            data: signUpModel,
-            userType: "customer",
+        return http.post({
+            url: `/users`,
+            data: {
+                ...signUpModel,
+                userType: "customer",
+            },
+        }).then((response) => {
+            console.log(response)
+            return response.data
         })
-            .then((response) => {
-                console.log(response)
-                return response.data
-            })
             .catch(function (error) {
                 console.log(error);
             });
 
     },
 }
+export default signUpService
     // m1 methode
     // axios.post(`${BASE_API_URL}/users`, signUpModel)
     //     .then(function (response) {

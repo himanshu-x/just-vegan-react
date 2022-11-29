@@ -22,7 +22,7 @@ export default function HeadingCard() {
                     <p className=" text-xl px-2"> <em> Click Now</em></p>
                     <BaseButton className="absolute bottom-4 left-2 px-4 py-2" variant="primary">Click Now</BaseButton>
                 </div>
-                <img className="max-h-[160px] md:max-h-[250px] w-full object cover rounded-xl" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN0M7lbmmXMe8vSAQPqZCdsWU9Du3gjcK_pQ&usqp=CAU" alt="food cards" />
+                <img className="max-h-[160px] md:max-h-[250px] w-full object cover rounded-xl" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN0M7lbmmXMe8vSAQPqZCdsWU9Du3gjcK_pQ&usqp=CAU" alt="Offers cards" />
             </div></Link>
             <Link to='/special-dish'> <div className="rounded-xl relative hover:scale-105 hover:duration-500">
                 <div className="absolute w-full h-full bg-black/50 rounded-xl text-white">

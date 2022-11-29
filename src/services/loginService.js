@@ -1,13 +1,13 @@
-import { BASE_API_URL } from "../helpers/constants";
-import axios from "axios";
+import http from '../utils/http.util';
 
-export default {
+const loginService = {
 
     getLoginAccountDetails: function (userId) {
-        return axios.get(`${BASE_API_URL}/users/${userId}`)
-            .then((response) => {
-                return response.data.payload
-            })
+        return http.get({
+            url: `/users/${userId}`
+        }).then((response) => {
+            return response.data.payload
+        })
         // return fetch(`${BASE_API_URL}/users/${userId}`)
         //     .then(res => res.json())
         //     .then((response) => {
@@ -18,12 +18,21 @@ export default {
 
     getLoginDetails: function (loginDetailsModel) {
 
-        return axios({
-            method: "post",
-            url: `${BASE_API_URL}/auth/login`,
+        return http.post({
+            url: `/auth/login`,
             data: loginDetailsModel
         }).then((response) => {
             return response.data;
         });
+
+
+        // return axios({
+        //     method: "post",
+        //     url: `${BASE_API_URL}/auth/login`,
+        //     data: loginDetailsModel
+        // }).then((response) => {
+        //     return response.data;
+        // });
     },
 }
+export default loginService 

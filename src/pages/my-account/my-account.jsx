@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import BaseButton from "../../components/base-components/base-button/BaseButton";
 import BaseIcon from "../../components/base-components/base-icon/BaseIcon";
 import loginService from "../../services/loginService";
-import { getLocalStorage, setLocalStorage } from "../../utils/common.util";
+import { getLocalStorage, } from "../../utils/common.util";
 import withConfirm from "../../components/hoc-components/withConfirm";
 
 const ConfirmButton = withConfirm(BaseButton, {
@@ -20,7 +20,7 @@ const MyAccount = function () {
     }, [])
 
     function getAccDetails() {
-        loginService.getLoginAccountDetails(loginData.userId).then((account) => {
+        loginService.getLoginAccountDetails(loginData.userId, loginData.accessToken).then((account) => {
             setaccountDetails(account)
         })
     }

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import React, { Fragment, useState, useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux'
+import React, { Fragment, useState } from "react";
+import { useSelector } from 'react-redux'
 import { getLocalStorage } from "../../utils/common.util";
 import LogoVegan from '../../images/vegan.png'
 import BaseDropdown from "../base-components/base-dropdown-elements/BaseDropdown";
@@ -54,6 +54,7 @@ function Navbar() {
             )
         }
     }
+
 
     const RenderMenu = () => {
         if (loginData && loginData.accessToken) {

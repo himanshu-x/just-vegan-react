@@ -1,39 +1,41 @@
-import { BASE_API_URL } from "../helpers/constants";
-import axios from "axios";
+import http from '../utils/http.util';
 
-export default {
+const offerService = {
 
     getOffers: function () {
-        return axios.get(`${BASE_API_URL}/offers`)
-            .then((response) => {
-                return (response.data.payload)
-            })
-
-        // return fetch(`${BASE_API_URL}/offers`)
-        //     .then(res => res.json())
-        //     .then((response) => {
-        //         return response.payload
-        //     })
+        return http.get({
+            url: `/offers`
+        }).then((response) => {
+            return (response.data.payload)
+        })
     },
 
     getOffer: function (offerId) {
-        return axios.get(`${BASE_API_URL}/offers/${offerId}`)
-            .then((response) => {
-                return (response.data.payload)
-            })
+        return http.get({
+            url: `/offers/${offerId}`
+        }).then((response) => {
+            return (response.data.payload)
+        })
     },
 
     createNewOffer: function (offerModel) {
 
-        return axios({
-            method: "post",
-            url: `${BASE_API_URL}/offers`,
+        return http.post({
+            url: `/offer`,
             data: offerModel
+        }).then((response) => {
+            return response.data
         })
-            .then((response) => {
-                // console.log(response)
-                return response.data
-            })
+
+        // return axios({
+        //     method: "post",
+        //     url: `${BASE_API_URL}/offers`,
+        //     data: offerModel
+        // })
+        //     .then((response) => {
+        //         // console.log(response)
+        //         return response.data
+        //     })
 
         // return fetch(`${BASE_API_URL}/offers`, {
         //     method: 'POST',
@@ -48,3 +50,4 @@ export default {
         //     })
     },
 }
+export default offerService
