@@ -21,7 +21,7 @@ const offerService = {
     createNewOffer: function (offerModel) {
 
         return http.post({
-            url: `/offer`,
+            url: `/offers`,
             data: offerModel
         }).then((response) => {
             return response.data

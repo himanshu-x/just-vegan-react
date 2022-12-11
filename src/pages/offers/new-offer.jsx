@@ -11,9 +11,9 @@ export default function NewOffer() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
-        // console.log(data);
+        console.log(data);
         OfferService.createNewOffer(data).then((createOfferCard) => {
-            // console.log(createOfferCard)
+            console.log(createOfferCard)
             // console.log(createOfferCard.payload)
             if (createOfferCard.payload && createOfferCard.payload._id) {
                 alert(`New offer with offer id ${createOfferCard.payload._id} has been created.`)

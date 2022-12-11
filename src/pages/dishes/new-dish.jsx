@@ -11,16 +11,18 @@ export default function NewDish() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
+        // console.log(data)
         dishService.createNewDish(data).then((createResult) => {
             if (createResult && createResult._id) {
                 alert(`New dish with dish id ${createResult._id} has been created.`)
             }
+            console.log(createResult)
             return createResult
         })
     };
 
     return (
-        <div className="container my-4 p-8 rounded-lg shadow-lg mx-auto md:w-2/4">
+        <div className="container my-4 p-8 rounded-lg shadow-lg mx-auto md:w-2/4  bg-gray-200" >
             <p className="font-medium leading-tight text-4xl mt-0 mb-2 text-slate-600 ">{headerText}</p>
             <form className="m-4 flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
 

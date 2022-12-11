@@ -103,7 +103,7 @@ function Navbar() {
 
     return (
 
-        <nav className="flex items-center justify-between px-8 py-3 max-w-[1200px] mx-auto w-full bg-slate-100 ">
+        <nav className="flex items-center justify-between px-10 p-2 bg-slate-100 ">
             <div className="flex items-center flex-shrink-0 text-white mr-6 gap-2">
 
                 <Link to="/" className="flex gap-3 mt-4 text-xl lg:mt-0 font-semibold text-green-600 hover:text-pink-600 mr-4">
