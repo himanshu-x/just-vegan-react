@@ -42,7 +42,7 @@ export default function Offers() {
                             <div className="flex flex-col gap-3 border p-2 shadow-xl sm:hover:scale-105  hover:scale-105  duration-300" key={'offer-' + offer._id}>
                                 <div >
                                     <Link to={'/offers/' + offer._id}>
-                                        <img className=" object-center object-cover  w-full max-h-[350px] min-h-[300px] " src={offer.imgUrl}></img>
+                                        <img className=" object-center object-cover  w-full max-h-[350px] min-h-[300px] " src={offer.imgUrl} alt="offerImg"></img>
                                     </Link>
                                 </div>
                                 <div>

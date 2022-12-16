@@ -53,7 +53,7 @@ export default function Dishes() {
 
     useEffect(() => {
         fetchAsync();
-    })
+    }, [])
 
 
     const handlePricingSlide = (e) => {
