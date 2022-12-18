@@ -38,7 +38,10 @@ export default function SignUp() {
                     required: true,
                     pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$/,
                 }} />
-                <BaseButton type="submit" variant="secondary">
+                <BaseButton type="submit" variant="secondary" onClick={() => {
+                    alert("Your account successfully created.")
+                    window.location.href = '/auth/login'
+                }}>
                     Sign-up
                 </BaseButton>
             </form>

@@ -20,8 +20,8 @@ export default function AddressSelector() {
 
     return (
         <>
-            <BaseButton variant="primary" onClick={() => setOpenModal(!openModal)}><p>Deliver to- {user.defaultAddress.name}</p>
-                <p>{user.defaultAddress.city},{user.defaultAddress.pincode}</p> </BaseButton>
+            <BaseButton variant="primary" onClick={() => setOpenModal(!openModal)}><p>Deliver to- {user && user.defaultAddress && user.defaultAddress.name}</p>
+                <p>{user && user.defaultAddress && user.defaultAddress.city},{user && user.defaultAddress && user.defaultAddress.pincode}</p> </BaseButton>
 
             {
                 !openModal ? "" : <BaseModal isShown={openModal} headerText="Addresses" bodyText="Please select your Address">
