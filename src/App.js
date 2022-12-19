@@ -71,7 +71,7 @@ function App() {
               <Route path="sign-up" element={<SignUp />}></Route>
             </Route>
           </Route>
-          <Route path="/" element={<AdminRoutes />}>
+          <Route path="/admin" element={<AdminRoutes />}>
             <Route path="new-dish" element={<NewDish />} />
             <Route path="new-offer" element={<NewOffer />} />
           </Route>

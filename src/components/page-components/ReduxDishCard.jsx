@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-
 import { addDishToCart, removeDishFromCart } from '../../features/dishCartSlice'
 import { Link } from "react-router-dom";
 import dishService from "../../services/dishService";
@@ -8,13 +7,15 @@ import { getLocalStorage } from "../../utils/common.util"
 import BaseButton from "../base-components/base-button/BaseButton";
 import BaseIcon from "../base-components/base-icon/BaseIcon";
 
+
+
 export default function ReduxDishCard(props) {
-    const dispatch = useDispatch();
     const { dish, userData } = props;
+
     const [isFavouriteDish, setIsFavouriteDish] = useState(false);
     const loginData = getLocalStorage('loginData');
-
     const cartDishes = useSelector((state) => state.dishCart.cartDishes);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (userData && dish && userData.favouriteDishes) {
@@ -58,7 +59,6 @@ export default function ReduxDishCard(props) {
             reFetchUser();
         })
     }
-
 
 
 
@@ -115,9 +115,13 @@ export default function ReduxDishCard(props) {
 
                 <div className="text-gray-600">{dish.description}</div>
             </div>
-            <div className=" border-t-2 rounded pt-3 flex gap-2">
-                {renderCardButtons()}
+            <div className="flex gap-5 pt-4">
+                <div className=" flex gap-2">
+                    {renderCardButtons()}
+                </div>
             </div>
+
+
         </div>
     )
 }
