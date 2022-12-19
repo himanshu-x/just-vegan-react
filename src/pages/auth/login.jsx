@@ -16,7 +16,7 @@ export default function Login() {
 
             if (loginResult && loginResult.payload && loginResult.payload.accessToken) {
                 setLocalStorage('loginData', loginResult.payload);
-                // window.location.href = '/my-account'
+                window.location.href = '/my-account'
             } else {
                 alert('Invalid login details, please use correct credentials.')
             }
