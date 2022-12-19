@@ -3,6 +3,15 @@ import axios from "axios";
 import { getLocalStorage } from "./common.util";
 
 const apiMethods = {
+
+    put({ url, data }) {
+        return axios({
+            method: "put",
+            url: `${BASE_API_URL}${url}`,
+            data
+        })
+    },
+
     get({ url }) {
         const loginData = getLocalStorage('loginData');
         return axios({

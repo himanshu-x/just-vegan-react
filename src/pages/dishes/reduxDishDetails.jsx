@@ -4,16 +4,19 @@ import { addDishToCart, removeDishFromCart } from '../../features/dishCartSlice'
 import { useParams } from "react-router-dom";
 import dishService from '../../services/dishService'
 import BaseButton from "../../components/base-components/base-button/BaseButton";
-
-
+import { getLocalStorage } from "../../utils/common.util";
+import { useForm } from "react-hook-form";
+import BaseModal from "../../components/base-components/base-modal/BaseModal";
 
 function DishDetails() {
     let [dishData, setDishData] = useState({});
     const params = useParams()
-
+    const [openModal, setOpenModal] = useState(false);
+    const loginData = getLocalStorage("loginData")
     const cartDishes = useSelector((state) => state.dishCart.cartDishes);
     const dispatch = useDispatch();
 
+    const { register, handleSubmit, } = useForm();
     const dishProperties = [
         { valueKey: 'energy', displayKey: 'ENERGY : ', displayValue: "(KCAL)" },
         { valueKey: 'fat', displayKey: 'FAT : ', displayValue: "(g)" },
@@ -60,13 +63,20 @@ function DishDetails() {
         getDish();
     })
 
+    const onSubmit = (data) => {
+        // console.log(data)
+        dishService.updateDish(dishData._id, data).then((updateDishData) => {
+            // console.log(updateDishData)
+            alert("dish data succesfully change")
+            window.location.href = '/dishes'
+            return (updateDishData)
+        })
+
+    }
+
     return (
 
         <Fragment>
-
-
-
-
             <div className=" grid grid-cols-1 md:grid-cols-2 max-w-[1000px] lg:max-h-[500px] object-center object-coverbg-cover m-4 md:mx-auto rounded-md overflow-hidden shadow-lg ">
                 <img className="w-full rounded-xl" src={dishData.imgUrl} alt="Sunset in the mountains" />
                 <div className="px-6 py-4 flex flex-col gap-4">
@@ -93,9 +103,37 @@ function DishDetails() {
 
                     <div className=" border-t-2 rounded pt-3 flex gap-2">
                         {renderCardButtons()}
+
+                        {loginData && loginData.userType === "admin" && <BaseButton variant="primary" className="px-4 py-1 ml-auto" onClick={() => setOpenModal(!openModal)}>Edit</BaseButton>}
+                        {
+                            !openModal ? ""
+                                : <BaseModal isShown={openModal} headerText="DishDetails" bodyText="Edit your Dishes" >
+                                    <form onSubmit={handleSubmit(onSubmit)} className=" p-3 shadow-md border">
+                                        <div className="flex flex-col gap-1">
+                                            <label className="todo-label" htmlFor="dishName">
+                                                New name for <em>{dishData.dishName}</em> is
+                                            </label>
+                                            <input id="dishName" className="border p-2" type="text" name="dishName" placeholder="New dish Name" {...register("dishName")} />
+                                        </div>
+                                        <div className="flex flex-col gap-1">
+                                            <label className="todo-label" htmlFor="dishPrice">
+                                                New name for <em>{dishData.price}</em> is
+                                            </label>
+                                            <input id="dishPrice" className="border p-2" type="text" name="dishName" placeholder="New dish Name" {...register("price")} />
+                                        </div>
+                                        <div className="flex gap-2 mt-2">
+                                            <button type="button" className="border rounded bg-lime-300 px-2 py-1" onClick={() => setOpenModal(!openModal)}>
+                                                Cancel
+                                            </button>
+                                            <button type="submit" className="border rounded px-2 py-1 bg-green-600 ">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </form>
+                                </BaseModal>
+                        }
+
                     </div>
-
-
                 </div>
             </div>
         </Fragment>

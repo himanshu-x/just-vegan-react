@@ -1,6 +1,20 @@
 import http from '../utils/http.util';
 
 const dishService = {
+
+    updateDish: function (dishId, updateData) {
+        return http.put({
+            url: `/dishes/${dishId}`,
+            data: updateData
+        }).then((response) => {
+            console.log(response)
+            return response.data
+        })
+            .catch(function (error) {
+                console.log(error);
+            });
+    },
+
     getDishes: function () {
         return http.get({
             url: `/dishes`
@@ -19,7 +33,7 @@ const dishService = {
             url: `/dishes`,
             data: dishModel
         }).then((response) => {
-            console.log(response)
+            // console.log(response)
             return response.data.payload
         })
             .catch(function (error) {
