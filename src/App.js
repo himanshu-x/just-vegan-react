@@ -21,11 +21,13 @@ const ProtectedRoutes = lazy(() => import("./components/protected-public-admin-r
 const PublicRoutes = lazy(() => import("./components/protected-public-admin-routes/PublicRoutes"));
 const AdminRoutes = lazy(() => import("./components/protected-public-admin-routes/AdminRoute"));
 const Dishes = lazy(() => import("./pages/dishes/dishes"));
-const NewDish = lazy(() => import("./pages/dishes/new-dish"));
+const NewDish = lazy(() => import("./pages/admin/dishes/new-dish"));
+const AdminDishes = lazy(() => import("./pages/admin/dishes/dishes"));
+
 // const DishDetails = lazy(() => import("./pages/dishes/dish-details"));
 const DishDetails = lazy(() => import("./pages/dishes/reduxDishDetails"));
 const Offers = lazy(() => import("./pages/offers/offers"));
-const NewOffer = lazy(() => import("./pages/offers/new-offer"));
+const NewOffer = lazy(() => import("./pages/admin/offers/new-offer"));
 const Navbar = lazy(() => import("./components/utility-components/Navbar"));
 const AuthOptions = lazy(() => import("./components/page-components/auth/AuthOptions"));
 const Auth = lazy(() => import("./pages/auth/auth"));
@@ -73,6 +75,7 @@ function App() {
           </Route>
           <Route path="/admin" element={<AdminRoutes />}>
             <Route path="new-dish" element={<NewDish />} />
+            <Route path="dishes" element={<AdminDishes />} />
             <Route path="new-offer" element={<NewOffer />} />
           </Route>
           <Route path="dishes" element={<Dishes />} ></Route>

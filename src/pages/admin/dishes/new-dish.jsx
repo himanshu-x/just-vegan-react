@@ -1,10 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import BaseButton from "../../components/base-components/base-button/BaseButton";
-import BaseInput from "../../components/base-components/form-elements/BaseInput";
-import dishService from '../../services/dishService'
-import BaseCheckbox from "../../components/base-components/form-elements/BaseCheckbox";
-import BaseSelectOption from "../../components/base-components/form-elements/BaseSelect";
+import BaseButton from "../../../components/base-components/base-button/BaseButton";
+import BaseInput from "../../../components/base-components/form-elements/BaseInput";
+import dishService from '../../../services/dishService'
+import BaseForm from '../../../components/base-components/form-elements/BaseForm';
+import BaseCheckbox from "../../../components/base-components/form-elements/BaseCheckbox";
+import BaseSelectOption from "../../../components/base-components/form-elements/BaseSelect";
+import dishFields from '../../../field-registry/dishFields';
 
 export default function NewDish() {
     const headerText = 'New Dish';
@@ -21,9 +23,23 @@ export default function NewDish() {
         })
     };
 
+    const { dishName, price, dishCategory } = dishFields
+    const newDishFields = [
+        dishName,
+        price,
+        dishCategory
+    ];
+
     return (
         <div className="container my-4 p-8 rounded-lg shadow-lg mx-auto md:w-2/4  bg-gray-200" >
             <p className="font-medium leading-tight text-4xl mt-0 mb-2 text-slate-600 ">{headerText}</p>
+            <BaseForm
+                fields={newDishFields}
+                onSubmit={(data) => {
+                    console.log(`data`)
+                    console.log(data)
+                }}
+            ></BaseForm>
             <form className="m-4 flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
 
                 <BaseInput
@@ -52,12 +68,13 @@ export default function NewDish() {
                         required: true,
                     }} />
 
-                <BaseSelectOption name="dishCategory" labelName="Choose Your Dish Category" register={register} errors={errors} options={[
-                    { optionName: "Breakfast", value: "breakfast" },
-                    { optionName: "Dinner", value: "dinner" },
-                    { optionName: "Lunch", value: "lunch" },
-                    { optionName: "Snacks", value: "snacks" },
-                ]} >
+                <BaseSelectOption name="dishCategory" labelName="Choose Your Dish Category" register={register} errors={errors}
+                    options={[
+                        { optionName: "Breakfast", value: "breakfast" },
+                        { optionName: "Dinner", value: "dinner" },
+                        { optionName: "Lunch", value: "lunch" },
+                        { optionName: "Snacks", value: "snacks" },
+                    ]} >
                 </BaseSelectOption>
 
                 <div className=" flex flex-col gap-3">
