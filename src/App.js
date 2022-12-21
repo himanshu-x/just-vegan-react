@@ -23,6 +23,7 @@ const AdminRoutes = lazy(() => import("./components/protected-public-admin-route
 const Dishes = lazy(() => import("./pages/dishes/dishes"));
 const NewDish = lazy(() => import("./pages/admin/dishes/new-dish"));
 const AdminDishes = lazy(() => import("./pages/admin/dishes/dishes"));
+const AdminDishId = lazy(() => import("./pages/admin/dishes/dishId"));
 
 // const DishDetails = lazy(() => import("./pages/dishes/dish-details"));
 const DishDetails = lazy(() => import("./pages/dishes/reduxDishDetails"));
@@ -75,7 +76,9 @@ function App() {
           </Route>
           <Route path="/admin" element={<AdminRoutes />}>
             <Route path="new-dish" element={<NewDish />} />
-            <Route path="dishes" element={<AdminDishes />} />
+            <Route path="dishes" element={<AdminDishes />} >
+              <Route path="dishId" element={<AdminDishId />} />
+            </Route>
             <Route path="new-offer" element={<NewOffer />} />
           </Route>
           <Route path="dishes" element={<Dishes />} ></Route>

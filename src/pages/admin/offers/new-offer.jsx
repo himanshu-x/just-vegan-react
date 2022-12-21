@@ -1,14 +1,17 @@
 import React from 'react';
-import { useForm } from "react-hook-form";
-import BaseButton from '../../../components/base-components/base-button/BaseButton';
-import BaseInput from '../../../components/base-components/form-elements/BaseInput';
-import BaseRadioInput from '../../../components/base-components/form-elements/BaseRadioInput';
+import BaseForm from '../../../components/base-components/form-elements/BaseForm';
+import offerField from "../../../field-registry/offerField"
 import OfferService from '../../../services/OfferService';
+// import { useForm } from "react-hook-form";
+// import BaseButton from '../../../components/base-components/base-button/BaseButton';
+// import BaseInput from '../../../components/base-components/form-elements/BaseInput';
+// import BaseRadioInput from '../../../components/base-components/form-elements/BaseRadioInput';
+
 
 export default function NewOffer() {
 
     const headerText = 'New Offer Card';
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    // const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
         console.log(data);
@@ -22,10 +25,29 @@ export default function NewOffer() {
         })
     }
 
+    const { offerName, offerCode, isActive, maxDiscount, minPurchase, discountAmount, discountPercent, offerDescription, offerCondition, imgUrl } = offerField
+    const newOfferFields = [
+        offerName,
+        offerCode,
+        isActive,
+        maxDiscount,
+        minPurchase,
+        discountAmount,
+        discountPercent,
+        offerDescription,
+        offerCondition,
+        imgUrl,
+
+    ]
+
     return (
         <div className='my-4 p-8 rounded-lg shadow-lg mx-auto max-w-5xl' >
             <p className="font-medium leading-tight text-4xl mt-0 mb-2 text-slate-600 ">{headerText}</p>
-            <form className="m-4 flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
+            <BaseForm
+                fields={newOfferFields}
+                onSubmit={onSubmit}
+            ></BaseForm>
+            {/* <form className="m-4 flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
 
                 <BaseInput type='text' labelName="Offer Name" name="offerName" id="offerName" placeholder="offerName" register={register} errors={errors} validationRules={{
                     required: true,
@@ -71,7 +93,7 @@ export default function NewOffer() {
                         Submit &#10148;
                     </BaseButton>
                 </span>
-            </form>
+            </form> */}
         </div>
     )
 }

@@ -12,11 +12,12 @@ const apiMethods = {
         })
     },
 
-    get({ url }) {
+    get({ url, params = {} }) {
         const loginData = getLocalStorage('loginData');
         return axios({
-            method: 'get',
             url: `${BASE_API_URL}${url}`,
+            method: 'get',
+            params,
             headers: {
                 "Authorization": `Bearer ${loginData.accessToken}`
             }

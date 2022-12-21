@@ -3,19 +3,17 @@ import BaseButton from "../base-button/BaseButton";
 import BaseInput from "./BaseInput";
 import BaseCheckbox from "./BaseCheckbox";
 import BaseSelect from "./BaseSelect";
+import BaseRadioInput from "./BaseRadioInput";
 
 const fieldMap = {
     BaseInput,
     BaseCheckbox,
-    BaseSelect
+    BaseSelect,
+    BaseRadioInput,
 }
 
 
-export default function BaseForm({
-    fields,
-    onSubmit
-    // children
-}) {
+export default function BaseForm({ fields, onSubmit, children }) {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     console.log(fields);
@@ -35,11 +33,13 @@ export default function BaseForm({
                     )
                 })
             }
-            <span>
+
+            {/* {children} */}
+            {children ? children : <span>
                 <BaseButton type="submit" variant="secondary" >
                     Submit
                 </BaseButton>
-            </span>
+            </span>}
         </form >
     )
 

@@ -85,7 +85,6 @@ export default function Dishes() {
 
     return (
         <div className="mx-6 my-2 flex flex-col gap-4">
-
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">Dishes</h2>
             <BaseSearch onSearch={handleSearch} labelName="Search Dishes" ></BaseSearch>
             <div className="fleex flex-col gap-2 border px-4 py-2 rounded-md">
@@ -159,16 +158,21 @@ export default function Dishes() {
                     {
                         filtered.map((dish) => {
                             return (
-                                <DishCard dish={dish} key={dish._id} userData={userData} reFetchUser={getUserDetails} />
+                                <div className={dish.isActive === true ? "" : "hidden"}>
+                                    <DishCard dish={dish} key={dish._id} userData={userData} reFetchUser={getUserDetails} />
+                                </div>
                             )
                         })
                     }
                 </div> : <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 ">
                     {
                         finalFilteredDishes.map((dish) => {
+                            console.log(dish)
                             return (
                                 // <DishCard dish={dish} key={dish._id} userData={userData} reFetchUser={getUserDetails} />
-                                <ReduxDishCard dish={dish} key={dish._id} userData={userData} reFetchUser={getUserDetails} ></ReduxDishCard>
+                                <div className={dish.isActive === true ? "" : "hidden"}>
+                                    <ReduxDishCard dish={dish} key={dish._id} userData={userData} reFetchUser={getUserDetails} ></ReduxDishCard>
+                                </div>
                             )
                         })
                     }

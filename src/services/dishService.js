@@ -2,22 +2,14 @@ import http from '../utils/http.util';
 
 const dishService = {
 
-    updateDish: function (dishId, updateData) {
-        return http.put({
-            url: `/dishes/${dishId}`,
-            data: updateData
-        }).then((response) => {
-            console.log(response)
-            return response.data
-        })
-            .catch(function (error) {
-                console.log(error);
-            });
-    },
-
     getDishes: function () {
         return http.get({
-            url: `/dishes`
+            url: `/dishes`,
+            params: {
+                query: JSON.stringify({
+                    isActive: true
+                })
+            }
         }).then((response) => {
             return (response.data.payload)
         }).catch(error => console.log(error));
@@ -39,12 +31,6 @@ const dishService = {
             .catch(function (error) {
                 console.log(error);
             });
-        // return axios({
-        //     method: "post",
-        //     url: `${BASE_API_URL}/dishes`,
-        //     data: dishModel
-        // })
-
     },
     getDish: function (dishId) {
         return http.get({
@@ -108,6 +94,19 @@ const dishService = {
         }).then((response) => {
             return (response.data.payload)
         })
+    },
+
+    updateDish: function (dishId, updateData) {
+        return http.put({
+            url: `/dishes/${dishId}`,
+            data: updateData
+        }).then((response) => {
+            console.log(response)
+            return response.data
+        })
+            .catch(function (error) {
+                console.log(error);
+            });
     },
 }
 export default dishService

@@ -4,7 +4,6 @@ import dishService from '../../../services/dishService'
 import loginService from "../../../services/loginService";
 import DishCard from "../../../components/page-components/DishCard";
 import ReduxDishCard from "../../../components/page-components/ReduxDishCard";
-
 import { getLocalStorage } from "../../../utils/common.util"
 import BaseSearch from "../../../components/base-components/base-search/BaseSearch";
 import BaseButton from "../../../components/base-components/base-button/BaseButton";
@@ -83,7 +82,6 @@ export default function Dishes() {
 
     return (
         <div className="mx-6 my-2 flex flex-col gap-4">
-
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">Dishes</h2>
             <BaseSearch onSearch={handleSearch} labelName="Search Dishes" ></BaseSearch>
             <div className="fleex flex-col gap-2 border px-4 py-2 rounded-md">
@@ -166,7 +164,9 @@ export default function Dishes() {
                         finalFilteredDishes.map((dish) => {
                             return (
                                 // <DishCard dish={dish} key={dish._id} userData={userData} reFetchUser={getUserDetails} />
-                                <ReduxDishCard dish={dish} key={dish._id} userData={userData} reFetchUser={getUserDetails} ></ReduxDishCard>
+                                <div className={dish.isActive === false ? "hidden" : ""}>
+                                    <ReduxDishCard dish={dish} key={dish._id} userData={userData} reFetchUser={getUserDetails} ></ReduxDishCard>
+                                </div>
                             )
                         })
                     }
