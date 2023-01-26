@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+
+.menu-container::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}

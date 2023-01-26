@@ -16,6 +16,8 @@ const FavouriteDishes = lazy(() => import("./pages/dishes/favourite-dishes"));
 const MyOrders = lazy(() => import("./pages/my-account/my-order"));
 const SignUp = lazy(() => import("./pages/auth/sign-up"));
 const Home = lazy(() => import("./pages/home"));
+const Examples = lazy(() => import("./pages/examples"));
+
 const DishCartProvider = lazy(() => import("./contexts/dish-cart/DishCart.Provider"));
 const ProtectedRoutes = lazy(() => import("./components/protected-public-admin-routes/ProtectedRoutes"));
 const PublicRoutes = lazy(() => import("./components/protected-public-admin-routes/PublicRoutes"));
@@ -56,6 +58,7 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/examples" element={<Examples />}></Route>
           <Route path="/" element={<ProtectedRoutes />} >
             <Route path="my-account" element={< MyList />}>
               <Route index element={<MyAccountBox />} />
